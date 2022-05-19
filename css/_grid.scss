@@ -1,12 +1,13 @@
 .desk {
   display: grid;
-  grid-template-columns: 9rem 1fr;
-  flex-wrap: wrap;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  grid-template-rows: 1fr 6rem;
+  aspect-ratio: 3/2;
+  height: clamp(10rem, 80vh, 120rem);
   padding: 0rem;
-  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 header {
@@ -16,16 +17,38 @@ header {
   grid-template-rows: max-content 10rem;
   align-content: space-between;
   gap: 2.5rem;
-  border-right: 1px solid $border-color;
-  overflow: hidden;
-  background-color: white;
 }
 
 main {
   position: relative;
   height: 100%;
-  border-left: 0;
-  overflow: hidden;
-  border-radius: 0 .5rem .5rem 0;
-  background-color: white;
+  border: 1px solid $border-color;
+}
+
+.logo {
+  position: absolute;
+  width: 8rem;
+  left: -8rem;
+  aspect-ratio: 1/1.2;
+  background: url('../img/icon/logo2.png') no-repeat center 40%/50% #333;
+
+  b {
+    position: absolute;
+    width: 100%;
+    color: white;
+    text-align: center;
+    bottom: 20%;
+    letter-spacing: 1.5px;
+
+    sup {
+      position: absolute;
+      margin-top: .25rem;
+      font-size: 50%;
+    }
+  }
+}
+
+
+.divider {
+  display: none!important;
 }

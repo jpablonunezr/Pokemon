@@ -1,20 +1,18 @@
-
 .player {
   position: relative;
-  width: 12rem;
   height: 100%;
+  width: 100%;
   left: 0;
   top: 0;
   z-index: 100;
-  background-color: #eee;
-  border-radius: $card-radius;
-  transform: translate(-1rem, 0);
+  background-color: $border-color;
 
   .lifes {
     position: absolute;
     width: 100%;
     display: flex;
     gap: .5rem;
+    top: 1rem;
 
     i {
       display: block;
@@ -36,22 +34,21 @@
   }
 
   &.cpu .lifes {
-    top: -1.8rem;
-    right: .5rem;
+    right: 1rem;
     justify-content: right;
   }
 
   &.user .lifes {
-    bottom: -1.8rem;
-    left: .5rem;
+    left: 1rem;
   }
 
   .avatar {
     @extend %full-size;
-    width: 165%;
+    width: 120%;
     height: 100%;
-    background: no-repeat top center/100% auto;
-    left: -30%;
+    background: no-repeat right 3rem/100% auto;
+    right: 0;
+    bottom: 0;
     z-index: 0;
     position: relative;
   }
@@ -89,8 +86,8 @@
     }
   }
 
-  &.user  { transform: translate(1rem, 0); }
-  &.cpu .avatar  { background-image: url('../img/trainer/gary.png') }
-  &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 93%; background-position: center 1rem; }
+
+  &.cpu  .avatar  { background-image: url('../img/trainer/gary.png'); left: -5%; }
+  &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 100%; }
   &.user .name { text-align: left; left: calc(100% + 1rem); }
 }

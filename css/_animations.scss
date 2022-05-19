@@ -1,4 +1,4 @@
-@keyframes green {
+@keyframes grass {
     0% {transform: translate(0, 0)}
    20% {transform: translate(0, -1rem)}
    40% {transform: translate(0, 0)}
@@ -7,7 +7,7 @@
   100% {transform: translate(0, 0)}
 }
 
-@keyframes fire {
+@keyframes water {
     0% {transform: translate(0, 0)}
    20% {transform: translate(0, 0)}
    40% {transform: translate(0, -1rem)}
@@ -16,7 +16,7 @@
   100% {transform: translate(0, 0)}
 }
 
-@keyframes water {
+@keyframes fire {
     0% {transform: translate(0, 0)}
    20% {transform: translate(0, 0)}
    40% {transform: translate(0, 0)}
@@ -24,7 +24,7 @@
   100% {transform: translate(0, 0)}
 }
 
-@keyframes fxShow {
+@keyframes brightFX {
     0% {filter: brightness(100%)}
    40% {filter: brightness(140%)}
   100% {filter: brightness(100%)}

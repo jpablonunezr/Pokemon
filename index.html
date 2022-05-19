@@ -9,17 +9,9 @@
   </head>
   <body>
     <div class="desk">
-      <header>
-        <nav id="nav">
-          <!-- <li><div class="icon gym"></div><span data-title="">Trainer</span></li> -->
-          <li class="active"><div class="icon battle"></div><span data-title="バトル">Battle</span></li>
-          <li><div class="icon medals"></div><span data-title="メダル">Medals</span></li>
-          <div class="track"></div>
-        </nav>
-        <div class="logo"><b>nnzr<sup>21</sup></b></div>
-      </header>
 
       <main>
+        <div class="logo"><b>nnzr<sup>21</sup></b></div>
         <div class="pokemon">
           <div id="cpuSelection" class="pokemon__options">
             <div class="player cpu">
@@ -31,19 +23,19 @@
                 <h2>Blue Oak</h2>
               </div>
             </div>
-            <div id="cpuFire" class="pokemon__card fire">
-              <div class="image" data-name="ヒアラシ"></div>
-              <div class="bg" data-title="Choose Fire?">
+            <div id="cpuGrass" class="pokemon__card grass">
+              <div class="image" data-name="チコリタ"></div>
+              <div class="bg" data-title="Choose Grass?">
                 <div class="fx">
                   <img src="" class="fx-gif">
                 </div>
                 <div
                   class="type"
-                  data-original="Hinoarashi — Johto"
-                  data-index="#155"
+                  data-original="Chicorita — Johto"
+                  data-index="#152"
                 >
-                  <div class="icon">Fire</div>
-                  <div class="label">Cyndaquil</div>
+                  <div class="icon">Grass</div>
+                  <div class="label">Chikorita</div>
                   <div class="image-bg"></div>
                 </div>
               </div>
@@ -65,33 +57,25 @@
                 </div>
               </div>
             </div>
-            <div id="cpuGrass" class="pokemon__card grass">
-              <div class="image" data-name="チコリタ"></div>
-              <div class="bg" data-title="Choose Grass?">
+            <div id="cpuFire" class="pokemon__card fire">
+              <div class="image" data-name="ヒアラシ"></div>
+              <div class="bg" data-title="Choose Fire?">
                 <div class="fx">
                   <img src="" class="fx-gif">
                 </div>
                 <div
                   class="type"
-                  data-original="Chicorita — Johto"
-                  data-index="#152"
+                  data-original="Hinoarashi — Johto"
+                  data-index="#155"
                 >
-                  <div class="icon">Grass</div>
-                  <div class="label">Chikorita</div>
+                  <div class="icon">Fire</div>
+                  <div class="label">Cyndaquil</div>
                   <div class="image-bg"></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="divider">
-            <div id="counter" class="counter">
-              <div class="line"></div>
-              <div class="pokeball"></div>
-              <div class="left"></div>
-              <div class="right"></div>
-            </div>
-          </div>
 
           <!-- USER -->
           <div id="userSelection" class="pokemon__options">
@@ -172,9 +156,28 @@
           </div>
         </div>
       </main>
+
+
+      <header>
+        <nav id="nav">
+          <!-- <li><div class="icon gym"></div><span data-title="">Trainer</span></li> -->
+          <li class="active"><div class="icon battle"></div><span data-title="01">Battle</span></li>
+          <li><div class="icon medals"></div><span data-title="02">Badges</span></li>
+          <div class="track"></div>
+        </nav>
+      </header>
     </div>
 
     <div class="cursor"></div>
+
+             <div class="divider">
+            <div id="counter" class="counter">
+              <div class="line"></div>
+              <div class="pokeball"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
 
     <!-- <audio src="audio/battle_theme.mp3" id="battleTheme"></audio> -->
   </body>

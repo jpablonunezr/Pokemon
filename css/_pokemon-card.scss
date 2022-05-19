@@ -1,42 +1,47 @@
 .pokemon {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   filter: saturate(1.25);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 
   &__options {
-    display: flex;
+    display: grid;
+    position: relative;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
-    position: relative;
+    grid-template-columns: repeat(3, 1fr) 17rem;
+
+    &#cpuSelection {
+      border-bottom: 1px solid $border-color;
+      grid-template-columns: 17rem repeat(3, 1fr);
+    }
   }
 
   &__card {
     font-size: 12rem;
-    width: 17rem;
-    height: 22rem;
+    width: 100%;
+    height: 100%;
     line-height: 1;
     padding: 1rem;
     user-select: none;
     position: relative;
-    border-radius: $card-radius;
     transition: $ease3;
     perspective: 1000px;
     perspective-origin: 50% 50%;
     z-index: 25;
     filter: grayscale(1);
 
+    &:not(:last-of-type) {
+      border-right: 1px solid $border-color;
+    }
+
     &::after {
       content: '';
       @extend %full-size;
       z-index: 0;
-      opacity: .15;
+      opacity: .1;
       background: no-repeat center/auto 100%;
-      border-radius: $card-radius;
       transition: $ease3;
     }
 
@@ -64,7 +69,7 @@
         font-size: 3rem;
         font-weight: 900;
         text-transform: uppercase;
-        color: white;
+        color: $black;
         transition: $ease3;
         letter-spacing: -4px;
       }
@@ -75,17 +80,15 @@
     &.water .image { background-image: url('../img/pokemon/squirtle.png') }
 
 
-    &.grass .image-bg { background-image: url('../img/icon/grass__type.svg')  }
-    &.fire  .image-bg { background-image: url('../img/icon/fire__type.svg') }
+    &.grass .image-bg { background-image: url('../img/icon/grass__type.svg') }
+    &.fire  .image-bg { background-image: url('../img/icon/fire__type.svg')  }
     &.water .image-bg { background-image: url('../img/icon/water__type.svg') }
 
-    &.grass .bg { background-image: radial-gradient(circle, $grass-xl 0%, $grass-xd 80%)}
-    &.fire  .bg { background-image: radial-gradient(circle, $fire-xl 0%, $fire-xd 80%)}
-    &.water .bg { background-image: radial-gradient(circle, $water-xl 0%, $water-xd 80%)}
 
-    &.grass .type .icon { background-image: url('../img/icon/grass__type.svg'); color: $grass-xl}
-    &.fire  .type .icon { background-image: url('../img/icon/fire__type.svg');  color: $fire-xl}
-    &.water .type .icon { background-image: url('../img/icon/water__type.svg'); color: $water-xl}
+
+    &.grass .type .icon { background-image: url('../img/icon/grass__type.svg') }
+    &.fire  .type .icon { background-image: url('../img/icon/fire__type.svg')  }
+    &.water .type .icon { background-image: url('../img/icon/water__type.svg') }
 
     &.grass .bg { outline-color: $grass};
     &.fire  .bg { outline-color: $fire-l };
@@ -93,14 +96,16 @@
 
     .type {
       @extend %full-size;
-      border-radius: $card-radius;
       overflow: hidden;
+      color: $black;
+      transition: $ease3;
+      text-transform: uppercase;
+      letter-spacing: .5px;
 
       &::after,
       &::before {
         width: 100%;
         position: absolute;
-        color: white;
         opacity: .9;
         font-family: $ff-base;
         transition: $ease3;
@@ -108,8 +113,8 @@
 
       &::after {
         content: attr(data-index);
-        top: 1rem;
-        right: 1rem;
+        top: 2rem;
+        right: 2rem;
         text-align: right;
         font-size: 1rem;
       }
@@ -117,7 +122,7 @@
       &::before {
         content: attr(data-original);
         bottom: 1.2rem;
-        right: 1rem;
+        right: 2rem;
         font-size: .6rem;
         text-align: right;
         letter-spacing: 1px;
@@ -127,24 +132,29 @@
 
       .icon {
         position: absolute;
-        left: .5rem;
-        top: 3rem;
-        font-size: 1rem;
+        left: 1.5rem;
+        top: 3.5rem;
+        font-size: .9rem;
         width: 1.5rem;
         display: flex;
         align-items: center;
         padding-left: 1.5rem;
-        opacity: 1;
         background-position: center;
         background-size: 110%;
+        color: $black;
+        opacity: 0;
+        transition: $ease3;
+        transform: translate(0, 2rem);
       }
 
       .label {
         position: absolute;
-        font-size: 1.4rem;
-        top: 1rem;
-        left: 1rem;
-        color: #fff;
+        font-size: .9rem;
+        top: 2rem;
+        left: 2rem;
+        color: $black;
+        letter-spacing: .5px;
+        text-transform: uppercase;
         font-weight: bold;
       }
     }
@@ -152,7 +162,6 @@
     .fx {
       @extend %full-size;
       overflow: hidden;
-      border-radius: $card-radius;
       mix-blend-mode: color-dodge;
       pointer-events: none;
 
@@ -170,11 +179,10 @@
     .bg {
       content: '';
       @extend %full-size;
-      border-radius: $card-radius;
-      outline: 0 solid;
       transition: $ease3;
       transition-duration: .5s;
       z-index: 0;
+      background-color: #fff;
 
       // Card spark
       &::before {
@@ -183,39 +191,15 @@
         background: url('../img/fx/brillo.gif') no-repeat center/120%;
         z-index: 0;
         mix-blend-mode: overlay;
-        border-radius: $card-radius;
         transition: $ease3;
         opacity: 0;
-      }
-
-      //Choose pokemon
-      &::after {
-        content: attr(data-title);
-        position: absolute;
-        top: calc(100% + 1rem);
-        left: 0rem;
-        width: max-content;
-        font-size: .75rem;
-        border: 1px solid #999;
-        color: $black;
-        text-transform: uppercase;
-        font-family: $ff-base;
-        opacity: 0;
-        transform: translate(-2rem,0);
-        transition: $ease3;
-        transition-duration: .5s;
-        font-weight: bold;
-        letter-spacing: .5px;
-        padding: .66rem;
-        text-align: center;
-        z-index: 55;
       }
     }
 
     @import 'hover-card';
   }
 
-  #cpuSelection.animation .grass { animation: grass  1s infinite }
+  #cpuSelection.animation .grass { animation: grass 1s infinite }
   #cpuSelection.animation .fire  { animation: fire 1s infinite }
   #cpuSelection.animation .water { animation: water 1s infinite }
 
@@ -226,6 +210,7 @@
   #cpuGrass.grass::after { background-image: url('../img/pokemon/meganium.png')}
   #cpuFire.fire::after   { background-image: url('../img/pokemon/typhlosion.png') }
   #cpuWater.water::after { background-image: url('../img/pokemon/feraligatr.png') }
+
 
 
   #cpuSelection {
