@@ -1,0 +1,107 @@
+
+// Hover card
+&:hover {
+  z-index: 50;
+  animation: fxShow .4s 1 ease-in forwards;
+  filter: grayscale(0);
+
+  &.grass .image { transform: translate(0, -1rem) scale(1.3) rotate(-7deg) }
+  &.fire  .image { transform: translate(0, 0rem)  scale(1.3) rotate(0deg) }
+  &.water .image { transform: translate(0, -1rem) scale(1.3) rotate(7deg) }
+
+  &::after { opacity: 0 }
+
+  &.grass .image::after { transform: translate(0, -1.5rem) scale(1.1) }
+  &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.1) }
+  &.water .image::after { transform: translate(0, -1.5rem) scale(1.1) }
+
+  &.grass .bg { transform: translate(0, -.5rem) scale(1.1) rotateX(10deg) rotateY(10deg) rotateZ(-5deg) }
+  &.fire  .bg { transform: translate(0, -.5rem) scale(1.1) rotateX(-10deg)}
+  &.water .bg { transform: translate(0, -.5rem) scale(1.1) rotateX(10deg) rotateY(-10deg) rotateZ(5deg)}
+
+  // Choose pokemon
+  & .bg::after { transform: translate(0,0); opacity: 1}
+  &.grass .bg::after { outline-color: $grass}
+  &.fire  .bg::after { outline-color: $fire}
+  &.water .bg::after { outline-color: $water}
+
+  .bg {
+    outline-width: 2px;
+    &::before {
+      opacity: .5;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+
+  .type {
+    &::after,
+    &::before {
+      letter-spacing: 2px; transform: scale(.9);
+    }
+  }
+
+  &.grass .type::after, &.grass .type::before { color:$grass-xl }
+  &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
+  &.water .type::after, &.water .type::before { color:$water-xl }
+}
+
+// Hover card selected
+&.selected:hover,
+&.selected {
+  pointer-events: none;
+  transform: translate(0, 0) scale(1);
+  filter: grayscale(0);
+
+  &::after { opacity: 0 }
+
+  &.grass .image::after { transform: translate(0, -1.5rem) scale(1.2) }
+  &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.2) }
+  &.water .image::after { transform: translate(0, -1.5rem) scale(1.2) }
+
+  &.grass::after { transform: translate(0, -1.5rem) scale(1.2) }
+  &.fire::after  { transform: translate(0, -1.5rem) scale(1.2) }
+  &.water::after { transform: translate(0, -1.5rem) scale(1.2) }
+
+  .fx img[src*="img"] {
+    visibility: visible;
+  }
+
+  .image {transform: scale(1.3) rotate(0)}
+  .bg {transform: translate(0,0) rotate(0)}
+
+  &.grass .bg::after { border-color: $grass}
+  &.fire  .bg::after { border-color: $fire}
+  &.water .bg::after { border-color: $water}
+
+  .image-bg {
+    animation-play-state: running;
+    opacity: .25;
+  }
+
+  .bg {
+    outline-width: .3rem;
+    &::before {
+      opacity: .5;
+    }
+
+    &::after {
+      opacity: 0;
+    }
+
+  }
+
+  .type {
+    &::after,
+    &::before {
+      letter-spacing: 2px; transform: scale(.9);
+    }
+  }
+
+  &.grass .type::after, &.grass .type::before { color:$grass-xl }
+  &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
+  &.water .type::after, &.water .type::before { color:$water-xl }
+}

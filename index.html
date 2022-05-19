@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Pokemon</title>
+  </head>
+  <body>
+    <div class="desk">
+      <header>
+        <nav id="nav">
+          <!-- <li><div class="icon gym"></div><span data-title="">Trainer</span></li> -->
+          <li class="active"><div class="icon battle"></div><span data-title="バトル">Battle</span></li>
+          <li><div class="icon medals"></div><span data-title="メダル">Medals</span></li>
+          <div class="track"></div>
+        </nav>
+        <div class="logo"><b>nnzr<sup>21</sup></b></div>
+      </header>
+
+      <main>
+        <div class="pokemon">
+          <div id="cpuSelection" class="pokemon__options">
+            <div class="player cpu">
+              <div class="lifes"></div>
+              <div class="avatar"></div>
+              <div class="name">
+                <h6>グリーン</h6>
+                <h1>CPU</h1>
+                <h2>Blue Oak</h2>
+              </div>
+            </div>
+            <div id="cpuFire" class="pokemon__card fire">
+              <div class="image" data-name="ヒアラシ"></div>
+              <div class="bg" data-title="Choose Fire?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Hinoarashi — Johto"
+                  data-index="#155"
+                >
+                  <div class="icon">Fire</div>
+                  <div class="label">Cyndaquil</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="cpuWater" class="pokemon__card water">
+              <div class="image" data-name="ワニノコ"></div>
+              <div class="bg" data-title="Choose Water?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Waninoko — Johto"
+                  data-index="#158"
+                >
+                  <div class="icon">Water</div>
+                  <div class="label">Totodile</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="cpuGrass" class="pokemon__card grass">
+              <div class="image" data-name="チコリタ"></div>
+              <div class="bg" data-title="Choose Grass?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Chicorita — Johto"
+                  data-index="#152"
+                >
+                  <div class="icon">Grass</div>
+                  <div class="label">Chikorita</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider">
+            <div id="counter" class="counter">
+              <div class="line"></div>
+              <div class="pokeball"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+
+          <!-- USER -->
+          <div id="userSelection" class="pokemon__options">
+            <div class="pokemon__card grass">
+              <div class="image" data-name="フシギダ"></div>
+              <div class="bg" data-title="Choose Grass?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Fushigidane — Kanto"
+                  data-index="#001"
+                >
+                  <div class="icon">Grass</div>
+                  <div class="label">Bulbasaur</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+            <div class="pokemon__card fire">
+              <div class="image" data-name="ヒトカゲ"></div>
+              <div class="bg" data-title="Choose Fire?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Hitokage — Kanto"
+                  data-index="#002"
+                >
+                  <div class="icon">Fire</div>
+                  <div class="label">Charmander</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+            <div class="pokemon__card water">
+              <div class="image" data-name="ゼニガメ"></div>
+              <div class="bg" data-title="Choose Water?">
+                <div class="fx">
+                  <img src="" class="fx-gif">
+                </div>
+                <div
+                  class="type"
+                  data-original="Zenigame — Kanto"
+                  data-index="#003"
+                >
+                  <div class="icon">Water</div>
+                  <div class="label">Squirtle</div>
+                  <div class="image-bg"></div>
+                </div>
+              </div>
+            </div>
+            <div class="player user">
+              <div class="lifes"></div>
+              <div class="avatar"></div>
+              <div class="name">
+                <h6>サトシ</h6>
+                <h1>User</h1>
+                <h2>Satoshi</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="pokemon__resultado">
+            <div class="won">
+              <span>You Won!</span>
+            </div>
+
+            <div class="lost">
+              <span>You Lost!</span>
+            </div>
+
+            <div class="draw">
+              <span>Draw!</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="cursor"></div>
+
+    <!-- <audio src="audio/battle_theme.mp3" id="battleTheme"></audio> -->
+  </body>
+</html>
+
+<script src="js/script.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/cursor.js"></script>

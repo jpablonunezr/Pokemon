@@ -1,0 +1,33 @@
+.cursor {
+  pointer-events: none;
+  z-index: 99999;
+  width: 3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%) translateY(-50%);
+  border: 1px solid rgba(black, .15);
+  backdrop-filter: brightness(150%);
+  transition: width ease-in .2s, background ease-in .2s;
+  opacity: 0;
+  // background: no-repeat center/0%;
+
+  &.big {
+    width: 5rem;
+    filter: brightness(150%) contrast(120%);
+  }
+
+  &.blur {
+    backdrop-filter: blur(.4rem);
+    // background: url('../img/icon/pokeball_color.svg') no-repeat center/40%;
+  }
+}
+
+
+body:hover {
+  .cursor {
+    opacity: 1;
+  }
+}

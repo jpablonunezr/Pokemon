@@ -1,0 +1,96 @@
+
+.player {
+  position: relative;
+  width: 12rem;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: #eee;
+  border-radius: $card-radius;
+  transform: translate(-1rem, 0);
+
+  .lifes {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+
+    i {
+      display: block;
+      width: 1.3rem;
+      height: 1.3rem;
+      background: url('../img/icon/pokeball_color.svg') no-repeat center/contain;
+      transition: $ease3;
+    }
+
+    &.x :nth-child(1),
+    &.xx :nth-child(2),
+    &.xxx :nth-child(3),
+    &.xxxx :nth-child(4),
+    &.xxxxx :nth-child(5) {
+      opacity: .3;
+      filter: grayscale(1);
+      animation: shake 1s ease 1;
+    }
+  }
+
+  &.cpu .lifes {
+    top: -1.8rem;
+    right: .5rem;
+    justify-content: right;
+  }
+
+  &.user .lifes {
+    bottom: -1.8rem;
+    left: .5rem;
+  }
+
+  .avatar {
+    @extend %full-size;
+    width: 165%;
+    height: 100%;
+    background: no-repeat top center/100% auto;
+    left: -30%;
+    z-index: 0;
+    position: relative;
+  }
+
+  .name {
+    position: absolute;
+    bottom: 2rem;
+    right: calc(100% + 1rem);
+    color: $black;
+    text-align: right;
+    z-index: 100;
+    width: 100%;
+
+
+    h6 {
+      font-size: 1rem;
+      font-family: $ff-jp;
+      line-height: 1;
+      font-weight: normal;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: .9rem;
+      letter-spacing: .5px;
+      font-weight: normal;
+      opacity: .3;
+    }
+  }
+
+  &.user  { transform: translate(1rem, 0); }
+  &.cpu .avatar  { background-image: url('../img/trainer/gary.png') }
+  &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 93%; background-position: center 1rem; }
+  &.user .name { text-align: left; left: calc(100% + 1rem); }
+}
