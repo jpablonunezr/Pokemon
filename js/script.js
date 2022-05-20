@@ -5,7 +5,6 @@ const cpuWater = document.getElementById('cpuWater')
 const cpuSelection = document.getElementById('cpuSelection')
 
 // Contadores
-const counter = document.getElementById('counter')
 const countDown = 1000;
 
 // Opciones usuario
@@ -29,9 +28,34 @@ let randomCPU = (options) =>  options[Math.floor(Math.random() * options.length)
 const CPU_OPTIONS = ['grass', 'fire', 'water']
 
 // Mensaje resultado
-const showWon = () => won.classList.add('show')
-const showDraw = () => draw.classList.add('show')
-const showLost = () => lost.classList.add('show')
+const DEFAULT = 'Battle • '
+const VICTORY = 'Victory • '
+const DEFEAT = 'Defeat • '
+const DRAW = 'Draw • '
+
+// Creamos los textos de los resultados
+function createResultElements() {
+    let i = 0
+    do {
+      const container = document.querySelector('.result__text')
+      const element = document.createElement('span')
+      element.innerText = DEFAULT
+
+      container.appendChild(element)
+      i++
+    }
+    while (i < 50)
+}
+
+createResultElements();
+
+// Cambia el texto según el resultado
+function setResultText(result) {
+  const resultTitles = document.querySelectorAll('.result__text span')
+  const resultContainer = document.querySelector('#resultContainer')
+  for (titles of resultTitles) titles.innerText = result
+  resultContainer.classList.add('show')
+}
 
 // Contador de victorias
 let victoryCounter = 0
@@ -71,31 +95,15 @@ function lifeCounter() {
   if (defeatCounter == 5)  setTimeout(() => userLife.classList.add('xxxxx'), delayShowResult + 1200)
 }
 
-
-
 function clearClass() {
-  // Quitar selección del usuario
-  for (userPokemon of userPokemonCards) {
-    userPokemon.classList.remove('selected');
-  }
-
-  // Quitar selección de la CPU
-  for (cpuPokemon of cpuPokemonCards) {
-    cpuPokemon.classList.remove('selected');
-  }
-
-  draw.classList.remove('show')
-  lost.classList.remove('show')
-  won.classList.remove('show')
-
-  counter.classList.add('countdown')
+  for (userPokemon of userPokemonCards) userPokemon.classList.remove('selected') // Quitar selección del usuario
+  for (cpuPokemon of cpuPokemonCards) cpuPokemon.classList.remove('selected') // Quitar selección de la CPU
+  resultContainer.classList.remove('show')
 }
 
-function refreshFX() {
-  for (image of FX_IMAGE) {
-    image.src = FX_SRC
-  }
-}
+const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
+
+
 
 // Función principal
 userPokemonCards.forEach((element) =>
@@ -111,8 +119,7 @@ userPokemonCards.forEach((element) =>
 
     startCpuAnimation()
     setTimeout(stopCpuAnimation, countDown)
-    setTimeout(clearCounter, countDown)
-    setTimeout(refreshFX, delayShowResult)
+    setTimeout(showFX, delayShowResult)
 
     // Conditional Won, Lost, Draw
     const waterWon  = WATER && CPU == 'fire'
@@ -127,112 +134,59 @@ userPokemonCards.forEach((element) =>
     const fireLost = FIRE && CPU == 'water'
     const fireDraw = FIRE && CPU == 'fire'
 
+    if (waterWon  || fireWon  || grassWon)  {
+      setTimeout(() => setResultText(VICTORY), delayShowResult)
+      victoryCounter += 1
+    }
+
+    if (waterLost || fireLost || grassLost) {
+      setTimeout(() => setResultText(DEFEAT), delayShowResult)
+      defeatCounter += 1
+    }
+
+    if (waterDraw || fireDraw || grassDraw) setTimeout(() => setResultText(DRAW), delayShowResult)
+
     // Water
     if (waterWon) {
       setTimeout(fireSelected, countDown)
-      setTimeout(showWon, delayShowResult)
-      victoryCounter += 1
-      console.log('Victorias: ' + victoryCounter)
     }
 
     if (waterLost) {
       setTimeout(grassSelected, countDown)
-      setTimeout(showLost, delayShowResult)
-      defeatCounter += 1
-      console.log('Derrotas: ' + defeatCounter)
     }
 
     if (waterDraw) {
       setTimeout(waterSelected, countDown)
-      setTimeout(showDraw, delayShowResult)
+      setTimeout(() => setResultText(DRAW), delayShowResult)
     }
 
     // Green
     if (grassWon) {
       setTimeout(waterSelected, countDown)
-      setTimeout(showWon, delayShowResult)
-      victoryCounter += 1
-      console.log('Victorias: ' + victoryCounter)
     }
 
     if (grassLost) {
       setTimeout(fireSelected, countDown)
-      setTimeout(showLost, delayShowResult)
-      defeatCounter += 1
-      console.log('Derrotas: ' + defeatCounter)
     }
 
     if (grassDraw) {
       setTimeout(grassSelected, countDown)
-      setTimeout(showDraw, delayShowResult)
     }
 
     // Fire
     if (fireWon) {
       setTimeout(grassSelected, countDown)
-      setTimeout(showWon, delayShowResult)
-      victoryCounter += 1
-      console.log('Victorias: ' + victoryCounter)
 
     }
 
     if (fireLost) {
       setTimeout(waterSelected, countDown)
-      setTimeout(showLost, delayShowResult)
-      defeatCounter += 1
-      console.log('Derrotas: ' + defeatCounter)
     }
 
     if (fireDraw) {
       setTimeout(fireSelected, countDown)
-      setTimeout(showDraw, delayShowResult)
     }
 
     lifeCounter()
   })
 )
-
-
-
-// Refresh gif
-// const fx = document.querySelectorAll('.test')
-// const fxsrc = 'img/fx.gif';
-
-
-// function refreshFX() {
-//   for (el of fx) {
-//     el.onclick = () => console.log('caca')
-//   }
-// }
-
-// fx.forEach((poto) => {
-//   poto.addEventListener('click', () => {
-//     poto.src = fxsrc
-//   })
-// })
-
-// fx.forEach((card) => {
-//   caca.addEventListener('click', () => {
-//     caca.src = fxsrc
-//   })
-// })
-
-
-// FX Hover card
-// const FX_IMAGE = document.querySelectorAll('.fx-gif')
-// const FX_SRC = 'img/fx.gif';
-
-
-// for (card of userPokemonCards) {
-//   card.addEventListener('mouseover', () => {
-//     for (image of FX_IMAGE) {
-//       image.src = FX_SRC
-//     }
-//   })
-// }
-
-// for (const card of fx) {
-//   card.onclick = () => {
-//     card.src = fxsrc
-//   }
-// }

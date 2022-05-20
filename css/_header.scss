@@ -10,7 +10,8 @@ header {
     display: flex;
     align-items: center;
     position: relative;
-    border: 1px solid $border-color
+    border: 1px solid $border-color;
+    border-top: 0;
   }
 
   li {
@@ -36,7 +37,7 @@ header {
     &:nth-child(3).active ~ .track { left: $item-width * 2 }
 
   .icon {
-    width: 3rem;
+    width: 2.4rem;
     aspect-ratio: 1;
     background: no-repeat center/90%;
     transition: $ease3;

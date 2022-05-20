@@ -3,7 +3,7 @@
   height: 100%;
   filter: saturate(1.25);
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr max-content 1fr;
 
   &__options {
     display: grid;
@@ -162,7 +162,7 @@
     .fx {
       @extend %full-size;
       overflow: hidden;
-      mix-blend-mode: color-dodge;
+      mix-blend-mode: lighten;
       pointer-events: none;
 
       img {

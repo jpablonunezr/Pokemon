@@ -3,7 +3,7 @@ class Lifes {
   constructor(player) {
     let i = 0
     do {
-      const lifeToken = document.createElement("i");
+      const lifeToken = document.createElement('i');
       this.player = player.appendChild(lifeToken)
       i++
     }

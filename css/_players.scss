@@ -9,15 +9,14 @@
 
   .lifes {
     position: absolute;
-    width: 100%;
     display: flex;
-    gap: .5rem;
+    gap: .3rem;
     top: 1rem;
 
     i {
       display: block;
-      width: 1.3rem;
-      height: 1.3rem;
+      width: 1.1rem;
+      height: 1.1rem;
       background: url('../img/icon/pokeball_color.svg') no-repeat center/contain;
       transition: $ease3;
     }
@@ -27,9 +26,9 @@
     &.xxx :nth-child(3),
     &.xxxx :nth-child(4),
     &.xxxxx :nth-child(5) {
-      opacity: .3;
       filter: grayscale(1);
-      animation: shake 1s ease 1;
+      opacity: .3;
+      animation: shake .8s ease 1;
     }
   }
 
@@ -39,6 +38,7 @@
   }
 
   &.user .lifes {
+    flex-direction: row-reverse;
     left: 1rem;
   }
 
@@ -55,7 +55,7 @@
 
   .name {
     position: absolute;
-    bottom: 2rem;
+    bottom: 0;
     right: calc(100% + 1rem);
     color: $black;
     text-align: right;
