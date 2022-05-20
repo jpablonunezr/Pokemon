@@ -562,6 +562,7 @@ header .track {
   -webkit-perspective-origin: 50% 50%;
           perspective-origin: 50% 50%;
   z-index: 25;
+  overflow: hidden;
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
@@ -1114,7 +1115,8 @@ header .track {
   left: 0;
   top: 0;
   z-index: 100;
-  background-color: #eee;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
 }
 
 .player .lifes {
@@ -1202,6 +1204,10 @@ header .track {
   letter-spacing: .5px;
   font-weight: normal;
   opacity: .3;
+}
+
+.player.user {
+  border: 0;
 }
 
 .player.cpu .avatar {

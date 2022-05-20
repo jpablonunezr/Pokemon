@@ -134,6 +134,7 @@ userPokemonCards.forEach((element) =>
     const fireLost = FIRE && CPU == 'water'
     const fireDraw = FIRE && CPU == 'fire'
 
+    // Mostrar mensaje según el resultado
     if (waterWon  || fireWon  || grassWon)  {
       setTimeout(() => setResultText(VICTORY), delayShowResult)
       victoryCounter += 1
@@ -146,46 +147,10 @@ userPokemonCards.forEach((element) =>
 
     if (waterDraw || fireDraw || grassDraw) setTimeout(() => setResultText(DRAW), delayShowResult)
 
-    // Water
-    if (waterWon) {
-      setTimeout(fireSelected, countDown)
-    }
-
-    if (waterLost) {
-      setTimeout(grassSelected, countDown)
-    }
-
-    if (waterDraw) {
-      setTimeout(waterSelected, countDown)
-      setTimeout(() => setResultText(DRAW), delayShowResult)
-    }
-
-    // Green
-    if (grassWon) {
-      setTimeout(waterSelected, countDown)
-    }
-
-    if (grassLost) {
-      setTimeout(fireSelected, countDown)
-    }
-
-    if (grassDraw) {
-      setTimeout(grassSelected, countDown)
-    }
-
-    // Fire
-    if (fireWon) {
-      setTimeout(grassSelected, countDown)
-
-    }
-
-    if (fireLost) {
-      setTimeout(waterSelected, countDown)
-    }
-
-    if (fireDraw) {
-      setTimeout(fireSelected, countDown)
-    }
+    // Selección para la CPU según el resultado
+    if (waterWon  || grassLost || fireDraw) setTimeout(fireSelected, countDown)
+    if (waterLost || grassDraw || fireWon)  setTimeout(grassSelected, countDown)
+    if (waterDraw || grassWon  || fireLost) setTimeout(waterSelected, countDown)
 
     lifeCounter()
   })
