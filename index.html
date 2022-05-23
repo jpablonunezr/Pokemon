@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="img/icon/pokeball_color.svg" type="image/x-icon">
     <title>Pokemon</title>
   </head>
-  <body>
+  <body class="">
     <div class="desk">
 
       <main>
@@ -154,14 +154,22 @@
         </div>
       </main>
 
-
       <header>
+        <div class="extra">
+          <div class="theme-mode">
+            <div class="toggler">
+              <div class="active option light" data-original="ライト"><div class="icon"></div>Light</div>
+              <div class="option dark" data-original="ダーク"><div class="icon"></div>Dark</div>
+              <div class="track"></div>
+            </div>
+          </div>
+        </div>
         <nav id="nav">
           <!-- <li><div class="icon gym"></div><span data-title="">Trainer</span></li> -->
           <li class="active"><div class="icon battle"></div><span data-title="01">Battle</span></li>
           <li><div class="icon medals"></div><span data-title="02">Badges</span></li>
-          <div class="track"></div>
         </nav>
+
       </header>
 
     </div>
@@ -175,3 +183,4 @@
 <script src="js/script.js"></script>
 <script src="js/builder.js"></script>
 <script src="js/cursor.js"></script>
+<script src="js/dark-mode.js"></script>

@@ -1,6 +1,6 @@
 .desk {
   display: grid;
-  grid-template-rows: 1fr 6rem;
+  grid-template-rows: 1fr 4.5rem;
   aspect-ratio: 3/2;
   height: clamp(10rem, 80vh, 55rem);
   padding: 0rem;
@@ -14,7 +14,7 @@ header {
   position: relative;
   height: 100%;
   display: grid;
-  grid-template-rows: max-content 10rem;
+  grid-template-rows: max-content max-content;
   align-content: space-between;
   gap: 2.5rem;
 }
@@ -22,16 +22,16 @@ header {
 main {
   position: relative;
   height: 100%;
-  border: 1px solid $border-color;
+  border: 1px solid $border--color;
 }
 
 .logo {
   position: absolute;
   width: 8rem;
-  left: -8rem;
+  left: calc(-8rem - 1px);
   top: -1px;
   aspect-ratio: 1/1.2;
-  background: url('../img/icon/logo.svg') no-repeat center 40%/50% #333;
+  background: url('../img/icon/logo.svg') no-repeat center 40%/50% $logo--color;
 
   b {
     position: absolute;

@@ -1,8 +1,15 @@
-$item-width: 11rem;
+$item-width: 8.5rem;
 
 header {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  border-bottom: 1px solid $border--color;
+
+  .extra {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+  }
 
   nav {
     height: 100%;
@@ -10,7 +17,7 @@ header {
     display: flex;
     align-items: center;
     position: relative;
-    border: 1px solid $border-color;
+    border: 1px solid $border--color;
     border-top: 0;
   }
 
@@ -24,7 +31,7 @@ header {
     line-height: 1;
     transition: $ease3;
     width: $item-width;
-    border-right: 1px solid $border-color;
+    border-right: 1px solid $border--color;
     gap: .5rem;
     height: 100%;
 
@@ -41,6 +48,7 @@ header {
     aspect-ratio: 1;
     background: no-repeat center/90%;
     transition: $ease3;
+    display: none;
 
     &.gym    {background-image: url('../img/icon/ic__gym.svg') }
     &.battle {background-image: url('../img/icon/ic__battle.svg') }
@@ -48,7 +56,7 @@ header {
   }
 
     span {
-      color: $black;
+      color: $text--color;
       font-weight: 600;
       letter-spacing: .5px;
       display: flex;
@@ -74,16 +82,68 @@ header {
       }
     }
   }
+}
 
-  .track {
-    opacity: 1;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: $item-width;
-    height: .3rem;
-    background: $black;
-    border-radius: .5rem;
-    transition: $ease3;
+
+.track {
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  bottom: -.6rem;
+  width: 50%;
+  height: .4rem;
+  background: $text--color;
+  transition: $ease3;
+}
+
+.toggler {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  border-radius: $card-radius;
+  height: 100%;
+  position: relative;
+
+  .option {
+    width: 5rem;
+    height: 4rem;
+    font-size: 1rem;
+    gap: .5rem;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    border-left: 1px solid $border--color;
+    border-right: 1px solid $border--color;
+    border-top: 0;
+    color: $text--color;
+
+    &::before {
+      content: attr(data-original);
+      font-family: $ff-jp;
+      font-size: .7rem;
+    }
+
+    &:first-of-type {
+      border-right: 0;
+    }
+
+    &:nth-child(1).active ~ .track {left: 0;}
+    &:nth-child(2).active ~ .track {left: 50%;}
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: none;
+
+      // &.light { background: url('../img/icon/ic__light.svg') no-repeat center/50% #f5f5f5 }
+      // &.dark  { background: url('../img/icon/ic__dark.svg')  no-repeat center/50% #f5f5f5 }
+    }
   }
 }

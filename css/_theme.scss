@@ -3,8 +3,6 @@ $ff-base: "Merriweather Sans";
 $ff-jp: "Noto Sans JP";
 
 $ease3: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-$color-detail: #777;
-
 
 $grass: #71d558;
 $grass-d: #02b60b;
@@ -18,15 +16,17 @@ $fire-xd: #cb3300;
 $fire-l: #fe9202;
 $fire-xl: #ffd981;
 
+$text--color: var(--text--color);
+$bg--color: var(--bg--color);
+$bg--player--color: var(--bg--player--color);
+$border--color: var(--border--color);
+$logo--color: var(--logo--color);
+
 $water: #02afff;
 $water-d: #0092fd;
 $water-xd: #0060cd;
 $water-l: #03c9ff;
 $water-xl: #9cfcff;
-
-$gray: #ddd;
-$black: #000;
-$border-color: #eee;
 
 $card-radius: 1.2rem;
 
@@ -36,4 +36,24 @@ $card-radius: 1.2rem;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+body {
+  --text--color: #333;
+  --bg--color: #fff;
+  --bg--player--color: #f5f5f5;
+  --border--color: #eee;
+  --logo--color: #333
+}
+
+.dark-theme {
+  --text--color: #ccc;
+  --bg--color: #222;
+  --bg--player--color: #111;
+  --border--color: #111;
+  --logo--color: #000;
+
+  // .icon {
+  //   filter: invert(1);
+  // }
 }

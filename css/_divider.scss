@@ -1,90 +1,3 @@
-.divider {
-  width: 100%;
-  position: relative;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .counter {
-    height: 7rem;
-    width: 100%;
-    font-size: 3rem;
-    color: black;
-    text-align: center;
-    overflow: hidden;
-    transition: $ease3;
-    position: relative;
-
-    .pokeball {
-      position: absolute;
-      width: 3rem;
-      height: 3rem;
-      left: calc(50% - 1.5rem);
-      top: calc(50% - 1.5rem);
-      background: url('../img/icon/ic__battle.svg') no-repeat center/50% white;
-      outline: 2px solid white;
-      border-radius: 50%;
-      z-index: 10;
-      opacity: .5;
-      transition: transform 2.5s linear;
-    }
-
-    .line {
-      position: absolute;
-      height: 1px;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      z-index: 0;
-      background-color: $gray;
-    }
-
-    .right,
-    .left {
-      position: absolute;
-      top: 50%;
-      width: 50%;
-      height: 1px;
-      z-index: 5;
-
-      &.right {
-        left: 50%;
-
-        &::after {
-          right: unset;
-          left: 0;
-        }
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        width: 0;
-        height: 1px;
-        background-color: #999;
-        transition: width 2.5s linear;
-      }
-    }
-
-
-    &.countdown {
-      .left::after,
-      .right::after {
-        width: 100%;
-      }
-      .pokeball {
-        transform: rotate(360deg)
-      }
-    }
-  }
-}
-
-
-
-
-
 $offset: 10rem;
 $start: calc(-25% + #{$offset});
 $final: calc(-50% + #{$offset});
@@ -100,7 +13,7 @@ $f-size: .7rem;
   transition: $ease3;
 
   &.show {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $border--color;
     height: 1.1rem;
   }
 
@@ -117,12 +30,13 @@ $f-size: .7rem;
     display: flex;
     position: relative;
     transform: translate3d($start, 0, 0);
-    animation: titleScroll 12s linear infinite;
+    animation: titleScroll 15s linear infinite;
   }
 
   &__text span {
     text-align: center;
     font-family: 'Arial';
+    color: $text--color;
     font-weight: bolder;
     white-space: nowrap;
     font-size: $f-size;
