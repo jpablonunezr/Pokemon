@@ -1,0 +1,50 @@
+.bulbasaur  .image { background-image: url('../img/pokemon/bulbasaur.png') }
+.charmander .image { background-image: url('../img/pokemon/charmander.png') }
+.squirtle   .image { background-image: url('../img/pokemon/squirtle.png') }
+
+.bulbasaur::after   { background-image: url('../img/pokemon/venusaur.png') }
+.charmander::after  { background-image: url('../img/pokemon/charizard.png') }
+.squirtle::after    { background-image: url('../img/pokemon/blastoise.png') }
+
+.chikorita .image { background-image: url('../img/pokemon/chikorita.png') }
+.cyndaquil .image { background-image: url('../img/pokemon/cyndaquil.png') }
+.totodile .image  { background-image: url('../img/pokemon/totodile.png') }
+
+.chikorita::after { background-image: url('../img/pokemon/meganium.png')}
+.cyndaquil::after { background-image: url('../img/pokemon/typhlosion.png') }
+.totodile::after  { background-image: url('../img/pokemon/feraligatr.png') }
+
+.cleffa .image { background-image: url('../img/pokemon/cleffa.png') }
+.cleffa::after { background-image: url('../img/pokemon/clefable.png') }
+
+
+.grass .type .icon { background-image: url('../img/icon/grass__type.svg') }
+.fire  .type .icon { background-image: url('../img/icon/fire__type.svg')  }
+.water .type .icon { background-image: url('../img/icon/water__type.svg') }
+
+
+.grass .bg { outline-color: $grass};
+.fire  .bg { outline-color: $fire-l };
+.water .bg { outline-color: $water-l};
+.fairy .bg { outline-color: $fairy-l};
+
+.pokemon__card.selected:hover,
+.pokemon__card.selected,
+.pokemon__card:hover {
+
+  &.grass .type .icon { color: $grass-xl; opacity: 1; transform: translate(0,0)}
+  &.fire  .type .icon { color: $fire-xl ; opacity: 1; transform: translate(0,0)}
+  &.water .type .icon { color: $water-xl; opacity: 1; transform: translate(0,0)}
+  &.fairy .type .icon { color: $fairy-xl; opacity: 1; transform: translate(0,0)}
+
+  &.grass .bg { background-image: radial-gradient(circle, $grass-xl 0%, $grass-xd 80%)}
+  &.fire  .bg { background-image: radial-gradient(circle, $fire-xl 0%, $fire-xd 80%)}
+  &.water .bg { background-image: radial-gradient(circle, $water-xl 0%, $water-xd 80%)}
+  &.fairy .bg { background-image: radial-gradient(circle, $fairy-xl 0%, $fairy-xd 80%)}
+
+  &.grass .type::after, &.grass .type::before { color:$grass-xl }
+  &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
+  &.water .type::after, &.water .type::before { color:$water-xl }
+  &.fairy .type::after, &.water .type::before { color:$fairy-xl }
+
+}

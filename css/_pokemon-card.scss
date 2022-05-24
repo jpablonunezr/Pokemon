@@ -46,12 +46,6 @@
       transition: $ease3;
     }
 
-    // BG evolution
-    &.grass::after { background-image: url('../img/pokemon/venusaur.png') }
-    &.fire::after  { background-image: url('../img/pokemon/charizard.png') }
-    &.water::after { background-image: url('../img/pokemon/blastoise.png') }
-
-
     .image {
       @extend %full-size;
       height: 98%;
@@ -75,25 +69,6 @@
         letter-spacing: -4px;
       }
     }
-
-    &.grass .image { background-image: url('../img/pokemon/bulbasaur.png') }
-    &.fire  .image { background-image: url('../img/pokemon/charmander.png') }
-    &.water .image { background-image: url('../img/pokemon/squirtle.png') }
-
-
-    &.grass .image-bg { background-image: url('../img/icon/grass__type.svg') }
-    &.fire  .image-bg { background-image: url('../img/icon/fire__type.svg')  }
-    &.water .image-bg { background-image: url('../img/icon/water__type.svg') }
-
-
-
-    &.grass .type .icon { background-image: url('../img/icon/grass__type.svg') }
-    &.fire  .type .icon { background-image: url('../img/icon/fire__type.svg')  }
-    &.water .type .icon { background-image: url('../img/icon/water__type.svg') }
-
-    &.grass .bg { outline-color: $grass};
-    &.fire  .bg { outline-color: $fire-l };
-    &.water .bg { outline-color: $water-l};
 
     .type {
       @extend %full-size;
@@ -204,16 +179,6 @@
   #cpuSelection.animation .fire  { animation: fire 1s infinite }
   #cpuSelection.animation .water { animation: water 1s infinite }
 
-  #cpuGrass.grass .image { background-image: url('../img/pokemon/chikorita.png') }
-  #cpuFire.fire   .image { background-image: url('../img/pokemon/cyndaquil.png') }
-  #cpuWater.water .image { background-image: url('../img/pokemon/totodile.png') }
-
-  #cpuGrass.grass::after { background-image: url('../img/pokemon/meganium.png')}
-  #cpuFire.fire::after   { background-image: url('../img/pokemon/typhlosion.png') }
-  #cpuWater.water::after { background-image: url('../img/pokemon/feraligatr.png') }
-
-
-
   #cpuSelection {
     &:hover {
       * {
@@ -226,3 +191,5 @@
     }
   }
 }
+
+@import 'pokemons';

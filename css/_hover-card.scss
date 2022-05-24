@@ -5,10 +5,6 @@
   animation: brightFX .4s 1 ease-in forwards;
   filter: grayscale(0);
 
-  &.grass .type .icon { color: $grass-xl; opacity: 1; transform: translate(0,0);}
-  &.fire  .type .icon { color: $fire-xl ; opacity: 1; transform: translate(0,0);}
-  &.water .type .icon { color: $water-xl; opacity: 1; transform: translate(0,0);}
-
   .icon,
   .type,
   .label,
@@ -17,15 +13,11 @@
     color: white;
   }
 
-  &.grass .bg { background-image: radial-gradient(circle, $grass-xl 0%, $grass-xd 80%)}
-  &.fire  .bg { background-image: radial-gradient(circle, $fire-xl 0%, $fire-xd 80%)}
-  &.water .bg { background-image: radial-gradient(circle, $water-xl 0%, $water-xd 80%)}
-
   &.grass .image { transform: translate(0, -.5rem) scale(1.1) }
   &.fire  .image { transform: translate(0, -.5rem) scale(1.1) }
   &.water .image { transform: translate(0, -.5rem) scale(1.1) }
 
-  &::after { opacity: .3; mix-blend-mode: overlay; background-size: auto 120%;  }
+  &::after { opacity: .3; mix-blend-mode: overlay; background-size: auto 120%; }
 
   &.grass .image::after { transform: translate(0, -1.5rem) scale(1.25) }
   &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.25) }
@@ -56,19 +48,11 @@
       letter-spacing: 2px; transform: scale(.9);
     }
   }
-
-  &.grass .type::after, &.grass .type::before { color:$grass-xl }
-  &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
-  &.water .type::after, &.water .type::before { color:$water-xl }
 }
 
 // Hover card selected
 &.selected:hover,
 &.selected {
-
-  &.grass .type .icon { color: $grass-xl }
-  &.fire  .type .icon { color: $fire-xl  }
-  &.water .type .icon { color: $water-xl }
 
   .icon,
   .type,
@@ -78,15 +62,16 @@
     color: white;
   }
 
-  &.grass .bg { background-image: radial-gradient(circle, $grass-xl 0%, $grass-xd 80%)}
-  &.fire  .bg { background-image: radial-gradient(circle, $fire-xl 0%, $fire-xd 80%)}
-  &.water .bg { background-image: radial-gradient(circle, $water-xl 0%, $water-xd 80%)}
-
   pointer-events: none;
   transform: translate(0, 0) scale(1);
   filter: grayscale(0);
 
-  &::after { opacity: 0 }
+  &::after {
+    opacity: .3;
+    mix-blend-mode: overlay;
+    background-size: auto 85%;
+    background-position: center 70%;
+  }
 
   &.grass .image::after { transform: translate(0, -1.5rem) scale(1.2) }
   &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.2) }
@@ -121,7 +106,11 @@
     &::after {
       opacity: 0;
     }
+  }
 
+  .icon {
+    opacity: 1;
+    transform: translate(0,0);
   }
 
   .type {
@@ -131,7 +120,4 @@
     }
   }
 
-  &.grass .type::after, &.grass .type::before { color:$grass-xl }
-  &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
-  &.water .type::after, &.water .type::before { color:$water-xl }
 }

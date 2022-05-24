@@ -13,12 +13,11 @@ header {
 
   nav {
     height: 100%;
-    width: max-content;
     display: flex;
     align-items: center;
     position: relative;
-    border: 1px solid $border--color;
     border-top: 0;
+    width: calc(17rem + 2px);
   }
 
   li {
@@ -30,13 +29,14 @@ header {
     justify-content: center;
     line-height: 1;
     transition: $ease3;
-    width: $item-width;
+    width: 50%;
     border-right: 1px solid $border--color;
+    border-left: 1px solid $border--color;
     gap: .5rem;
     height: 100%;
 
-    &:last-of-type {
-      border: 0;
+    &:first-of-type {
+      border-right: 0;
     }
 
     &:nth-child(1).active ~ .track { left: 0 }
@@ -74,7 +74,7 @@ header {
     }
 
     &:hover {
-      background-color: #f5f5f5;
+      background-color: $bg--player--color;
 
       span::before {
         margin-top: -1rem;

@@ -104,7 +104,6 @@ function clearClass() {
 const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
 
 
-
 // Función principal
 userPokemonCards.forEach((element) =>
   element.addEventListener('click', () => {
@@ -134,17 +133,19 @@ userPokemonCards.forEach((element) =>
     const fireLost = FIRE && CPU == 'water'
     const fireDraw = FIRE && CPU == 'fire'
 
-    // Mostrar mensaje según el resultado
-    if (waterWon  || fireWon  || grassWon)  {
+    // Si gana
+    if (waterWon || fireWon || grassWon)  {
       setTimeout(() => setResultText(VICTORY), delayShowResult)
       victoryCounter += 1
     }
 
+    // Si pierde
     if (waterLost || fireLost || grassLost) {
       setTimeout(() => setResultText(DEFEAT), delayShowResult)
       defeatCounter += 1
     }
 
+    // Si empata
     if (waterDraw || fireDraw || grassDraw) setTimeout(() => setResultText(DRAW), delayShowResult)
 
     // Selección para la CPU según el resultado
@@ -155,3 +156,19 @@ userPokemonCards.forEach((element) =>
     lifeCounter()
   })
 )
+
+// Crear la cantidad de vida para los jugadores
+class Lifes {
+  constructor(player) {
+    let i = 0
+    do {
+      const lifeToken = document.createElement('i');
+      this.player = player.appendChild(lifeToken)
+      i++
+    }
+    while (i < 5)
+  }
+}
+
+let CPU_TOTAL_LIFE = new Lifes(cpuLife);
+let USER_TOTAL_LIFE = new Lifes(userLife);
