@@ -1051,48 +1051,48 @@ header li:hover span::before {
   background-image: url("../img/pokemon/bulbasaur.png");
 }
 
+.bulbasaur::after {
+  background-image: url("../img/pokemon/bulbasaur__evolution.png");
+}
+
 .charmander .image {
   background-image: url("../img/pokemon/charmander.png");
+}
+
+.charmander::after {
+  background-image: url("../img/pokemon/charmander__evolution.png");
 }
 
 .squirtle .image {
   background-image: url("../img/pokemon/squirtle.png");
 }
 
-.bulbasaur::after {
-  background-image: url("../img/pokemon/venusaur.png");
-}
-
-.charmander::after {
-  background-image: url("../img/pokemon/charizard.png");
-}
-
 .squirtle::after {
-  background-image: url("../img/pokemon/blastoise.png");
+  background-image: url("../img/pokemon/squirtle__evolution.png");
 }
 
 .chikorita .image {
   background-image: url("../img/pokemon/chikorita.png");
 }
 
+.chikorita::after {
+  background-image: url("../img/pokemon/chikorita__evolution.png");
+}
+
 .cyndaquil .image {
   background-image: url("../img/pokemon/cyndaquil.png");
+}
+
+.cyndaquil::after {
+  background-image: url("../img/pokemon/cyndaquil__evolution.png");
 }
 
 .totodile .image {
   background-image: url("../img/pokemon/totodile.png");
 }
 
-.chikorita::after {
-  background-image: url("../img/pokemon/meganium.png");
-}
-
-.cyndaquil::after {
-  background-image: url("../img/pokemon/typhlosion.png");
-}
-
 .totodile::after {
-  background-image: url("../img/pokemon/feraligatr.png");
+  background-image: url("../img/pokemon/totodile__evolution.png");
 }
 
 .cleffa .image {
@@ -1100,35 +1100,23 @@ header li:hover span::before {
 }
 
 .cleffa::after {
-  background-image: url("../img/pokemon/clefable.png");
+  background-image: url("../img/pokemon/cleffa__evolution.png");
 }
 
-.grass .type .icon {
+grass.type .icon {
   background-image: url("../img/icon/grass__type.svg");
 }
 
-.fire .type .icon {
+fire.type .icon {
   background-image: url("../img/icon/fire__type.svg");
 }
 
-.water .type .icon {
+water.type .icon {
   background-image: url("../img/icon/water__type.svg");
 }
 
-.grass .bg {
-  outline-color: #71d558;
-}
-
-.fire .bg {
-  outline-color: #fe9202;
-}
-
-.water .bg {
-  outline-color: #03c9ff;
-}
-
-.fairy .bg {
-  outline-color: #ff93e4;
+fairy.type .icon {
+  background-image: url("../img/icon/fairy__type.svg");
 }
 
 .pokemon__card.selected:hover.grass .type .icon,

@@ -1,32 +1,30 @@
-.bulbasaur  .image { background-image: url('../img/pokemon/bulbasaur.png') }
-.charmander .image { background-image: url('../img/pokemon/charmander.png') }
-.squirtle   .image { background-image: url('../img/pokemon/squirtle.png') }
+$pokemons: (
+  "bulbasaur",
+  "charmander",
+  "squirtle",
+  "chikorita",
+  "cyndaquil",
+  "totodile",
+  "cleffa",
+);
 
-.bulbasaur::after   { background-image: url('../img/pokemon/venusaur.png') }
-.charmander::after  { background-image: url('../img/pokemon/charizard.png') }
-.squirtle::after    { background-image: url('../img/pokemon/blastoise.png') }
-
-.chikorita .image { background-image: url('../img/pokemon/chikorita.png') }
-.cyndaquil .image { background-image: url('../img/pokemon/cyndaquil.png') }
-.totodile .image  { background-image: url('../img/pokemon/totodile.png') }
-
-.chikorita::after { background-image: url('../img/pokemon/meganium.png')}
-.cyndaquil::after { background-image: url('../img/pokemon/typhlosion.png') }
-.totodile::after  { background-image: url('../img/pokemon/feraligatr.png') }
-
-.cleffa .image { background-image: url('../img/pokemon/cleffa.png') }
-.cleffa::after { background-image: url('../img/pokemon/clefable.png') }
+@each $pokemon in $pokemons {
+  .#{$pokemon} .image { background-image: url('../img/pokemon/#{$pokemon}.png') }
+  .#{$pokemon}::after { background-image: url('../img/pokemon/#{$pokemon}__evolution.png') }
+}
 
 
-.grass .type .icon { background-image: url('../img/icon/grass__type.svg') }
-.fire  .type .icon { background-image: url('../img/icon/fire__type.svg')  }
-.water .type .icon { background-image: url('../img/icon/water__type.svg') }
+$element__types: (
+  "grass",
+  "fire",
+  "water",
+  "fairy",
+);
 
+@each $element in $element__types {
+  #{$element}.type .icon {background-image: url('../img/icon/#{$element}__type.svg')}
+}
 
-.grass .bg { outline-color: $grass};
-.fire  .bg { outline-color: $fire-l };
-.water .bg { outline-color: $water-l};
-.fairy .bg { outline-color: $fairy-l};
 
 .pokemon__card.selected:hover,
 .pokemon__card.selected,

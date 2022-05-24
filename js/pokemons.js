@@ -61,7 +61,8 @@ const totodile = {
 const cleffa = {
   target: 'user',
   idtype: 'Grass',
-  type: 'fairy',
+  type: 'grass',
+  type2: 'fairy',
   name: 'cleffa',
   jp: 'ピィ',
   number: '173',
