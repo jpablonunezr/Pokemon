@@ -28,23 +28,28 @@ main {
 .logo {
   position: absolute;
   width: 8rem;
-  left: calc(-8rem - 1px);
-  top: -1px;
-  aspect-ratio: 1/1.2;
-  background: url('../img/icon/logo.svg') no-repeat center 40%/50% $logo--color;
+  left: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $logo--color;
 
   b {
-    position: absolute;
     width: 100%;
     color: white;
     text-align: center;
-    bottom: 20%;
     letter-spacing: 1.5px;
+    display: flex;
+    font-size: .7rem;
+    align-items: center;
+    gap: .2rem;
+    justify-content: center;
+    text-transform: uppercase;
 
     sup {
-      position: absolute;
-      margin-top: .25rem;
-      font-size: 50%;
+      font-size: 70%;
+      font-family: 'arial';
     }
   }
 }

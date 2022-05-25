@@ -20,12 +20,10 @@ $games__types: (
     color: white;
   }
 
-  @each $games in $games__types {
-    &.#{$games} .image { transform: translate(0, -.5rem) scale(1.1) }
-    &.#{$games} .image::after { transform: translate(0, -1.5rem) scale(1.25)}
-    &.#{$games} .bg .fx{ transform: scale(.95) }
-    &.#{$games} .bg .type{ transform: scale(.95) }
-  }
+  .image { transform: translate(0, -.5rem) scale(1.05) }
+  .image::after { transform: translate(0, -1.5rem) scale(1.2)}
+  .bg .fx       { transform: scale(.95) }
+  .bg .type     { transform: scale(.95) }
 
   &::after {
     opacity: .3;
@@ -72,19 +70,20 @@ $games__types: (
     mix-blend-mode: overlay;
     background-size: auto 85%;
     background-position: center 70%;
+    transform: translate(0, -1.5rem);
   }
 
-  @each $games in $games__types {
-    &.#{$games} .image::after { transform: translate(0, -1.5rem) scale(1.2)}
-    &.#{$games}::after { transform: translate(0, -1.5rem) scale(1.2) }
-  }
+
+  .image {transform: scale(1.12)}
+  .bg {transform: translate(0,0)}
+  .image::after { transform: translate(0, -1.5rem) scale(1.1)}
+
+
 
   .fx img[src*="img"] {
     visibility: visible;
   }
 
-  .image {transform: scale(1.25)}
-  .bg {transform: translate(0,0)}
 
   .image-bg {
     animation-play-state: running;

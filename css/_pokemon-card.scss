@@ -45,11 +45,14 @@
     }
 
     .image {
-      @extend %full-size;
-      height: 98%;
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      left: 10%;
+      top: 10%;
       transition: $ease3;
       z-index: 10;
-      background: no-repeat center/70%;
+      background: no-repeat center/100%;
 
       &::after {
         content: attr(data-name);
@@ -59,7 +62,7 @@
         width: 100%;
         text-align: center;
         font-family: $ff-jp;
-        font-size: 3rem;
+        font-size: 3.4rem;
         font-weight: 900;
         text-transform: uppercase;
         color: $text--color;
@@ -174,6 +177,7 @@
   #cpuSelection.animation .grass { animation: grass 1s infinite }
   #cpuSelection.animation .fire  { animation: fire 1s infinite }
   #cpuSelection.animation .water { animation: water 1s infinite }
+
 
   #cpuSelection {
     &:hover {

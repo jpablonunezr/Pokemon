@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+JP:wght@900&family=Merriweather+Sans:wght@400;600;800&display=swap");
-.pokemon__card::after, .pokemon__card .image, .pokemon__card .type, .pokemon__card .fx, .pokemon__card .bg, .pokemon__card .bg::before, .player .avatar {
+.pokemon__card::after, .pokemon__card .type, .pokemon__card .fx, .pokemon__card .bg, .pokemon__card .bg::before, .player .avatar {
   position: absolute;
   top: 0;
   left: 0;
@@ -378,25 +378,42 @@ main {
 .logo {
   position: absolute;
   width: 8rem;
-  left: calc(-8rem - 1px);
-  top: -1px;
-  aspect-ratio: 1/1.2;
-  background: url("../img/icon/logo.svg") no-repeat center 40%/50% var(--logo--color);
+  left: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: var(--logo--color);
 }
 
 .logo b {
-  position: absolute;
   width: 100%;
   color: white;
   text-align: center;
-  bottom: 20%;
   letter-spacing: 1.5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: .7rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: .2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
 }
 
 .logo b sup {
-  position: absolute;
-  margin-top: .25rem;
-  font-size: 50%;
+  font-size: 70%;
+  font-family: 'arial';
 }
 
 header {
@@ -417,6 +434,7 @@ header .extra {
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
+  position: relative;
 }
 
 header nav {
@@ -674,11 +692,15 @@ header li:hover span::before {
 }
 
 .pokemon__card .image {
-  height: 98%;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   z-index: 10;
-  background: no-repeat center/70%;
+  background: no-repeat center/100%;
 }
 
 .pokemon__card .image::after {
@@ -689,7 +711,7 @@ header li:hover span::before {
   width: 100%;
   text-align: center;
   font-family: "Noto Sans JP";
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--text--color);
@@ -821,62 +843,22 @@ header li:hover span::before {
   color: white;
 }
 
-.pokemon__card:hover.grass .image {
-  -webkit-transform: translate(0, -0.5rem) scale(1.1);
-          transform: translate(0, -0.5rem) scale(1.1);
+.pokemon__card:hover .image {
+  -webkit-transform: translate(0, -0.5rem) scale(1.05);
+          transform: translate(0, -0.5rem) scale(1.05);
 }
 
-.pokemon__card:hover.grass .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.25);
-          transform: translate(0, -1.5rem) scale(1.25);
+.pokemon__card:hover .image::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.2);
+          transform: translate(0, -1.5rem) scale(1.2);
 }
 
-.pokemon__card:hover.grass .bg .fx {
+.pokemon__card:hover .bg .fx {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.pokemon__card:hover.grass .bg .type {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.pokemon__card:hover.fire .image {
-  -webkit-transform: translate(0, -0.5rem) scale(1.1);
-          transform: translate(0, -0.5rem) scale(1.1);
-}
-
-.pokemon__card:hover.fire .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.25);
-          transform: translate(0, -1.5rem) scale(1.25);
-}
-
-.pokemon__card:hover.fire .bg .fx {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.pokemon__card:hover.fire .bg .type {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.pokemon__card:hover.water .image {
-  -webkit-transform: translate(0, -0.5rem) scale(1.1);
-          transform: translate(0, -0.5rem) scale(1.1);
-}
-
-.pokemon__card:hover.water .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.25);
-          transform: translate(0, -1.5rem) scale(1.25);
-}
-
-.pokemon__card:hover.water .bg .fx {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.pokemon__card:hover.water .bg .type {
+.pokemon__card:hover .bg .type {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
@@ -926,50 +908,27 @@ header li:hover span::before {
   mix-blend-mode: overlay;
   background-size: auto 85%;
   background-position: center 70%;
-}
-
-.pokemon__card.selected:hover.grass .image::after, .pokemon__card.selected.grass .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.grass::after, .pokemon__card.selected.grass::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.fire .image::after, .pokemon__card.selected.fire .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.fire::after, .pokemon__card.selected.fire::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.water .image::after, .pokemon__card.selected.water .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.water::after, .pokemon__card.selected.water::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover .fx img[src*="img"], .pokemon__card.selected .fx img[src*="img"] {
-  visibility: visible;
+  -webkit-transform: translate(0, -1.5rem);
+          transform: translate(0, -1.5rem);
 }
 
 .pokemon__card.selected:hover .image, .pokemon__card.selected .image {
-  -webkit-transform: scale(1.25);
-          transform: scale(1.25);
+  -webkit-transform: scale(1.12);
+          transform: scale(1.12);
 }
 
 .pokemon__card.selected:hover .bg, .pokemon__card.selected .bg {
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
+}
+
+.pokemon__card.selected:hover .image::after, .pokemon__card.selected .image::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.1);
+          transform: translate(0, -1.5rem) scale(1.1);
+}
+
+.pokemon__card.selected:hover .fx img[src*="img"], .pokemon__card.selected .fx img[src*="img"] {
+  visibility: visible;
 }
 
 .pokemon__card.selected:hover .image-bg, .pokemon__card.selected .image-bg {
