@@ -36,4 +36,4 @@ const cpuCreate = (gary, pkm1, pkm2, pkm3) => cpuSelection.innerHTML  = createPl
 const userCreate = (user, pkm1, pkm2, pkm3) => userSelection.innerHTML = createPokemon(pkm1) + createPokemon(pkm2) + createPokemon(pkm3) + createPlayer(user)
 
 cpuCreate(gary, chikorita, cyndaquil, totodile)
-userCreate(user, cleffa, charmander, squirtle)
+userCreate(user, bulbasaur, charmander, squirtle)

@@ -22,7 +22,7 @@ $element__types: (
 );
 
 @each $element in $element__types {
-  #{$element}.type .icon {background-image: url('../img/icon/#{$element}__type.svg')}
+  .#{$element} .icon { background-image: url('../img/icon/#{$element}__type.svg') }
 }
 
 
