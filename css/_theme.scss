@@ -28,6 +28,18 @@ $fairy-xd: #9c1c7c;
 $fairy-l: #ff93e4;
 $fairy-xl: #ffc1ef;
 
+$psy: #f41e62;
+$psy-d:  darken($psy, 10%);
+$psy-xd: darken($psy, 20%);
+$psy-l:  lighten($psy, 10%);
+$psy-xl: lighten($psy, 25%);
+
+$dark: #19191d;
+$dark-d:  darken($dark, 10%);
+$dark-xd: darken($dark, 25%);
+$dark-l:  lighten($dark, 20%);
+$dark-xl: lighten($dark, 50%);
+
 $text--color: var(--text--color);
 $bg--color: var(--bg--color);
 $bg--player--color: var(--bg--player--color);

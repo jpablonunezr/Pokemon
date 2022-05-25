@@ -1,7 +1,8 @@
 const bulbasaur = {
   target: 'user',
-  idtype: 'Grass',
-  type: 'grass',
+  id_type: 'Grass',
+  game_type: 'grass',
+  element_type: 'grass',
   name: 'bulbasaur',
   jp: 'フシギダ',
   number: '001',
@@ -10,8 +11,9 @@ const bulbasaur = {
 
 const charmander = {
   target: 'user',
-  idtype: 'Fire',
-  type: 'fire',
+  id_type: 'Fire',
+  game_type: 'fire',
+  element_type: 'fire',
   name: 'charmander',
   jp: 'ヒトカゲ',
   number: '004',
@@ -20,18 +22,21 @@ const charmander = {
 
 const squirtle = {
   target: 'user',
-  idtype: 'Water',
-  type: 'water',
+  id_type: 'Water',
+  game_type: 'water',
+  element_type: 'water',
   name: 'squirtle',
   jp: 'ゼニガメ',
   number: '007',
   origin: 'Kanto'
 }
 
+// 3x3
 const chikorita = {
   target: 'cpu',
-  idtype: 'Grass',
-  type: 'grass',
+  id_type: 'Grass',
+  game_type: 'grass',
+  element_type: 'grass',
   name: 'chikorita',
   jp: 'チコリタ',
   number: '152',
@@ -40,8 +45,9 @@ const chikorita = {
 
 const cyndaquil = {
   target: 'cpu',
-  idtype: 'Fire',
-  type: 'fire',
+  id_type: 'Fire',
+  game_type: 'fire',
+  element_type: 'fire',
   name: 'cyndaquil',
   jp: 'ヒアラシ',
   number: '155',
@@ -50,22 +56,46 @@ const cyndaquil = {
 
 const totodile = {
   target: 'cpu',
-  idtype: 'Water',
-  type: 'water',
+  id_type: 'Water',
+  game_type: 'water',
+  element_type: 'water',
   name: 'totodile',
   jp: 'ワニノコ',
   number: '158',
   origin: 'Johto'
 }
 
+// 3x3
 const cleffa = {
   target: 'user',
-  idtype: 'Grass',
-  type: 'grass',
-  type2: 'fairy',
+  id_type: 'Grass',
+  game_type: 'grass',
+  element_type: 'fairy',
   name: 'cleffa',
   jp: 'ピィ',
   number: '173',
+  origin: 'Johto'
+}
+
+const abra = {
+  target: 'user',
+  id_type: 'Fire',
+  game_type: 'fire',
+  element_type: 'psy',
+  name: 'abra',
+  jp: 'ケーシ',
+  number: '063',
+  origin: 'Kanto'
+}
+
+const sneasel = {
+  target: 'user',
+  id_type: 'Water',
+  game_type: 'water',
+  element_type: 'dark',
+  name: 'sneasel',
+  jp: 'ューラ',
+  number: '215',
   origin: 'Johto'
 }
 

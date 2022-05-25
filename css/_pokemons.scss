@@ -1,3 +1,4 @@
+// Pokemon backgrounds + evolution bg
 $pokemons: (
   "bulbasaur",
   "charmander",
@@ -6,6 +7,8 @@ $pokemons: (
   "cyndaquil",
   "totodile",
   "cleffa",
+  "sneasel",
+  "abra",
 );
 
 @each $pokemon in $pokemons {
@@ -13,18 +16,19 @@ $pokemons: (
   .#{$pokemon}::after { background-image: url('../img/pokemon/#{$pokemon}__evolution.png') }
 }
 
-
+// Icon elements pokemons
 $element__types: (
   "grass",
   "fire",
   "water",
   "fairy",
+  "psy",
+  "dark",
 );
 
 @each $element in $element__types {
   .#{$element} .icon { background-image: url('../img/icon/#{$element}__type.svg') }
 }
-
 
 .pokemon__card.selected:hover,
 .pokemon__card.selected,
@@ -34,15 +38,21 @@ $element__types: (
   &.fire  .type .icon { color: $fire-xl ; opacity: 1; transform: translate(0,0)}
   &.water .type .icon { color: $water-xl; opacity: 1; transform: translate(0,0)}
   &.fairy .type .icon { color: $fairy-xl; opacity: 1; transform: translate(0,0)}
+  &.psy   .type .icon { color: $psy-xl; opacity: 1; transform: translate(0,0)}
+  &.dark  .type .icon { color: $dark-xl; opacity: 1; transform: translate(0,0)}
 
   &.grass .bg { background-image: radial-gradient(circle, $grass-xl 0%, $grass-xd 80%)}
   &.fire  .bg { background-image: radial-gradient(circle, $fire-xl 0%, $fire-xd 80%)}
   &.water .bg { background-image: radial-gradient(circle, $water-xl 0%, $water-xd 80%)}
   &.fairy .bg { background-image: radial-gradient(circle, $fairy-xl 0%, $fairy-xd 80%)}
+  &.psy   .bg { background-image: radial-gradient(circle, $psy-xl 0%, $psy-xd 80%)}
+  &.dark  .bg { background-image: radial-gradient(circle, $dark-xl 0%, $dark-xd 80%)}
 
   &.grass .type::after, &.grass .type::before { color:$grass-xl }
   &.fire  .type::after, &.fire  .type::before { color:$fire-xl }
   &.water .type::after, &.water .type::before { color:$water-xl }
-  &.fairy .type::after, &.water .type::before { color:$fairy-xl }
+  &.fairy .type::after, &.fairy .type::before { color:$fairy-xl }
+  &.psy   .type::after, &.psy   .type::before { color:$psy-xl }
+  &.dark  .type::after, &.dark  .type::before { color:$dark-xl }
 
 }

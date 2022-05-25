@@ -446,8 +446,6 @@ header li {
       -ms-flex-pack: center;
           justify-content: center;
   line-height: 1;
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   width: 50%;
   border-right: 1px solid var(--border--color);
   border-left: 1px solid var(--border--color);
@@ -499,22 +497,21 @@ header li span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: .1rem;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   text-align: left;
+  gap: .2rem;
 }
 
 header li span::before {
   content: attr(data-title);
-  font-size: .8rem;
+  font-size: .6rem;
+  opacity: .5;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  display: block;
 }
 
 header li:hover {
@@ -530,12 +527,14 @@ header li:hover span::before {
   opacity: 1;
   position: absolute;
   left: 0;
-  bottom: -.6rem;
+  bottom: -1rem;
   width: 50%;
-  height: .4rem;
+  height: .3rem;
   background: var(--text--color);
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  -webkit-transform: scaleX(0.6);
+          transform: scaleX(0.6);
 }
 
 .toggler {
@@ -558,7 +557,7 @@ header li:hover span::before {
   width: 5rem;
   height: 4rem;
   font-size: 1rem;
-  gap: .5rem;
+  gap: .3rem;
   line-height: 1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -585,7 +584,8 @@ header li:hover span::before {
 .toggler .option::before {
   content: attr(data-original);
   font-family: "Noto Sans JP";
-  font-size: .7rem;
+  font-size: .5rem;
+  opacity: .4;
 }
 
 .toggler .option:first-of-type {
@@ -650,12 +650,10 @@ header li:hover span::before {
       -ms-user-select: none;
           user-select: none;
   position: relative;
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-  -webkit-perspective-origin: 50% 50%;
-          perspective-origin: 50% 50%;
+  -webkit-transition: -webkit-filter .3s ease-in-out;
+  transition: -webkit-filter .3s ease-in-out;
+  transition: filter .3s ease-in-out;
+  transition: filter .3s ease-in-out, -webkit-filter .3s ease-in-out;
   z-index: 25;
   overflow: hidden;
   -webkit-filter: grayscale(1);
@@ -793,10 +791,6 @@ header li:hover span::before {
 
 .pokemon__card .bg {
   content: '';
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  -webkit-transition-duration: .5s;
-          transition-duration: .5s;
   z-index: 0;
   background-color: var(--bg--color);
 }
@@ -832,33 +826,7 @@ header li:hover span::before {
           transform: translate(0, -0.5rem) scale(1.1);
 }
 
-.pokemon__card:hover.fire .image {
-  -webkit-transform: translate(0, -0.5rem) scale(1.1);
-          transform: translate(0, -0.5rem) scale(1.1);
-}
-
-.pokemon__card:hover.water .image {
-  -webkit-transform: translate(0, -0.5rem) scale(1.1);
-          transform: translate(0, -0.5rem) scale(1.1);
-}
-
-.pokemon__card:hover::after {
-  opacity: .3;
-  mix-blend-mode: overlay;
-  background-size: auto 120%;
-}
-
 .pokemon__card:hover.grass .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.25);
-          transform: translate(0, -1.5rem) scale(1.25);
-}
-
-.pokemon__card:hover.fire .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.25);
-          transform: translate(0, -1.5rem) scale(1.25);
-}
-
-.pokemon__card:hover.water .image::after {
   -webkit-transform: translate(0, -1.5rem) scale(1.25);
           transform: translate(0, -1.5rem) scale(1.25);
 }
@@ -868,17 +836,22 @@ header li:hover span::before {
           transform: scale(0.95);
 }
 
-.pokemon__card:hover.fire .bg .fx {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.pokemon__card:hover.water .bg .fx {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
 .pokemon__card:hover.grass .bg .type {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.pokemon__card:hover.fire .image {
+  -webkit-transform: translate(0, -0.5rem) scale(1.1);
+          transform: translate(0, -0.5rem) scale(1.1);
+}
+
+.pokemon__card:hover.fire .image::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.25);
+          transform: translate(0, -1.5rem) scale(1.25);
+}
+
+.pokemon__card:hover.fire .bg .fx {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
@@ -888,13 +861,30 @@ header li:hover span::before {
           transform: scale(0.95);
 }
 
+.pokemon__card:hover.water .image {
+  -webkit-transform: translate(0, -0.5rem) scale(1.1);
+          transform: translate(0, -0.5rem) scale(1.1);
+}
+
+.pokemon__card:hover.water .image::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.25);
+          transform: translate(0, -1.5rem) scale(1.25);
+}
+
+.pokemon__card:hover.water .bg .fx {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
 .pokemon__card:hover.water .bg .type {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.pokemon__card:hover .bg {
-  outline-width: 2px;
+.pokemon__card:hover::after {
+  opacity: .3;
+  mix-blend-mode: overlay;
+  background-size: auto 120%;
 }
 
 .pokemon__card:hover .bg::before {
@@ -943,22 +933,22 @@ header li:hover span::before {
           transform: translate(0, -1.5rem) scale(1.2);
 }
 
-.pokemon__card.selected:hover.fire .image::after, .pokemon__card.selected.fire .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
-.pokemon__card.selected:hover.water .image::after, .pokemon__card.selected.water .image::after {
-  -webkit-transform: translate(0, -1.5rem) scale(1.2);
-          transform: translate(0, -1.5rem) scale(1.2);
-}
-
 .pokemon__card.selected:hover.grass::after, .pokemon__card.selected.grass::after {
   -webkit-transform: translate(0, -1.5rem) scale(1.2);
           transform: translate(0, -1.5rem) scale(1.2);
 }
 
+.pokemon__card.selected:hover.fire .image::after, .pokemon__card.selected.fire .image::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.2);
+          transform: translate(0, -1.5rem) scale(1.2);
+}
+
 .pokemon__card.selected:hover.fire::after, .pokemon__card.selected.fire::after {
+  -webkit-transform: translate(0, -1.5rem) scale(1.2);
+          transform: translate(0, -1.5rem) scale(1.2);
+}
+
+.pokemon__card.selected:hover.water .image::after, .pokemon__card.selected.water .image::after {
   -webkit-transform: translate(0, -1.5rem) scale(1.2);
           transform: translate(0, -1.5rem) scale(1.2);
 }
@@ -982,26 +972,10 @@ header li:hover span::before {
           transform: translate(0, 0);
 }
 
-.pokemon__card.selected:hover.grass .bg::after, .pokemon__card.selected.grass .bg::after {
-  border-color: #71d558;
-}
-
-.pokemon__card.selected:hover.fire .bg::after, .pokemon__card.selected.fire .bg::after {
-  border-color: #ed5a00;
-}
-
-.pokemon__card.selected:hover.water .bg::after, .pokemon__card.selected.water .bg::after {
-  border-color: #02afff;
-}
-
 .pokemon__card.selected:hover .image-bg, .pokemon__card.selected .image-bg {
   -webkit-animation-play-state: running;
           animation-play-state: running;
   opacity: .25;
-}
-
-.pokemon__card.selected:hover .bg, .pokemon__card.selected .bg {
-  outline-width: .3rem;
 }
 
 .pokemon__card.selected:hover .bg::before, .pokemon__card.selected .bg::before {
@@ -1103,6 +1077,22 @@ header li:hover span::before {
   background-image: url("../img/pokemon/cleffa__evolution.png");
 }
 
+.sneasel .image {
+  background-image: url("../img/pokemon/sneasel.png");
+}
+
+.sneasel::after {
+  background-image: url("../img/pokemon/sneasel__evolution.png");
+}
+
+.abra .image {
+  background-image: url("../img/pokemon/abra.png");
+}
+
+.abra::after {
+  background-image: url("../img/pokemon/abra__evolution.png");
+}
+
 .grass .icon {
   background-image: url("../img/icon/grass__type.svg");
 }
@@ -1117,6 +1107,14 @@ header li:hover span::before {
 
 .fairy .icon {
   background-image: url("../img/icon/fairy__type.svg");
+}
+
+.psy .icon {
+  background-image: url("../img/icon/psy__type.svg");
+}
+
+.dark .icon {
+  background-image: url("../img/icon/dark__type.svg");
 }
 
 .pokemon__card.selected:hover.grass .type .icon,
@@ -1155,6 +1153,24 @@ header li:hover span::before {
           transform: translate(0, 0);
 }
 
+.pokemon__card.selected:hover.psy .type .icon,
+.pokemon__card.selected.psy .type .icon,
+.pokemon__card:hover.psy .type .icon {
+  color: #fa98b7;
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.pokemon__card.selected:hover.dark .type .icon,
+.pokemon__card.selected.dark .type .icon,
+.pokemon__card:hover.dark .type .icon {
+  color: #9393a2;
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
 .pokemon__card.selected:hover.grass .bg,
 .pokemon__card.selected.grass .bg,
 .pokemon__card:hover.grass .bg {
@@ -1177,6 +1193,18 @@ header li:hover span::before {
 .pokemon__card.selected.fairy .bg,
 .pokemon__card:hover.fairy .bg {
   background-image: radial-gradient(circle, #ffc1ef 0%, #9c1c7c 80%);
+}
+
+.pokemon__card.selected:hover.psy .bg,
+.pokemon__card.selected.psy .bg,
+.pokemon__card:hover.psy .bg {
+  background-image: radial-gradient(circle, #fa98b7 0%, #a4083a 80%);
+}
+
+.pokemon__card.selected:hover.dark .bg,
+.pokemon__card.selected.dark .bg,
+.pokemon__card:hover.dark .bg {
+  background-image: radial-gradient(circle, #9393a2 0%, black 80%);
 }
 
 .pokemon__card.selected:hover.grass .type::after, .pokemon__card.selected:hover.grass .type::before,
@@ -1203,12 +1231,28 @@ header li:hover span::before {
   color: #9cfcff;
 }
 
-.pokemon__card.selected:hover.fairy .type::after, .pokemon__card.selected:hover.water .type::before,
+.pokemon__card.selected:hover.fairy .type::after, .pokemon__card.selected:hover.fairy .type::before,
 .pokemon__card.selected.fairy .type::after,
-.pokemon__card.selected.water .type::before,
+.pokemon__card.selected.fairy .type::before,
 .pokemon__card:hover.fairy .type::after,
-.pokemon__card:hover.water .type::before {
+.pokemon__card:hover.fairy .type::before {
   color: #ffc1ef;
+}
+
+.pokemon__card.selected:hover.psy .type::after, .pokemon__card.selected:hover.psy .type::before,
+.pokemon__card.selected.psy .type::after,
+.pokemon__card.selected.psy .type::before,
+.pokemon__card:hover.psy .type::after,
+.pokemon__card:hover.psy .type::before {
+  color: #fa98b7;
+}
+
+.pokemon__card.selected:hover.dark .type::after, .pokemon__card.selected:hover.dark .type::before,
+.pokemon__card.selected.dark .type::after,
+.pokemon__card.selected.dark .type::before,
+.pokemon__card:hover.dark .type::after,
+.pokemon__card:hover.dark .type::before {
+  color: #9393a2;
 }
 
 .player {

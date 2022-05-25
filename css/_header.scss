@@ -28,7 +28,6 @@ header {
     align-items: center;
     justify-content: center;
     line-height: 1;
-    transition: $ease3;
     width: 50%;
     border-right: 1px solid $border--color;
     border-left: 1px solid $border--color;
@@ -60,16 +59,16 @@ header {
       font-weight: 600;
       letter-spacing: .5px;
       display: flex;
-      gap: .1rem;
-      flex-direction: column;
+      align-items: center;
       transition: $ease3;
       text-align: left;
+      gap: .2rem;
 
       &::before {
         content: attr(data-title);
-        font-size: .8rem;
+        font-size: .6rem;
+        opacity: .5;
         transition: $ease3;
-        display: block;
       }
     }
 
@@ -89,11 +88,12 @@ header {
   opacity: 1;
   position: absolute;
   left: 0;
-  bottom: -.6rem;
+  bottom: -1rem;
   width: 50%;
-  height: .4rem;
+  height: .3rem;
   background: $text--color;
   transition: $ease3;
+  transform: scaleX(.6);
 }
 
 .toggler {
@@ -109,7 +109,7 @@ header {
     width: 5rem;
     height: 4rem;
     font-size: 1rem;
-    gap: .5rem;
+    gap: .3rem;
     line-height: 1;
     display: flex;
     flex-direction: column;
@@ -126,7 +126,8 @@ header {
     &::before {
       content: attr(data-original);
       font-family: $ff-jp;
-      font-size: .7rem;
+      font-size: .5rem;
+      opacity: .4;
     }
 
     &:first-of-type {

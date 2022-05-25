@@ -1,5 +1,12 @@
 
 // Hover card
+$games__types: (
+  "grass",
+  "fire",
+  "water",
+);
+
+
 &:hover {
   z-index: 50;
   animation: brightFX .4s 1 ease-in forwards;
@@ -13,25 +20,20 @@
     color: white;
   }
 
-  &.grass .image { transform: translate(0, -.5rem) scale(1.1) }
-  &.fire  .image { transform: translate(0, -.5rem) scale(1.1) }
-  &.water .image { transform: translate(0, -.5rem) scale(1.1) }
+  @each $games in $games__types {
+    &.#{$games} .image { transform: translate(0, -.5rem) scale(1.1) }
+    &.#{$games} .image::after { transform: translate(0, -1.5rem) scale(1.25)}
+    &.#{$games} .bg .fx{ transform: scale(.95) }
+    &.#{$games} .bg .type{ transform: scale(.95) }
+  }
 
-  &::after { opacity: .3; mix-blend-mode: overlay; background-size: auto 120%; }
-
-  &.grass .image::after { transform: translate(0, -1.5rem) scale(1.25) }
-  &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.25) }
-  &.water .image::after { transform: translate(0, -1.5rem) scale(1.25) }
-
-  &.grass .bg .fx{ transform: scale(.95) }
-  &.fire  .bg .fx{ transform: scale(.95) }
-  &.water .bg .fx{ transform: scale(.95) }
-  &.grass .bg .type{ transform: scale(.95) }
-  &.fire  .bg .type{ transform: scale(.95) }
-  &.water .bg .type{ transform: scale(.95) }
+  &::after {
+    opacity: .3;
+    mix-blend-mode: overlay;
+    background-size: auto 120%;
+  }
 
   .bg {
-    outline-width: 2px;
     &::before {
       opacity: .5;
     }
@@ -40,7 +42,6 @@
       opacity: 1;
     }
   }
-
 
   .type {
     &::after,
@@ -73,13 +74,10 @@
     background-position: center 70%;
   }
 
-  &.grass .image::after { transform: translate(0, -1.5rem) scale(1.2) }
-  &.fire  .image::after { transform: translate(0, -1.5rem) scale(1.2) }
-  &.water .image::after { transform: translate(0, -1.5rem) scale(1.2) }
-
-  &.grass::after { transform: translate(0, -1.5rem) scale(1.2) }
-  &.fire::after  { transform: translate(0, -1.5rem) scale(1.2) }
-  &.water::after { transform: translate(0, -1.5rem) scale(1.2) }
+  @each $games in $games__types {
+    &.#{$games} .image::after { transform: translate(0, -1.5rem) scale(1.2)}
+    &.#{$games}::after { transform: translate(0, -1.5rem) scale(1.2) }
+  }
 
   .fx img[src*="img"] {
     visibility: visible;
@@ -88,17 +86,12 @@
   .image {transform: scale(1.25)}
   .bg {transform: translate(0,0)}
 
-  &.grass .bg::after { border-color: $grass}
-  &.fire  .bg::after { border-color: $fire}
-  &.water .bg::after { border-color: $water}
-
   .image-bg {
     animation-play-state: running;
     opacity: .25;
   }
 
   .bg {
-    outline-width: .3rem;
     &::before {
       opacity: .5;
     }
