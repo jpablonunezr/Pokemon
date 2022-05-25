@@ -732,7 +732,7 @@ header li:hover span::before {
 .pokemon__card .type::after, .pokemon__card .type::before {
   width: 100%;
   position: absolute;
-  opacity: .9;
+  opacity: .5;
   font-family: "Merriweather Sans";
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
@@ -743,7 +743,7 @@ header li:hover span::before {
   top: 2rem;
   right: 2rem;
   text-align: right;
-  font-size: 1rem;
+  font-size: .7rem;
 }
 
 .pokemon__card .type::before {
@@ -782,13 +782,12 @@ header li:hover span::before {
 
 .pokemon__card .type .label {
   position: absolute;
-  font-size: .9rem;
+  font-size: .7rem;
   top: 2rem;
   left: 2rem;
   color: var(--text--color);
-  letter-spacing: .5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: bold;
 }
 
 .pokemon__card .fx {
@@ -1282,8 +1281,8 @@ header li:hover span::before {
 
 .player .name {
   position: absolute;
-  bottom: 0;
-  right: calc(100% + 1rem);
+  top: 3rem;
+  right: 1rem;
   color: var(--text--color);
   text-align: right;
   z-index: 100;
@@ -1291,16 +1290,18 @@ header li:hover span::before {
 }
 
 .player .name h6 {
-  font-size: 1rem;
+  font-size: .6rem;
+  opacity: .4;
   font-family: "Noto Sans JP";
   line-height: 1;
+  margin-bottom: .3em;
   font-weight: normal;
 }
 
 .player .name h1 {
   font-size: 2.2rem;
   font-weight: bold;
-  margin-bottom: .5rem;
+  margin-bottom: .6rem;
   line-height: 1;
   display: inline-block;
 }
@@ -1309,7 +1310,7 @@ header li:hover span::before {
   font-size: .9rem;
   letter-spacing: .5px;
   font-weight: normal;
-  opacity: .3;
+  opacity: .5;
 }
 
 .player.user {
@@ -1328,7 +1329,8 @@ header li:hover span::before {
 
 .player.user .name {
   text-align: left;
-  left: calc(100% + 1rem);
+  left: 1rem;
+  right: unset;
 }
 
 .result {
