@@ -4,6 +4,9 @@ $ff-jp: "Noto Sans JP";
 
 $ease3: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 
+$primary: #f14242;
+$primary-d: #c83535;
+
 $grass: #71d558;
 $grass-d: #02b60b;
 $grass-xd: #008e40;
@@ -64,14 +67,10 @@ body {
   --logo--color: #333
 }
 
-.dark-theme {
-  --text--color: #ccc;
+body.dark-theme {
+  --text--color: #fff;
   --bg--color: #222;
   --bg--player--color: #111;
   --border--color: #111;
   --logo--color: #000;
-
-  // .icon {
-  //   filter: invert(1);
-  // }
 }

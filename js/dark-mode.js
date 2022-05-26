@@ -1,6 +1,6 @@
 // Dark mode
-const btnDarkMode = document.querySelector(".theme-mode .dark");
-const btnLightMode = document.querySelector(".theme-mode .light");
+const btnDarkMode = document.querySelector(".toggler .dark");
+const btnLightMode = document.querySelector(".toggler .light");
 const body = document.querySelector("body");
 
 let THEME_MODE = 'default'
@@ -36,3 +36,10 @@ const changeToLightMode = () => {
 
 if (THEME_APPLIED == 'default') changeToLightMode()
 if (THEME_APPLIED == 'dark') changeToDarkMode()
+
+
+//menu
+const menuContainer = document.querySelector('.menu')
+const menuButton = document.querySelector('.menu .burger')
+
+menuButton.onclick = () => menuContainer.classList.toggle('active')

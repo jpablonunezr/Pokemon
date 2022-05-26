@@ -8,14 +8,12 @@
     <link rel="shortcut icon" href="img/icon/pokeball_color.svg" type="image/x-icon">
     <title>Pokemon</title>
   </head>
-  <body class="">
+  <body>
     <div class="desk">
-
       <main>
         <div class="pokemon">
           <div id="cpuSelection" class="pokemon__options"></div>
 
-          <!-- RESULT -->
           <div class="result" id="resultContainer">
             <div class="result__container">
               <div class="result__item">
@@ -26,24 +24,38 @@
           </div>
 
           <div id="userSelection" class="pokemon__options"></div>
-
         </div>
       </main>
 
       <header>
         <div class="extra">
-          <div class="logo"><b>nnzr <sup>2k22</sup></b></div>
-          <div class="theme-mode">
-            <div class="toggler">
-              <div class="active option light" data-original="ライト"><div class="icon"></div>Light</div>
-              <div class="option dark" data-original="ダーク"><div class="icon"></div>Dark</div>
-              <div class="track"></div>
+          <div class="menu">
+            <div class="menu__container">
+              <div class="burger">
+                <div class="symbol">
+                  <i></i>
+                  <i></i>
+                </div>
+              </div>
+              <section>
+                <li data-num="01">Battle</li>
+                <li data-num="02">Lineup</li>
+                <li data-num="03">Settings</li>
+              </section>
             </div>
+          </div>
+          <div class="logo"><b>nnzr <sup>2k22</sup></b></div>
+          <div class="toggler">
+            <div class="active option light" data-original="ライト"><div class="icon"></div>Light</div>
+            <div class="option dark" data-original="ダーク"><div class="icon"></div>Dark</div>
+            <div class="track"></div>
           </div>
         </div>
         <nav id="nav">
-          <li class="active"><span data-title="01">Battle</span></li>
-          <li><span data-title="02">Badges</span></li>
+          <li>
+            <div id="battlesDisplay"></div>
+            <aside>Victories <i></i> <span id="victoriesDisplay"><b>0</b></span></aside>
+          </li>
         </nav>
 
       </header>

@@ -41,3 +41,8 @@
 	 10% {transform: translateY(-.5rem); opacity: 1;}
   100% {transform: translateY(2.5rem) rotate(360deg); opacity: 0;}
 }
+
+@keyframes showCounter {
+  0% { opacity: 0; top: .2rem;}
+100% { opacity: 1; top: 0;}
+}

@@ -26,10 +26,12 @@ li {
   list-style-type: none;
 }
 
-body,
 html {
   font-size: 10px;
+}
+
+body,
+html {
   font-family: $ff-base;
-  background-color: $bg--color;
   overflow: hidden;
 }

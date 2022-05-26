@@ -1,13 +1,23 @@
+body {
+  background: repeat center/150px $bg--color;
+  background-image: url('../img/icon/patt.png');
+
+  &.dark-theme {
+    background-image: url('../img/icon/patt-dark.png');
+  }
+}
+
 .desk {
   display: grid;
   grid-template-rows: 1fr 4.5rem;
   aspect-ratio: 3/2;
-  height: clamp(10rem, 80vh, 55rem);
+  height: clamp(10rem, 80vh, 65rem);
   padding: 0rem;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  background-color: $bg--color;
 }
 
 header {
@@ -23,33 +33,4 @@ main {
   position: relative;
   height: 100%;
   border: 1px solid $border--color;
-}
-
-.logo {
-  position: absolute;
-  width: 8rem;
-  left: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: $logo--color;
-
-  b {
-    width: 100%;
-    color: white;
-    text-align: center;
-    letter-spacing: 1.5px;
-    display: flex;
-    font-size: .7rem;
-    align-items: center;
-    gap: .2rem;
-    justify-content: center;
-    text-transform: uppercase;
-
-    sup {
-      font-size: 70%;
-      font-family: 'arial';
-    }
-  }
 }

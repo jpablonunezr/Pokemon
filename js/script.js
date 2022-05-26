@@ -60,6 +60,13 @@ function setResultText(result) {
 // Contador de victorias
 let victoryCounter = 0
 let defeatCounter = 0
+let totalVictories = victoryCounter
+let totalBattles = 0
+
+const totalVictoriesCounter = document.querySelector('#victoriesDisplay')
+const totalBattlesCounter = document.querySelector('#battlesDisplay')
+// let totalBattles = battlesCounter
+
 
 // CPU azar
 const fireSelected  = () => cpuFire.classList.add('selected')
@@ -120,6 +127,10 @@ userPokemonCards.forEach((element) =>
     setTimeout(stopCpuAnimation, countDown)
     setTimeout(showFX, delayShowResult)
 
+    // battles counter
+    totalBattles += 1
+    totalBattlesCounter.innerText = totalBattles
+
     // Conditional Won, Lost, Draw
     const waterWon  = WATER && CPU == 'fire'
     const waterLost = WATER && CPU == 'grass'
@@ -137,6 +148,7 @@ userPokemonCards.forEach((element) =>
     if (waterWon || fireWon || grassWon)  {
       setTimeout(() => setResultText(VICTORY), delayShowResult)
       victoryCounter += 1
+      totalVictoriesCounter.innerHTML = '<b>'+victoryCounter+'</b>'
     }
 
     // Si pierde

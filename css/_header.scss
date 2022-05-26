@@ -5,97 +5,229 @@ header {
   justify-content: space-between;
   border-bottom: 1px solid $border--color;
 
-  .extra {
-    display: inline-flex;
-    align-items: center;
-    height: 100%;
-    position: relative;
-  }
-
   nav {
     height: 100%;
     display: flex;
     align-items: center;
     position: relative;
     border-top: 0;
-    width: calc(17rem + 2px);
+    justify-content: end;
+    border-right: 1px solid $border--color;
   }
 
-  li {
+  nav li {
     display: flex;
-    font-size: 1.1rem;
+    font-size: .9rem;
     text-transform: uppercase;
-    font-weight: 500;
-    align-items: center;
     justify-content: center;
     line-height: 1;
-    width: 50%;
-    border-right: 1px solid $border--color;
-    border-left: 1px solid $border--color;
-    gap: .5rem;
+    padding-right: 1.5rem;
     height: 100%;
+    color: $text--color;
+    flex-direction: column;
+    gap: .4rem;
+    letter-spacing: .5px;
+    font-weight: 800;
 
-    &:first-of-type {
-      border-right: 0;
-    }
-
-    &:nth-child(1).active ~ .track { left: 0 }
-    &:nth-child(2).active ~ .track { left: $item-width * 1 }
-    &:nth-child(3).active ~ .track { left: $item-width * 2 }
-
-  .icon {
-    width: 2.4rem;
-    aspect-ratio: 1;
-    background: no-repeat center/90%;
-    transition: $ease3;
-    display: none;
-
-    &.gym    {background-image: url('../img/icon/ic__gym.svg') }
-    &.battle {background-image: url('../img/icon/ic__battle.svg') }
-    &.medals {background-image: url('../img/icon/ic__bag.svg') }
-  }
-
-    span {
-      color: $text--color;
-      font-weight: 600;
-      letter-spacing: .5px;
+    aside {
       display: flex;
       align-items: center;
-      transition: $ease3;
-      text-align: left;
-      gap: .2rem;
+      gap: .3rem;
+    }
 
-      &::before {
-        content: attr(data-title);
-        font-size: .6rem;
-        opacity: .5;
-        transition: $ease3;
+    i {
+      display: block;
+      height: 1px;
+      width: 2.5rem;
+      background-color: $text--color;
+      opacity: .3;
+    }
+
+    span {
+      font-weight: 800;
+
+      b {
+        position: relative;
+        animation: showCounter ease-in .3s 1 forwards;
+        font-family: 'Arial';
+        font-weight: bold;
       }
     }
 
-    &:hover {
-      background-color: $bg--player--color;
 
-      span::before {
-        margin-top: -1rem;
-        opacity: 0;
+    #battlesDisplay {
+      font-weight: 500;
+      font-size: .7rem;
+      opacity: .7;
+
+      &::before {
+        content: 'Battles';
+        margin-right: .2rem;
+        font-family: 'Arial';
+        display: inline-block;
       }
     }
   }
 }
 
-
 .track {
   opacity: 1;
   position: absolute;
   left: 0;
-  bottom: -1rem;
+  bottom: -.2rem;
   width: 50%;
   height: .3rem;
   background: $text--color;
   transition: $ease3;
   transform: scaleX(.6);
 }
+
+.extra {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.menu {
+  max-width: 4.4rem;
+  overflow: hidden;
+  height: 100%;
+  background-color: $primary;
+  transition: $ease3;
+
+  &.active {
+    max-width: 30rem;
+
+    li {
+      transform: translate(0,0);
+      opacity: 1;
+    }
+    .burger {
+      background-color: $primary-d;
+      i {
+        &:first-of-type {
+          transform: rotate(45deg) translate(2px, 1px) scale(.9);
+        }
+
+        &:last-of-type {
+          width: 2rem;
+          transform: rotate(-45deg) translate(3px, -2px) scale(.9);
+        }
+      }
+    }
+  }
+
+  &__container {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    .burger {
+      i {
+        &:last-of-type {
+          width: 2rem;
+        }
+      }
+    }
+  }
+
+  .burger {
+    display: flex;
+    justify-content: center;
+    width: 4.4rem;
+    height: 100%;
+    align-items: center;
+    transition: $ease3;
+
+    .symbol {
+      display: flex;
+      gap: .4rem;
+      flex-direction: column;
+    }
+
+    i {
+      width: 2rem;
+      background-color: white;
+      transition: $ease3;
+      height: .2rem;
+
+      &:last-of-type {
+        width: 1.6rem;
+      }
+    }
+  }
+
+  section {
+    width: max-content;
+    height: 100%;
+    z-index: 555;
+    background-color: $primary;
+    display: flex;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    align-items: center;
+    padding: 0 1rem 0 .5rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      font-size: .8rem;
+      letter-spacing: .5px;
+      line-height: 1;
+      height: 100%;
+      padding: 0 .8rem;
+      gap: .2rem;
+      transform: translate(1.5rem, 0);
+      opacity: 0;
+      transition: $ease3;
+
+      &::before {
+        content: attr(data-num);
+        font-size: .6rem;
+      }
+
+      &:nth-child(2) { transition-delay: .05s;}
+      &:nth-child(3) { transition-delay: .1s;}
+
+    }
+  }
+}
+
+.logo {
+  position: relative;
+  width: 12rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $logo--color;
+
+  b {
+    width: 100%;
+    color: white;
+    text-align: center;
+    letter-spacing: 1.5px;
+    display: flex;
+    font-size: .7rem;
+    align-items: center;
+    gap: .2rem;
+    justify-content: center;
+    text-transform: uppercase;
+
+    sup {
+      font-size: 70%;
+      font-family: 'arial';
+    }
+  }
+}
+
 
 .toggler {
   display: grid;
@@ -108,8 +240,8 @@ header {
 
   .option {
     width: 5rem;
-    height: 4rem;
-    font-size: 1rem;
+    height: 100%;
+    font-size: .8rem;
     gap: .3rem;
     line-height: 1;
     display: flex;
