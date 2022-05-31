@@ -464,7 +464,7 @@ header nav li aside {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: .3rem;
+  gap: .25rem;
 }
 
 header nav li i {
@@ -487,17 +487,26 @@ header nav li span b {
   font-weight: bold;
 }
 
+header nav li #experienceDisplay,
 header nav li #battlesDisplay {
   font-weight: 500;
-  font-size: .7rem;
+  font-size: .6rem;
   opacity: .7;
+}
+
+header nav li #experienceDisplay::before,
+header nav li #battlesDisplay::before {
+  margin-right: .2rem;
+  font-family: 'Arial';
+  display: inline-block;
+}
+
+header nav li #experienceDisplay::before {
+  content: 'Experience';
 }
 
 header nav li #battlesDisplay::before {
   content: 'Battles';
-  margin-right: .2rem;
-  font-family: 'Arial';
-  display: inline-block;
 }
 
 .track {
@@ -1210,6 +1219,22 @@ header nav li #battlesDisplay::before {
   background-image: url("../img/pokemon/abra__evolution.png");
 }
 
+.charmeleon .image {
+  background-image: url("../img/pokemon/charmeleon.png");
+}
+
+.charmeleon::after {
+  background-image: url("../img/pokemon/charmeleon__evolution.png");
+}
+
+.charizard .image {
+  background-image: url("../img/pokemon/charizard.png");
+}
+
+.charizard::after {
+  background-image: url("../img/pokemon/charizard__evolution.png");
+}
+
 .grass .icon {
   background-image: url("../img/icon/grass__type.svg");
 }
@@ -1370,6 +1395,17 @@ header nav li #battlesDisplay::before {
 .pokemon__card:hover.dark .type::after,
 .pokemon__card:hover.dark .type::before {
   color: #9393a2;
+}
+
+.charizard .image {
+  width: 110%;
+  height: 110%;
+  left: -5%;
+  top: -5%;
+}
+
+.charizard:hover {
+  overflow: visible;
 }
 
 .player {

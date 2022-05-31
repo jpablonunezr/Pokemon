@@ -9,6 +9,8 @@ $pokemons: (
   "cleffa",
   "sneasel",
   "abra",
+  "charmeleon",
+  "charizard",
 );
 
 @each $pokemon in $pokemons {
@@ -56,3 +58,6 @@ $element__types: (
   &.dark  .type::after, &.dark  .type::before { color:$dark-xl }
 
 }
+
+.charizard .image { width: 110%; height: 110%; left: -5%; top: -5%; }
+.charizard:hover { overflow: visible;}

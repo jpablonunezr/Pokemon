@@ -32,7 +32,7 @@ header {
     aside {
       display: flex;
       align-items: center;
-      gap: .3rem;
+      gap: .25rem;
     }
 
     i {
@@ -55,18 +55,21 @@ header {
     }
 
 
+    #experienceDisplay,
     #battlesDisplay {
       font-weight: 500;
-      font-size: .7rem;
+      font-size: .6rem;
       opacity: .7;
 
       &::before {
-        content: 'Battles';
+
         margin-right: .2rem;
         font-family: 'Arial';
         display: inline-block;
       }
     }
+    #experienceDisplay::before { content: 'Experience' }
+    #battlesDisplay::before    { content: 'Battles' }
   }
 }
 

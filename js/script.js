@@ -61,11 +61,40 @@ function setResultText(result) {
 let victoryCounter = 0
 let defeatCounter = 0
 let totalVictories = victoryCounter
-let totalBattles = 0
+let totalBattles = parseInt(localStorage.getItem('battles')) || 0
 
 const totalVictoriesCounter = document.querySelector('#victoriesDisplay')
 const totalBattlesCounter = document.querySelector('#battlesDisplay')
-// let totalBattles = battlesCounter
+totalBattlesCounter.innerText = totalBattles
+
+// Contador de experiencia
+let exp = 0
+let totalExp = parseInt(localStorage.getItem('exp')) || 0
+const totalExpCounter = document.querySelector('#experienceDisplay')
+const saveStorage = (storage, num) =>  localStorage.setItem(storage, num)
+
+let lvl = 0
+let totalLvl = parseInt(localStorage.getItem('lvl')) || 0
+const totalLvlCounter = document.querySelector('#levelDisplay')
+totalLvlCounter.innerText = totalLvl
+
+
+
+const levelUp = (exp) => {
+  if (exp >= 100) {
+    totalLvl += 1
+    saveStorage('lvl', totalLvl)
+    totalLvlCounter.innerText = totalLvl
+  }
+
+  // if (exp < 0) {
+  //   totalLvl = 0
+  //   saveStorage('lvl', totalLvl)
+  //   totalLvlCounter.innerText = totalLvl
+
+  // }
+}
+
 
 
 // CPU azar
@@ -108,8 +137,15 @@ function clearClass() {
   resultContainer.classList.remove('show')
 }
 
+
+// function evol() {
+//   if (fireEvolution == 1) evolutionPokemon(userFire, charmeleon)
+//   if (fireEvolution == 2) evolutionPokemon(userFire, charizard)
+// }
+
 const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
 
+let fireEvolution = 0
 
 // Función principal
 userPokemonCards.forEach((element) =>
@@ -130,6 +166,7 @@ userPokemonCards.forEach((element) =>
     // battles counter
     totalBattles += 1
     totalBattlesCounter.innerText = totalBattles
+    saveStorage('battles', totalBattles)
 
     // Conditional Won, Lost, Draw
     const waterWon  = WATER && CPU == 'fire'
@@ -149,12 +186,22 @@ userPokemonCards.forEach((element) =>
       setTimeout(() => setResultText(VICTORY), delayShowResult)
       victoryCounter += 1
       totalVictoriesCounter.innerHTML = '<b>'+victoryCounter+'</b>'
+
+      // Exp
+      totalExp += 50
+      totalExpCounter.innerText = totalExp
+      saveStorage('exp', totalExp)
     }
 
     // Si pierde
     if (waterLost || fireLost || grassLost) {
       setTimeout(() => setResultText(DEFEAT), delayShowResult)
       defeatCounter += 1
+
+       // Exp
+       totalExp -= 40
+       totalExpCounter.innerText = totalExp
+       saveStorage('exp', totalExp)
     }
 
     // Si empata
@@ -165,22 +212,48 @@ userPokemonCards.forEach((element) =>
     if (waterLost || grassDraw || fireWon)  setTimeout(grassSelected, countDown)
     if (waterDraw || grassWon  || fireLost) setTimeout(waterSelected, countDown)
 
+    // if (fireWon) fireEvolution += 1
+    // console.log(fireEvolution)
+
     lifeCounter()
+    levelUp(totalExp)
   })
 )
 
+
 // Crear la cantidad de vida para los jugadores
-class Lifes {
-  constructor(player) {
-    let i = 0
-    do {
-      const lifeToken = document.createElement('i');
-      this.player = player.appendChild(lifeToken)
-      i++
-    }
-    while (i < 5)
+// class Lifes {
+//   constructor(player) {
+//     let i = 0
+//     do {
+//       const lifeToken = document.createElement('i');
+//       this.player = player.appendChild(lifeToken)
+//       i++
+//     }
+//     while (i < 5)
+//   }
+// }
+
+// let CPU_TOTAL_LIFE = new Lifes(cpuLife);
+// let USER_TOTAL_LIFE = new Lifes(userLife);
+
+const lifeCreate = (target, lifes) => {
+  let i = 0
+  do {
+  const token = document.createElement('i')
+  target.appendChild(token);
+  i++
   }
+  while (i < lifes)
 }
 
-let CPU_TOTAL_LIFE = new Lifes(cpuLife);
-let USER_TOTAL_LIFE = new Lifes(userLife);
+
+lifeCreate(cpuLife, 5)
+lifeCreate(userLife, 5)
+
+
+// Menu
+const menuContainer = document.querySelector('.menu')
+const menuButton = document.querySelector('.menu .burger')
+
+menuButton.onclick = () => menuContainer.classList.toggle('active')

@@ -1,6 +1,6 @@
 // Create Pokemons
 const createPokemon = (pokemon) => `
-  <div id="${pokemon.target}${pokemon.id_type}" class="pokemon__card ${pokemon.game_type} ${pokemon.element_type} ${pokemon.name}">
+  <div id="${pokemon.target}${pokemon.id_type}" class="pokemon__card ${pokemon.game_type} ${pokemon.element_type} ${pokemon.name} ${pokemon.evolution}">
     <div class="image" data-name="${pokemon.jp}"></div>
     <div class="bg">
       <div class="fx">
@@ -33,3 +33,5 @@ const userCreate = (user, pkm1, pkm2, pkm3) => userSelection.innerHTML = createP
 cpuCreate(gary, chikorita, cyndaquil, totodile)
 // userCreate(user, sneasel, cleffa, abra, )
 userCreate(user, bulbasaur, charmander, squirtle)
+
+const evolutionPokemon = (type, pkm) => type.outerHTML = createPokemon(pkm)

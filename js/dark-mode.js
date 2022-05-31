@@ -36,10 +36,3 @@ const changeToLightMode = () => {
 
 if (THEME_APPLIED == 'default') changeToLightMode()
 if (THEME_APPLIED == 'dark') changeToDarkMode()
-
-
-//menu
-const menuContainer = document.querySelector('.menu')
-const menuButton = document.querySelector('.menu .burger')
-
-menuButton.onclick = () => menuContainer.classList.toggle('active')

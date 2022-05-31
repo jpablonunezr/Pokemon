@@ -99,6 +99,28 @@ const sneasel = {
   origin: 'Johto'
 }
 
+const charmeleon = {
+  target: 'user',
+  id_type: 'Fire',
+  game_type: 'fire',
+  element_type: 'fire',
+  name: 'charmeleon',
+  jp: 'ューラ',
+  number: '005',
+  origin: 'Kanto'
+}
+
+const charizard = {
+  target: 'user',
+  id_type: 'Fire',
+  game_type: 'fire',
+  element_type: 'fire',
+  name: 'charizard',
+  jp: 'ューラ',
+  number: '006',
+  origin: 'Kanto'
+}
+
 // Players
 const gary = {
   type: 'cpu',
