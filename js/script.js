@@ -78,23 +78,21 @@ let totalLvl = parseInt(localStorage.getItem('lvl')) || 0
 const totalLvlCounter = document.querySelector('#levelDisplay')
 totalLvlCounter.innerHTML = '<b>'+totalLvl+'</b>'
 
-
-let expThreshold = 100
+// LevelUp
+let expThreshold = parseInt(localStorage.getItem('exp-threshold')) || 100
 
 const levelUp = (exp) => {
-
   if (exp >= expThreshold) {
     totalLvl++
     expThreshold = expThreshold * 1.5
     saveStorage('lvl', totalLvl)
+    saveStorage('exp-threshold', expThreshold)
     totalLvlCounter.innerHTML = '<b>'+totalLvl+'</b>'
     console.log(expThreshold)
 
     if (expThreshold > (expThreshold * 1.5)) expThreshold = expThreshold * 1.5
   }
 }
-
-
 
 // CPU azar
 const fireSelected  = () => cpuFire.classList.add('selected')
@@ -150,6 +148,7 @@ const VICTORY = () => {
   totalExp += 50
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
+  levelUp(totalExp)
 }
 
 const DEFEAT = () => {
@@ -160,6 +159,7 @@ const DEFEAT = () => {
   totalExp > 40? totalExp -= 40 : totalExp = 0
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
+  levelUp(totalExp)
 }
 
 const DRAW = () => {
@@ -215,7 +215,6 @@ userPokemonCards.forEach((element) =>
     // if (fireWon) fireEvolution += 1
     // console.log(fireEvolution)
 
-    levelUp(totalExp)
   })
 )
 
