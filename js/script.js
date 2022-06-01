@@ -28,10 +28,10 @@ let randomCPU = (options) =>  options[Math.floor(Math.random() * options.length)
 const CPU_OPTIONS = ['grass', 'fire', 'water']
 
 // Mensaje resultado
-const DEFAULT = 'Battle • '
-const VICTORY = 'Victory • '
-const DEFEAT = 'Defeat • '
-const DRAW = 'Draw • '
+const TEXT_DEFAULT = 'Battle • '
+const TEXT_VICTORY = 'Victory • '
+const TEXT_DEFEAT = 'Defeat • '
+const TEXT_DRAW = 'Draw • '
 
 // Creamos los textos de los resultados
 function createResultElements() {
@@ -39,7 +39,7 @@ function createResultElements() {
     do {
       const container = document.querySelector('.result__text')
       const element = document.createElement('span')
-      element.innerText = DEFAULT
+      element.innerText = TEXT_DEFAULT
 
       container.appendChild(element)
       i++
@@ -68,31 +68,30 @@ const totalBattlesCounter = document.querySelector('#battlesDisplay')
 totalBattlesCounter.innerText = totalBattles
 
 // Contador de experiencia
-let exp = 0
 let totalExp = parseInt(localStorage.getItem('exp')) || 0
 const totalExpCounter = document.querySelector('#experienceDisplay')
 const saveStorage = (storage, num) =>  localStorage.setItem(storage, num)
+totalExpCounter.innerText = totalExp
 
-let lvl = 0
+// Contador de Niveles
 let totalLvl = parseInt(localStorage.getItem('lvl')) || 0
 const totalLvlCounter = document.querySelector('#levelDisplay')
-totalLvlCounter.innerText = totalLvl
+totalLvlCounter.innerHTML = '<b>'+totalLvl+'</b>'
 
 
+let expThreshold = 100
 
 const levelUp = (exp) => {
-  if (exp >= 100) {
-    totalLvl += 1
+
+  if (exp >= expThreshold) {
+    totalLvl++
+    expThreshold = expThreshold * 1.5
     saveStorage('lvl', totalLvl)
-    totalLvlCounter.innerText = totalLvl
+    totalLvlCounter.innerHTML = '<b>'+totalLvl+'</b>'
+    console.log(expThreshold)
+
+    if (expThreshold > (expThreshold * 1.5)) expThreshold = expThreshold * 1.5
   }
-
-  // if (exp < 0) {
-  //   totalLvl = 0
-  //   saveStorage('lvl', totalLvl)
-  //   totalLvlCounter.innerText = totalLvl
-
-  // }
 }
 
 
@@ -118,18 +117,14 @@ const clearCounter = () => counter.classList.remove('countdown')
 const FX_IMAGE = document.querySelectorAll('.fx-gif')
 const FX_SRC = 'img/fx/fire.gif';
 
-function lifeCounter() {
-  if (victoryCounter == 1) setTimeout(() => cpuLife.classList.add('x'), delayShowResult + 1200)
-  if (victoryCounter == 2) setTimeout(() => cpuLife.classList.add('xx'), delayShowResult + 1200)
-  if (victoryCounter == 3) setTimeout(() => cpuLife.classList.add('xxx'), delayShowResult + 1200)
-  if (victoryCounter == 4) setTimeout(() => cpuLife.classList.add('xxxx'), delayShowResult + 1200)
-  if (victoryCounter == 5) setTimeout(() => cpuLife.classList.add('xxxxx'), delayShowResult + 1200)
-  if (defeatCounter == 1)  setTimeout(() => userLife.classList.add('x'), delayShowResult + 1200)
-  if (defeatCounter == 2)  setTimeout(() => userLife.classList.add('xx'), delayShowResult + 1200)
-  if (defeatCounter == 3)  setTimeout(() => userLife.classList.add('xxx'), delayShowResult + 1200)
-  if (defeatCounter == 4)  setTimeout(() => userLife.classList.add('xxxx'), delayShowResult + 1200)
-  if (defeatCounter == 5)  setTimeout(() => userLife.classList.add('xxxxx'), delayShowResult + 1200)
+function loseLifes(result, target) {
+  result == 1 && setTimeout(() => target.classList.add('x'), delayShowResult + 1200)
+  result == 2 && setTimeout(() => target.classList.add('xx'), delayShowResult + 1200)
+  result == 3 && setTimeout(() => target.classList.add('xxx'), delayShowResult + 1200)
+  result == 4 && setTimeout(() => target.classList.add('xxxx'), delayShowResult + 1200)
+  result == 5 && setTimeout(() => target.classList.add('xxxxx'), delayShowResult + 1200)
 }
+
 
 function clearClass() {
   for (userPokemon of userPokemonCards) userPokemon.classList.remove('selected') // Quitar selección del usuario
@@ -144,6 +139,33 @@ function clearClass() {
 // }
 
 const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
+
+
+const VICTORY = () => {
+  setTimeout(() => setResultText(TEXT_VICTORY), delayShowResult)
+  victoryCounter++
+  loseLifes(victoryCounter, cpuLife)
+  totalVictoriesCounter.innerHTML = '<b>'+victoryCounter+'</b>'
+
+  totalExp += 50
+  totalExpCounter.innerText = totalExp
+  saveStorage('exp', totalExp)
+}
+
+const DEFEAT = () => {
+  setTimeout(() => setResultText(TEXT_DEFEAT), delayShowResult)
+  defeatCounter++
+  loseLifes(defeatCounter, userLife)
+
+  totalExp > 40? totalExp -= 40 : totalExp = 0
+  totalExpCounter.innerText = totalExp
+  saveStorage('exp', totalExp)
+}
+
+const DRAW = () => {
+  setTimeout(() => setResultText(TEXT_DRAW), delayShowResult)
+}
+
 
 let fireEvolution = 0
 
@@ -163,8 +185,8 @@ userPokemonCards.forEach((element) =>
     setTimeout(stopCpuAnimation, countDown)
     setTimeout(showFX, delayShowResult)
 
-    // battles counter
-    totalBattles += 1
+    // Battles counter
+    totalBattles++
     totalBattlesCounter.innerText = totalBattles
     saveStorage('battles', totalBattles)
 
@@ -181,31 +203,9 @@ userPokemonCards.forEach((element) =>
     const fireLost = FIRE && CPU == 'water'
     const fireDraw = FIRE && CPU == 'fire'
 
-    // Si gana
-    if (waterWon || fireWon || grassWon)  {
-      setTimeout(() => setResultText(VICTORY), delayShowResult)
-      victoryCounter += 1
-      totalVictoriesCounter.innerHTML = '<b>'+victoryCounter+'</b>'
-
-      // Exp
-      totalExp += 50
-      totalExpCounter.innerText = totalExp
-      saveStorage('exp', totalExp)
-    }
-
-    // Si pierde
-    if (waterLost || fireLost || grassLost) {
-      setTimeout(() => setResultText(DEFEAT), delayShowResult)
-      defeatCounter += 1
-
-       // Exp
-       totalExp -= 40
-       totalExpCounter.innerText = totalExp
-       saveStorage('exp', totalExp)
-    }
-
-    // Si empata
-    if (waterDraw || fireDraw || grassDraw) setTimeout(() => setResultText(DRAW), delayShowResult)
+    if (waterWon || fireWon || grassWon) VICTORY()
+    if (waterLost || fireLost || grassLost) DEFEAT()
+    if (waterDraw || fireDraw || grassDraw) DRAW()
 
     // Selección para la CPU según el resultado
     if (waterWon  || grassLost || fireDraw) setTimeout(fireSelected, countDown)
@@ -215,7 +215,6 @@ userPokemonCards.forEach((element) =>
     // if (fireWon) fireEvolution += 1
     // console.log(fireEvolution)
 
-    lifeCounter()
     levelUp(totalExp)
   })
 )
