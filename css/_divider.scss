@@ -11,6 +11,7 @@ $f-size: .7rem;
   display: flex;
   align-items: center;
   transition: $ease3;
+  background-color: $bg--color;
 
   &.show {
     border-bottom: 1px solid $border--color;

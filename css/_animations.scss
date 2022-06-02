@@ -46,3 +46,7 @@
   0% { opacity: 0; top: .2rem;}
 100% { opacity: 1; top: 0;}
 }
+
+@keyframes bgRepeat {
+to{ background-position: -100% 0;}
+}

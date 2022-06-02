@@ -95,3 +95,35 @@
   &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 100%; }
   &.user .name { text-align: left; left: 1rem; right: unset; }
 }
+
+
+.player {
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: auto;
+    z-index: -1;
+    border-radius: inherit;
+    background: inherit;
+    opacity: 0;
+    transition: $ease3;
+  }
+  &:before {
+    background: linear-gradient(90deg, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+    background-size: 200% 200%;
+    animation: rainbow-border 1s linear infinite
+  }
+  &:after {
+    margin: 6px;
+  }
+
+  @keyframes rainbow-border {
+    0% { background-position: 0% 50% }
+    100% { background-position: 200% 50% }
+  }
+}

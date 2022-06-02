@@ -1,5 +1,9 @@
 body {
   background: repeat center/150px $bg--color;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  @extend %flex-center;
   background-image: url('../img/icon/patt.png');
 
   &.dark-theme {
@@ -8,16 +12,15 @@ body {
 }
 
 .desk {
+  position: relative;
   display: grid;
   grid-template-rows: 1fr 4.5rem;
   aspect-ratio: 3/2;
   height: clamp(10rem, 80vh, 65rem);
   padding: 0rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   background-color: $bg--color;
+  transition: $ease3;
+  transition-duration: .5s;
 }
 
 header {

@@ -7,6 +7,18 @@
   height: 100%;
 }
 
+body, .gameover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 body {
   --text--color: #333;
   --bg--color: #fff;
@@ -331,6 +343,18 @@ html {
   }
 }
 
+@-webkit-keyframes bgRepeat {
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes bgRepeat {
+  to {
+    background-position: -100% 0;
+  }
+}
+
 .cursor {
   pointer-events: none;
   z-index: 99999;
@@ -367,6 +391,9 @@ html:hover .cursor {
 
 body {
   background: repeat center/150px var(--bg--color);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("../img/icon/patt.png");
 }
 
@@ -375,6 +402,7 @@ body.dark-theme {
 }
 
 .desk {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 1fr 4.5rem;
@@ -382,12 +410,11 @@ body.dark-theme {
   aspect-ratio: 3/2;
   height: clamp(10rem, 80vh, 65rem);
   padding: 0rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   background-color: var(--bg--color);
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
 }
 
 header {
@@ -1528,6 +1555,53 @@ header nav li #battlesDisplay::before {
   right: unset;
 }
 
+.player:before, .player:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  z-index: -1;
+  border-radius: inherit;
+  background: inherit;
+  opacity: 0;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+}
+
+.player:before {
+  background: -webkit-gradient(linear, left top, right top, from(#0ebeff), color-stop(#ffdd40), color-stop(#ae63e4), to(#47cf73));
+  background: linear-gradient(90deg, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+  background-size: 200% 200%;
+  -webkit-animation: rainbow-border 1s linear infinite;
+          animation: rainbow-border 1s linear infinite;
+}
+
+.player:after {
+  margin: 6px;
+}
+
+@-webkit-keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
 .result {
   overflow: hidden;
   height: 0;
@@ -1541,6 +1615,7 @@ header nav li #battlesDisplay::before {
           align-items: center;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  background-color: var(--bg--color);
 }
 
 .result.show {
@@ -1604,5 +1679,175 @@ header nav li #battlesDisplay::before {
     -webkit-transform: translate3d(calc(-50% + 10rem), 0, 0);
             transform: translate3d(calc(-50% + 10rem), 0, 0);
   }
+}
+
+.gameover {
+  position: absolute;
+  width: 30vw;
+  height: 100%;
+  left: calc(100% + .3rem);
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding: 5rem;
+  visibility: hidden;
+}
+
+.gameover .info {
+  color: var(--text--color);
+  text-align: left;
+}
+
+.gameover .info__title span {
+  font-family: "Noto Sans JP";
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.gameover .info__title h4 {
+  font-size: 8rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.gameover .info__title h6 {
+  font-size: 2rem;
+  color: #f14242;
+}
+
+.gameover section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.gameover section li {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.gameover section li b {
+  opacity: .7;
+  font-weight: 400;
+}
+
+.gameover section li span {
+  font-size: 3.5rem;
+  font-family: 'Arial';
+  font-weight: 900;
+}
+
+.gameover aside {
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-family: 'Arial';
+  font-weight: 900;
+}
+
+@-webkit-keyframes showToLeft {
+  from {
+    -webkit-transform: translate(2rem, 0);
+            transform: translate(2rem, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes showToLeft {
+  from {
+    -webkit-transform: translate(2rem, 0);
+            transform: translate(2rem, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes showToTop {
+  from {
+    -webkit-transform: translate(0, 2rem);
+            transform: translate(0, 2rem);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes showToTop {
+  from {
+    -webkit-transform: translate(0, 2rem);
+            transform: translate(0, 2rem);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.desk.winner {
+  -webkit-transform: translateX(-30vw);
+          transform: translateX(-30vw);
+}
+
+.desk.winner .gameover {
+  visibility: visible;
+  -webkit-animation: showToLeft 1s;
+          animation: showToLeft 1s;
+}
+
+.desk.winner .gameover .info__title span {
+  -webkit-animation: showToLeft 1.2s;
+          animation: showToLeft 1.2s;
+}
+
+.desk.winner .gameover .info__title h4 {
+  -webkit-animation: showToLeft 1.4s;
+          animation: showToLeft 1.4s;
+}
+
+.desk.winner .gameover .info__title h6 {
+  -webkit-animation: showToLeft 1.6s;
+          animation: showToLeft 1.6s;
+}
+
+.desk.winner .gameover section li::nth-child(1) {
+  -webkit-animation: showToTop 1.7s;
+          animation: showToTop 1.7s;
+}
+
+.desk.winner .gameover section li::nth-child(2) {
+  -webkit-animation: showToTop 1.9s;
+          animation: showToTop 1.9s;
+}
+
+.desk.winner .gameover section li::nth-child(3) {
+  -webkit-animation: showToTop 2.1s;
+          animation: showToTop 2.1s;
+}
+
+.desk.winner .player::after,
+.desk.winner .player::before {
+  opacity: 1;
 }
 /*# sourceMappingURL=main.css.map */

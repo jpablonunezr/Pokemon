@@ -10,6 +10,23 @@
   </head>
   <body>
     <div class="desk">
+
+      <div class="gameover">
+        <div class="info">
+          <div class="info__title">
+            <span>あなたは勝ちます!</span>
+            <h4>You Win!</h4>
+            <h6>Next Rival</h6>
+          </div>
+
+          <section>
+            <li><div><span>0</span><span class="counter-final counter-victories" counter="0">0</span></div><b>Victories</b></li>
+            <li><div><span>0</span><span class="counter-final counter-defeats" counter="0">0</span></div><b>Defeats</b></li>
+            <li><div><span>0</span><span class="counter-final counter-draws" counter="0">0</span></div><b>Draws</b></li>
+          </section>
+          <aside>¥ <span class="counter-final counter-money" counter="35">0</span>.00</aside>
+        </div>
+      </div>
       <main>
         <div class="pokemon">
           <div id="cpuSelection" class="pokemon__options"></div>
@@ -25,6 +42,10 @@
 
           <div id="userSelection" class="pokemon__options"></div>
         </div>
+
+        <!-- <div class="gameover">
+          <h4>Fin del juego</h4>
+        </div> -->
       </main>
 
       <header>
@@ -60,9 +81,7 @@
             <aside>Level <span id="levelDisplay"><b>0</b></span></aside>
           </li>
         </nav>
-
       </header>
-
     </div>
 
     <div class="cursor"></div>
@@ -76,3 +95,4 @@
 <script src="js/script.js"></script>
 <script src="js/cursor.js"></script>
 <script src="js/dark-mode.js"></script>
+<script src="js/gameover.js"></script>

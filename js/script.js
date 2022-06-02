@@ -2,7 +2,10 @@
 const cpuGreen = document.getElementById('cpuGrass')
 const cpuFire = document.getElementById('cpuFire')
 const cpuWater = document.getElementById('cpuWater')
+
+// Players
 const cpuSelection = document.getElementById('cpuSelection')
+const userSelection = document.getElementById('userSelection')
 
 // Contadores
 const countDown = 1000;
@@ -57,9 +60,10 @@ function setResultText(result) {
   resultContainer.classList.add('show')
 }
 
-// Contador de victorias
+// Contador de resultados
 let victoryCounter = 0
 let defeatCounter = 0
+let drawCounter = 0
 let totalVictories = victoryCounter
 let totalBattles = parseInt(localStorage.getItem('battles')) || 0
 
@@ -149,6 +153,8 @@ const VICTORY = () => {
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
   levelUp(totalExp)
+  setTimeout(defeatRival(), delayShowResult + 2000)
+
 }
 
 const DEFEAT = () => {
@@ -160,11 +166,14 @@ const DEFEAT = () => {
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
   levelUp(totalExp)
+  setTimeout(defeatRival(), delayShowResult + 2000)
 }
 
 const DRAW = () => {
+  drawCounter++
   setTimeout(() => setResultText(TEXT_DRAW), delayShowResult)
 }
+
 
 
 let fireEvolution = 0
@@ -255,3 +264,10 @@ const menuContainer = document.querySelector('.menu')
 const menuButton = document.querySelector('.menu .burger')
 
 menuButton.onclick = () => menuContainer.classList.toggle('active')
+
+
+// Defeat Rival
+const defeatRival = () => {
+  victoryCounter == 5 && setTimeout(playerWin, delayShowResult + 700)
+  defeatCounter == 5 && setTimeout(playerWin, delayShowResult + 700)
+}
