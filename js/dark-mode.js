@@ -1,7 +1,6 @@
 // Dark mode
-const btnDarkMode = document.querySelector(".toggler .dark");
-const btnLightMode = document.querySelector(".toggler .light");
-const body = document.querySelector("body");
+const btnDarkMode = document.querySelector(".toggler .dark")
+const btnLightMode = document.querySelector(".toggler .light")
 
 let THEME_MODE = 'default'
 let THEME_APPLIED = localStorage.getItem('theme')

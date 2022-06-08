@@ -16,6 +16,10 @@
       border-bottom: 1px solid $border--color;
       grid-template-columns: 17rem repeat(3, 1fr);
     }
+
+    &.disable {
+      pointer-events: none;
+    }
   }
 
   &__card {
@@ -149,7 +153,6 @@
         object-position: center;
         user-select: none;
       }
-
     }
 
     .bg {

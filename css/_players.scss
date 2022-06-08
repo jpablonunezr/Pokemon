@@ -74,10 +74,11 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: bold;
       margin-bottom: .6rem;
       line-height: 1;
+      text-transform: uppercase;
       display: inline-block;
     }
 
@@ -92,6 +93,7 @@
 
   &.user  { border: 0 }
   &.cpu  .avatar  { background-image: url('../img/trainer/gary.png'); left: -5%; }
+  // &.cpu  .avatar  { background-image: url('../img/trainer/misty3.png'); left: -32%; width: 140% }
   &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 100%; }
   &.user .name { text-align: left; left: 1rem; right: unset; }
 }

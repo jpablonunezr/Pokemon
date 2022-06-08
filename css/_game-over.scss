@@ -1,18 +1,18 @@
 $go--width: 30vw;
 
-.gameover {
-  position: absolute;
-  width: $go--width;
-  height: 100%;
-  left: calc(100% + .3rem);
-  @extend %flex-center;
-  justify-content: start;
-  padding: 5rem;
-  visibility: hidden;
+.desk {
+  .gameover {
+    position: absolute;
+    width: $go--width;
+    height: 100%;
+    @extend %flex-center;
+    justify-content: start;
+    padding: 5rem;
+    visibility: hidden;
 
-  .info {
-    color: $text--color;
-    text-align: left;
+    .info {
+      color: $text--color;
+      text-align: left;
 
       &__title {
         span {
@@ -20,6 +20,7 @@ $go--width: 30vw;
           font-size: 3rem;
           letter-spacing: 2px;
         }
+
         h4 {
           font-size: 8rem;
           margin: 0;
@@ -27,8 +28,14 @@ $go--width: 30vw;
         }
 
         h6 {
+          margin-top: 1rem;
           font-size: 2rem;
           color: $primary;
+          display: none;
+          width: max-content;
+          align-items: center;
+          line-height: 1;
+          gap: 1rem;
         }
       }
     }
@@ -42,7 +49,6 @@ $go--width: 30vw;
         font-size: 1.2rem;
         display: flex;
         flex-direction: column;
-        text-align: center;
 
         b {
           opacity: .7;
@@ -63,22 +69,12 @@ $go--width: 30vw;
       font-family: 'Arial';
       font-weight: 900;
     }
-
+  }
 }
 
-@keyframes showToLeft {
-  from {transform: translate(2rem,0); opacity: 0;}
-  to   {transform: translate(0,0); opacity: 1;}
-}
 
-@keyframes showToTop {
-  from {transform: translate(0,2rem); opacity: 0;}
-  to   {transform: translate(0,0); opacity: 1;}
-}
-
-.desk.winner {
-  transform: translateX(-#{$go--width});
-
+.desk.winner,
+.desk.loser {
   .gameover {
     visibility: visible;
     animation: showToLeft 1s;
@@ -101,6 +97,35 @@ $go--width: 30vw;
   .player::after,
   .player::before {
     opacity: 1;
+  }
+}
+
+.desk.winner {
+  transform: translateX(-#{$go--width});
+  #nextRival { display: flex}
+
+  .gameover {
+    text-align: left;
+    left: calc(100% + .3rem);
+  }
+}
+
+.desk.loser {
+  transform: translateX(#{$go--width});
+  #tryAgain { display: block}
+
+  .gameover {
+    text-align: right;
+    right: calc(100% + .3rem);
+  }
+
+  aside,
+  .info__title {
+    text-align: right;
+  }
+
+  section {
+    justify-content: flex-end;
   }
 }
 

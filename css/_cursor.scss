@@ -23,6 +23,13 @@
     backdrop-filter: blur(.4rem);
     // background: url('../img/icon/pokeball_color.svg') no-repeat center/40%;
   }
+
+  &.misty {
+    width: 8rem;
+    background: url('../img/trainer/misty__mini.png') no-repeat center/130%;
+    border: 1px solid $primary;
+    backdrop-filter: blur(.4rem);
+  }
 }
 
 

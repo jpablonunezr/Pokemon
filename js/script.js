@@ -1,3 +1,5 @@
+const body = document.querySelector("body")
+const desk = document.querySelector(".desk")
 // CPU opciones
 const cpuGreen = document.getElementById('cpuGrass')
 const cpuFire = document.getElementById('cpuFire')
@@ -38,16 +40,16 @@ const TEXT_DRAW = 'Draw • '
 
 // Creamos los textos de los resultados
 function createResultElements() {
-    let i = 0
-    do {
-      const container = document.querySelector('.result__text')
-      const element = document.createElement('span')
-      element.innerText = TEXT_DEFAULT
+  let i = 0
+  do {
+    const container = document.querySelector('.result__text')
+    const element = document.createElement('span')
+    element.innerText = TEXT_DEFAULT
 
-      container.appendChild(element)
-      i++
-    }
-    while (i < 50)
+    container.appendChild(element)
+    i++
+  }
+  while (i < 50)
 }
 
 createResultElements();
@@ -115,9 +117,10 @@ const clearCounter = () => counter.classList.remove('countdown')
 // var battle = new Audio('../audio/battle.mp3');
 // var victory = new Audio('../audio/victory.mp3');
 
-// FX Hover card
+// FX Fight
 const FX_IMAGE = document.querySelectorAll('.fx-gif')
 const FX_SRC = 'img/fx/fire.gif';
+const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
 
 function loseLifes(result, target) {
   result == 1 && setTimeout(() => target.classList.add('x'), delayShowResult + 1200)
@@ -127,21 +130,16 @@ function loseLifes(result, target) {
   result == 5 && setTimeout(() => target.classList.add('xxxxx'), delayShowResult + 1200)
 }
 
-
 function clearClass() {
   for (userPokemon of userPokemonCards) userPokemon.classList.remove('selected') // Quitar selección del usuario
   for (cpuPokemon of cpuPokemonCards) cpuPokemon.classList.remove('selected') // Quitar selección de la CPU
   resultContainer.classList.remove('show')
 }
 
-
 // function evol() {
 //   if (fireEvolution == 1) evolutionPokemon(userFire, charmeleon)
 //   if (fireEvolution == 2) evolutionPokemon(userFire, charizard)
 // }
-
-const showFX = () => { for (image of FX_IMAGE) image.src = FX_SRC }
-
 
 const VICTORY = () => {
   setTimeout(() => setResultText(TEXT_VICTORY), delayShowResult)
@@ -174,13 +172,12 @@ const DRAW = () => {
   setTimeout(() => setResultText(TEXT_DRAW), delayShowResult)
 }
 
-
-
 let fireEvolution = 0
 
-// Función principal
 userPokemonCards.forEach((element) =>
+
   element.addEventListener('click', () => {
+
     const CPU = randomCPU(CPU_OPTIONS)
     console.log('cpu: ' + CPU)
     const GRASS = element.classList.contains('grass')
@@ -246,18 +243,18 @@ userPokemonCards.forEach((element) =>
 
 const lifeCreate = (target, lifes) => {
   let i = 0
+
   do {
-  const token = document.createElement('i')
-  target.appendChild(token);
-  i++
+    const token = document.createElement('i')
+    target.appendChild(token);
+    i++
   }
+
   while (i < lifes)
 }
 
-
 lifeCreate(cpuLife, 5)
 lifeCreate(userLife, 5)
-
 
 // Menu
 const menuContainer = document.querySelector('.menu')
@@ -265,9 +262,12 @@ const menuButton = document.querySelector('.menu .burger')
 
 menuButton.onclick = () => menuContainer.classList.toggle('active')
 
-
 // Defeat Rival
 const defeatRival = () => {
-  victoryCounter == 5 && setTimeout(playerWin, delayShowResult + 700)
-  defeatCounter == 5 && setTimeout(playerWin, delayShowResult + 700)
+  if (victoryCounter == 5) {
+    userSelection.classList.add('disable')
+    setTimeout(playerWin('User Win!', 'winner'), delayShowResult + 700)
+  }
+
+  defeatCounter == 5 && setTimeout(playerLose('CPU Win!', 'loser'), delayShowResult + 700)
 }

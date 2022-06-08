@@ -43,10 +43,27 @@
 }
 
 @keyframes showCounter {
-  0% { opacity: 0; top: .2rem;}
-100% { opacity: 1; top: 0;}
+    0% { opacity: 0; top: .2rem;}
+  100% { opacity: 1; top: 0;}
 }
 
 @keyframes bgRepeat {
-to{ background-position: -100% 0;}
+  to{ background-position: -100% 0;}
+}
+
+@keyframes showToLeft {
+  from {transform: translate(2rem,0); opacity: 0;}
+  to   {transform: translate(0,0); opacity: 1;}
+}
+
+@keyframes showToTop {
+  from {transform: translate(0,4rem); opacity: 0;}
+  to   {transform: translate(0,0) ; opacity: 1;}
+}
+
+@keyframes nameSlide {
+  0%   {opacity: 0}
+  20%  {opacity: 1}
+  80%  {opacity: 1}
+  100% {opacity: 0}
 }

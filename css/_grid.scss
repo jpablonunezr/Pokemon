@@ -37,3 +37,16 @@ main {
   height: 100%;
   border: 1px solid $border--color;
 }
+
+
+#fps {
+  position: fixed;
+  z-index: 9999;
+  font-size: 1rem;
+  div {
+    text-transform: uppercase;
+    color: $text--color !important;
+    border: 0!important;
+    background: none!important;
+  }
+}

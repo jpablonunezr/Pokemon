@@ -78,12 +78,9 @@ $games__types: (
   .bg {transform: translate(0,0)}
   .image::after { transform: translate(0, -1.5rem) scale(1.1)}
 
-
-
   .fx img[src*="img"] {
     visibility: visible;
   }
-
 
   .image-bg {
     animation-play-state: running;
@@ -111,5 +108,4 @@ $games__types: (
       letter-spacing: 2px; transform: scale(.9);
     }
   }
-
 }

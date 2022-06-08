@@ -1,0 +1,343 @@
+.register {
+  @extend %full-size;
+	background: $bg--color;
+	z-index: 100;
+	width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  @extend %flex-center;
+
+
+	&__container {
+		position: relative;
+		aspect-ratio: 3/2;
+		height: clamp(10rem, 80vh, 65rem);
+		// background-color: $bg--color;
+		transition: $ease3;
+		transition-duration: .5s;
+		// border: 1px solid $border--color;
+		display: grid;
+		grid-template-columns: 30rem 30rem;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		color: $text--color;
+
+		.logo-wpc {
+			position: absolute;
+			width: 8rem;
+			height: 8rem;
+			top: 15%;
+			left: 50%;
+			transform: translateX(-50%);
+			background: url(../img/icon/wcs.png) no-repeat center/contain;
+		}
+	}
+
+	section {
+		@extend %flex-center;
+
+		&.steps {
+			justify-content: flex-end;
+			text-align: right;
+		}
+
+		&.characters__container {
+			justify-content: flex-start;
+		}
+	}
+
+	.question {
+
+		sup {
+			position: relative;
+			font-size: 1.4rem;
+		}
+
+		h4 {
+			font-family: $ff-jp;
+			font-size: 2rem;
+		}
+
+		h5 {
+			font-weight: bold;
+			font-size: 4rem;
+		}
+
+		.options {
+			margin-top: 2rem;
+			display: flex;
+			font-weight: bold;
+			font-size: 3rem;
+			position: relative;
+			justify-content: flex-end;
+
+			li {
+				line-height: 1;
+				position: relative;
+				border: 1px solid $border--color;
+				padding: 1rem 2rem;
+				transition: $ease3;
+				height: 6rem;
+				@extend %flex-center;
+
+
+				&:hover {
+					color: #fff;
+					background-color: #111;
+				}
+			}
+
+			li:nth-child(2) {
+				border-left: 0;
+			}
+
+			span {
+				font-size: .9rem;
+				opacity: .5;
+				position: absolute;
+				right: 0;
+				top: calc(100% + 1rem);
+				font-weight: normal;
+			}
+		}
+	}
+}
+
+.name-input {
+	position: relative;
+	input {
+		all: unset;
+		display: block;
+		border: 1px solid $border--color;
+		box-sizing: border-box;
+		padding: 1rem 7rem 1rem 1rem;
+		line-height: 1;
+		width: 10ch;
+		height: 6rem;
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	div {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 2rem;
+    width: 7rem;
+		border-left: 1px solid $border--color;
+    height: 100%;
+    text-transform: uppercase;
+		@extend %flex-center;
+		transition: $ease3;
+
+		&:hover {
+			background-color: #111;
+			color: #fff;
+		}
+	}
+}
+
+.characters {
+	display: flex;
+	position: relative;
+
+	&.boy {
+		.info {
+			left: 100%;
+		}
+	}
+
+	.info {
+		position: absolute;
+		left: 90%;
+		bottom: 5%;
+
+		&__main {
+			@extend %flex-center;
+			border: 1px solid $border--color;
+		}
+
+		.subtitle {
+			@extend %flex-center;
+			flex-direction: column;
+			padding: 1rem;
+			border-right: 1px solid $border--color;
+		}
+
+
+		h4 {
+			font-family: $ff-jp;
+			font-size: 1rem;
+			color: rgba(#111, .7);
+			transition-delay: .2s;
+		}
+
+		.user-name {
+			font-weight: bold;
+			font-size: 3rem;
+			letter-spacing: 2px;
+			@extend %flex-center;
+			line-height: 1;
+			width: 7ch;
+			text-align: center;
+			transition-delay: .3s;
+			padding: 2rem 1.5rem 1.8rem;
+			color: #000;
+			text-transform: uppercase;
+			position: relative;
+			height: 100%;
+			transition-duration: .2s;
+
+			&::after {
+				content: '';
+				@extend %full-size;
+				background-color: #111;
+				opacity: 0;
+			}
+
+			&.showname {
+				background-color: #111;
+				color: #fff;
+			}
+
+			&.showname::after {
+				animation: nameSlide .6s ease-in;
+			}
+		}
+
+		h5 {
+			font-size: 2rem;
+			font-weight: normal;
+			color: rgba(#111, .8);
+			transition-delay: .25s;
+		}
+
+		h6 {
+			font-size: 1rem;
+			font-weight: normal;
+			transition-delay: .4s;
+			display: flex;
+			align-items: center;
+			line-height: 1;
+
+			i {
+				font-size: .8rem;
+				margin-right: .3rem;
+			}
+		}
+
+		* {
+			transition: $ease3;
+			opacity: 0;
+			transform: translate(0,1rem);
+		}
+
+	}
+
+	// .bg {
+	// 	@extend %full-size;
+	// 	background: url(../img/fx/brillo.gif) no-repeat center/cover;
+	// 	z-index: 1;
+	// 	width: 100%;
+	// 	height: 38rem;
+	// 	top: 1rem;
+	// 	border-radius: 2rem;
+	// 	// opacity: 0;
+	// 	transition: $ease3;
+	// }
+
+	.boy,
+	.girl {
+		width: 24rem;
+		height: 40rem;
+		position: relative;
+		z-index: 5;
+		transition: $ease3;
+		// background-color: pink;
+
+		.pic {
+			@extend %full-size;
+			z-index: 5;
+			transition: $ease3;
+
+		}
+	}
+
+	.boy .pic {
+		background: url(../img/trainer/red.png) no-repeat;
+		background-size:  auto 40rem;
+		background-position: 50% 0rem;
+	}
+
+	.boy {
+		margin-left: -12rem;
+	}
+
+	.girl {
+		width: 20rem;
+		z-index: 6;
+	}
+
+	.girl .pic {
+		background: url(../img/trainer/girl.png) no-repeat;
+		background-size:  auto 40rem;
+		background-position: 45% 0rem;
+	}
+}
+
+.characters.girl,
+.characters.boy {
+	.info * {
+		transform: translate(0,0);
+		opacity: 1;
+	}
+}
+
+.characters.girl {
+	.boy {
+		transform: translate(2rem,0);
+		opacity: 0;
+	}
+
+	.girl {
+		transform: translate(-2rem,0);
+	}
+}
+
+.characters.boy {
+	.girl {
+		transform: translate(-1rem,0);
+		opacity: 0;
+	}
+
+	.boy {
+		transform: translate(-8rem,0);
+	}
+}
+
+
+.question1,
+.question2,
+.question3 {
+	display: none;
+	animation: showToTop .3s ease-in both;
+}
+
+.steps.first {
+	.question1 {
+		display: block;
+	}
+}
+
+.steps.second {
+	.question2 {
+		display: block;
+	}
+}
+
+.steps.third {
+	.question3 {
+		display: block;
+	}
+}

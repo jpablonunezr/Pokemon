@@ -1,3 +1,5 @@
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css');
 // Global
 @import 'theme';
 @import 'reset';
@@ -5,6 +7,7 @@
 @import 'cursor';
 
 // Layout
+@import 'register';
 @import 'grid';
 @import 'header';
 @import 'pokemon-card';

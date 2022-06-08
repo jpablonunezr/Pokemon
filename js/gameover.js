@@ -1,17 +1,23 @@
-const displayCounterVictories = document.querySelector('.counter-victories')
-const displayCounterDefeats = document.querySelector('.counter-defeats')
-const displayCounterDraws = document.querySelector('.counter-draws')
+const containerCounterVictories = document.querySelector('.counter-victories')
+const containerCounterDefeats = document.querySelector('.counter-defeats')
+const containerCounterDraws = document.querySelector('.counter-draws')
+
+const playerResultTitle = document.querySelector('.gameover h4')
+const battleResultTitle = document.querySelector('.gameover h6')
 
 
-function playerWin() {
-  displayCounterVictories.setAttribute('counter',victoryCounter)
-  displayCounterDefeats.setAttribute('counter',defeatCounter)
-  displayCounterDraws.setAttribute('counter',drawCounter)
+function playerWin(text, result) {
 
-  document.querySelector('.desk').classList.add('winner')
+  containerCounterVictories.setAttribute('counter',victoryCounter)
+  containerCounterDefeats.setAttribute('counter',defeatCounter)
+  containerCounterDraws.setAttribute('counter',drawCounter)
+
+  playerResultTitle.innerText = text
+  desk.classList.add(result)
+
 
   const counters = document.querySelectorAll('.counter-final')
-  const velocity = 200
+  const velocity = 300
 
   counters.forEach( counter => {
     const animate = () => {
@@ -21,7 +27,7 @@ function playerWin() {
       const time = value / velocity
       if(data < value) {
         counter.innerText = Math.ceil(data + time)
-        setTimeout(animate, 150)
+        setTimeout(animate, 1)
       }
 
       else {

@@ -21,7 +21,7 @@ const createPlayer = (player) => `
   <div class="avatar"></div>
   <div class="name">
     <h6>${player.jp}</h6>
-    <h1>${player.typeUpper}</h1>
+    <h1 id="playerTargetName">${player.typeUpper}</h1>
     <h2>${player.name}</h2>
   </div>
 </div>
