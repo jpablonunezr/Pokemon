@@ -50,3 +50,15 @@ main {
     background: none!important;
   }
 }
+
+
+.cright {
+  position: absolute;
+  bottom: 1rem;
+  text-align: right;
+  right: 1rem;
+  color: $text--color;
+  font-size: .6rem;
+  z-index: 201;
+  opacity: .3;
+}

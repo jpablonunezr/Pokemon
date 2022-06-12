@@ -1,3 +1,5 @@
+$gap-elements: .3rem;
+
 .register {
   @extend %full-size;
 	background: $bg--color;
@@ -6,67 +8,67 @@
   height: 100vh;
   overflow: hidden;
   @extend %flex-center;
-	// display: none;
   background: url('../img/icon/patt.png') repeat center/150px #fff;
+
+	&.hide {
+		display: none;
+	}
+
+	// .logo-wpc {
+	// 	position: absolute;
+	// 	width: 8rem;
+	// 	height: 8rem;
+	// 	top: 0;
+	// 	right: 0;
+	// 	// border: 1px solid $border--color;
+	// 	background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
+	// }
 
 	&__container {
 		position: relative;
-		aspect-ratio: 3/2;
-		height: clamp(10rem, 80vh, 65rem);
-		transition: $ease3;
+		height: 100%;
 		transition-duration: .5s;
 		display: grid;
-		grid-template-columns: max-content 30rem;
+		grid-template-columns: 30rem 25rem 15rem;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
+		gap: $gap-elements;
 		color: $text--color;
-		transform: translateX(-3rem);
-
-		.logo-wpc {
-			position: absolute;
-			width: 8rem;
-			height: 8rem;
-			top: 15%;
-			left: 50%;
-			transform: translateX(-50%);
-			background: url(../img/icon/wcs.png) no-repeat center/contain;
-		}
 	}
 
 	section {
-		@extend %flex-center;
+		transition: $ease3;
 
 		&.steps {
-			width: 30rem;
-			height: 30rem;
+			height: 100%;
 			text-align: center;
 			position: relative;
-		}
-
-		&.characters__container {
-			justify-content: flex-start;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(3, 1fr);
+			gap: $gap-elements;
 		}
 	}
 
 	.question {
-		@extend %full-size;
-		border: 1px solid $border--color;
+		position: relative;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		flex-flow: column;
-		padding: 0 1rem;
-		flex-direction: column;
-		background-color: #fff;
+		padding: 0 3rem;
+		border: 1px solid $border--color;
+		height: 100%;
+		user-select: none;
 		transition: $ease3;
+		@extend %element-off;
 
-		&1 { z-index: 3 }
-		&2 { z-index: 2 }
-		&3 { z-index: 1 }
+		// &1 { z-index: 3 }
+		// &2 { z-index: 2 }
+		// &3 { z-index: 1 }
 
-		&2 { top: .7rem; left: .7rem; }
-		&3 { top: 1.4rem; left: 1.4rem; }
+		// &2 { top: .7rem; left: .7rem; }
+		// &3 { top: 1.4rem; left: 1.4rem; }
 
 		sup {
 			position: relative;
@@ -75,12 +77,20 @@
 
 		h4 {
 			font-family: $ff-jp;
-			font-size: 2rem;
+			font-size: 1.7rem;
 		}
 
 		h5 {
 			font-weight: bold;
-			font-size: 4rem;
+			font-size: 3rem;
+		}
+
+		&.question3 {
+			.options {
+				li:hover {
+					background-color: $primary;
+				}
+			}
 		}
 
 		.options {
@@ -122,8 +132,6 @@
 			}
 		}
 	}
-
-
 }
 
 .name-input {
@@ -167,127 +175,31 @@
 	}
 }
 
+.characters__container {
+	height: 100%;
+}
+
 .characters {
-	display: flex;
 	position: relative;
-
-	&.boy {
-		.info {
-			left: 100%;
-		}
-	}
-
-	.info {
-		position: absolute;
-		left: 90%;
-		bottom: 5%;
-
-		&__main {
-			@extend %flex-center;
-			flex-wrap: wrap;
-			border: 1px solid $border--color;
-			background-color: #fff;
-		}
-
-		.subtitle {
-			@extend %flex-center;
-			flex-direction: column;
-			padding: 1rem;
-		}
-
-
-		h4 {
-			font-family: $ff-jp;
-			font-size: .8rem;
-			color: rgba(#111, .7);
-			transition-delay: .2s;
-		}
-
-		.user-name {
-			font-weight: bold;
-			font-size: 2rem;
-			font-family: inherit;
-			@extend %flex-center;
-			line-height: 1;
-			width: 7ch;
-			display: block;
-			text-align: center;
-			padding: 0;
-			color: #000;
-			text-transform: capitalize;
-			position: relative;
-			border: 0;
-			pointer-events: none;
-			user-select: none;
-			// height: 4rem;
-			transition-duration: .3s;
-			height: 0;
-			overflow: hidden;
-			transition-delay: .5s;
-
-			&.on {
-				border-top: 1px solid var(--border--color);
-				height: 4rem;
-			}
-
-
-			&.showname {
-				color: #fff;
-				background: url(../img/icon/patt-dark.png) repeat left center/100px #333;
-				animation: bgRepeat 5s infinite;
-			}
-		}
-
-		h5 {
-			font-size: 1.6rem;
-			color: rgba(#111, .8);
-			transition-delay: .25s;
-			font-weight: bold;
-			margin-bottom: .2rem;
-		}
-
-		h6 {
-			font-size: .8rem;
-			font-weight: normal;
-			transition-delay: .4s;
-			display: flex;
-			align-items: center;
-			line-height: 1;
-
-			i {
-				font-size: .8rem;
-				margin-right: .1rem;
-			}
-		}
-
-		* {
-			transition: $ease3;
-			opacity: 0;
-			transform: translate(0,1rem);
-		}
-
-	}
-
-	// .bg {
-	// 	@extend %full-size;
-	// 	background: url(../img/fx/brillo.gif) no-repeat center/cover;
-	// 	z-index: 1;
-	// 	width: 100%;
-	// 	height: 38rem;
-	// 	top: 1rem;
-	// 	border-radius: 2rem;
-	// 	// opacity: 0;
-	// 	transition: $ease3;
-	// }
+	display: grid;
+	height: 100%;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	gap: $gap-elements;
 
 	.boy,
 	.girl {
-		width: 24rem;
-		height: 40rem;
+		width: 100%;
+		height: 100%;
+		border: 1px solid $border--color;
 		position: relative;
 		z-index: 5;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: auto 70%;
+		background-color: #fff;
 		transition: $ease3;
-		// background-color: pink;
+		@extend %element-off;
 
 		.pic {
 			@extend %full-size;
@@ -297,74 +209,256 @@
 		}
 	}
 
-	.boy .pic {
-		background: url(../img/trainer/red.png) no-repeat;
-		background-size:  auto 40rem;
-		background-position: 50% 0rem;
+	.boy { background-image: url(../img/trainer/red.png) }
+	.girl { background-image: url(../img/trainer/girl.png) }
+}
+
+.player__container {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: max-content max-content;
+	align-content: center;
+	gap: $gap-elements;
+
+	.info__main {
+		@extend %flex-center;
+		height: 100%;
+		flex-direction: column;
+		border: 1px solid $border--color;
+		background-color: #fff;
+		transition: $ease3;
+		@extend %element-off;
 	}
 
-	.boy {
-		margin-left: -12rem;
+	.subtitle {
+		@extend %flex-center;
+		flex-direction: column;
+		padding: 3rem 1rem;
+		width: 100%;
 	}
 
-	.girl {
-		width: 20rem;
-		z-index: 6;
+	h4 {
+		font-family: $ff-jp;
+		font-size: 1.2rem;
+		color: rgba(#111, .7);
+		transition-delay: .2s;
 	}
 
-	.girl .pic {
-		background: url(../img/trainer/girl.png) no-repeat;
-		background-size:  auto 40rem;
-		background-position: 45% 0rem;
+	.user-name {
+		width: 100%;
+		font-weight: bold;
+		font-size: 2.5rem;
+		font-family: inherit;
+		@extend %flex-center;
+		line-height: 1;
+		display: block;
+		text-align: center;
+		padding: 0;
+		// color: #000;
+		text-transform: capitalize;
+		position: relative;
+		border: 0;
+		pointer-events: none;
+		user-select: none;
+		// height: 4rem;
+		transition-duration: .3s;
+		height: 0;
+		overflow: hidden;
+		transition-delay: .5s;
+		background-color: $primary;
+		color: #fff;
+		background: $primary;
+
+		&.on {
+			border-top: 1px solid var(--border--color);
+			height: 7rem;
+		}
+	}
+
+	h5 {
+		font-size: 2rem;
+		color: rgba(#111, .8);
+		transition-delay: .25s;
+		font-weight: bold;
+		margin-bottom: .8rem;
+	}
+
+	h6 {
+		font-size: 1rem;
+		font-weight: normal;
+		transition-delay: .4s;
+		display: flex;
+		align-items: center;
+		line-height: 1;
+
+		i {
+			font-size: .8rem;
+			margin-right: .1rem;
+		}
 	}
 }
 
-.characters.girl,
-.characters.boy {
-	.info * {
-		transform: translate(0,0);
+%element-off {
+	opacity: .5;
+	pointer-events: none;
+	mix-blend-mode: multiply;
+	filter: grayscale(1);
+	background-color: transparent;
+}
+
+%element-on {
+	opacity: 1;
+	pointer-events: all;
+	mix-blend-mode: normal;
+	filter: grayscale(0);
+	background-color: #fff;
+}
+
+// steps
+//1
+.register__container.first {
+	.steps { transform: translateY(33vh) }
+	.question1 { @extend %element-on;	}
+}
+
+//2
+.register__container.second {
+	.steps { transform: translateY(0)	}
+	.question1 { @extend %element-off;	}
+	.question2{	@extend %element-on;	}
+}
+
+//3
+.register__container.third {
+	.steps { transform: translateY(-33vh)	}
+	.question2, .question1 { @extend %element-off; }
+	.question3{
+		@extend %element-on;
+		background-color: $primary;
+		color: #fff;
+
+		.options li {
+			background-color: $primary;
+
+			&:hover {
+				background-color: #fff;
+				color: $primary;
+			}
+		}
+	}
+
+	.player__container.girl {	transform: translateY(25vh)	}
+	.player__container.boy { transform: translateY(-25vh)	}
+}
+
+// finish
+.register__container.finish {
+	// .steps { transform: translateY(-100vh)	}
+	// .characters__container.girl { transform: translateY(100vh)	}
+	// .characters__container.boy { transform: translateY(100vh)	}
+	// .player__container.girl { transform: translateY(-100vh)	}
+	// .player__container.boy { transform: translateY(100vh)	}
+}
+
+
+// choose gender
+.characters__container.girl {
+	transform: translateY(25vh);
+	.girl { @extend %element-on; }
+}
+
+.characters__container.boy {
+	transform: translateY(-25vh);
+	.boy { @extend %element-on;	}
+}
+
+// player info
+.player__container.girl {
+	transform: translateY(15vh);
+	.name-container-girl {
+		@extend %element-on;
+	}
+}
+.player__container.boy {
+	transform: translateY(-15vh);
+	.name-container-boy {
+		@extend %element-on;
+	}
+}
+
+
+.overlay {
+  @extend %full-size;
+  z-index: 200;
+  pointer-events: none;
+	// background-color: #000;
+
+	.pokeball {
+		position: absolute;
+		height: 2.6rem;
+		width: 2.6rem;
+		left: 50%;
+		top: 50%;
+		opacity: 0;
+    transition: $ease3;
+		transform: translate(-50%, -50%) rotate(360deg) scale(3);
+		background: url(../img/icon/pokeball_color.svg) no-repeat center/contain
+	}
+
+	span {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		font-size: 2.4rem;
+		font-weight: bold;
+		text-align: center;
+		font-family: $ff-jp;
+		opacity: 0;
+		transform: translate(-50%, calc(-50% + 10rem));
+
+		b {
+			display: block;
+			font-weight: normal;
+			text-align: center;
+			margin-top: .5rem;
+			font-size: 1.2rem;
+			font-family: $ff-base
+		}
+	}
+
+  .left,
+  .right {
+    @extend %full-size;
+    background: $primary;
+    transition: $ease3;
+		transition-delay: .15s;
+
+		.wall {
+			@extend %full-size;
+			background: url(../img/icon/bg__balls.svg) repeat center top/3rem $primary;
+			opacity: .3;
+		}
+  }
+
+  .left  { clip-path: polygon(0 0, 0 0, 101% 0) }
+  .right { clip-path: polygon(100% 100%, 0 100%, 100% 100%); }
+
+  &.on {
 		opacity: 1;
-	}
+		pointer-events: all;
+
+    .left  { clip-path: polygon(0 0, 0 101%, 101% 0) }
+    .right { clip-path: polygon(100% 100%, 0 100%, 100% 0)}
+		.pokeball {
+			transform: translate(-50%, -50%) rotate(0deg) scale(1);
+			opacity: 1;
+			transition-duration: .5s;
+		}
+
+		span {
+			transform: translate(-50%, calc(-50% + 6rem));
+			opacity: 1;
+		}
+  }
 }
-
-.characters.girl {
-	.boy {
-		transform: translate(2rem,0);
-		opacity: 0;
-	}
-
-	.girl {
-		transform: translate(-2rem,0);
-	}
-}
-
-.characters.boy {
-	.girl {
-		transform: translate(-1rem,0);
-		opacity: 0;
-	}
-
-	.boy {
-		transform: translate(-8rem,0);
-	}
-}
-
-
-
-.steps.first {
-	.question1 {
-	}
-}
-
-.steps.second {
-	.question1 {
-		transform: translate(-4rem,-4rem);
-		opacity: 0;
-	}
-}
-
-// .steps.third {
-// 	.question3 {
-// 		display: block;
-// 	}
-// }

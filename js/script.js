@@ -76,8 +76,10 @@ totalBattlesCounter.innerText = totalBattles
 // Contador de experiencia
 let totalExp = parseInt(localStorage.getItem('exp')) || 0
 const totalExpCounter = document.querySelector('#experienceDisplay')
-const saveStorage = (storage, num) =>  localStorage.setItem(storage, num)
 totalExpCounter.innerText = totalExp
+
+// Guardar datos en storage
+const saveStorage = async (storage, num) =>  localStorage.setItem(storage, num)
 
 // Contador de Niveles
 let totalLvl = parseInt(localStorage.getItem('lvl')) || 0

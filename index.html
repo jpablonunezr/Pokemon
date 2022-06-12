@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="shortcut icon" href="img/icon/pokeball_color.svg" type="image/x-icon">
-    <title>Pokemon</title>
+    <title>nnzr</title>
   </head>
   <body>
+    <div class="overlay">
+      <div class="left"><div class="wall"></div></div>
+      <div class="right"><div class="wall"></div></div>
+      <div class="middle">
+        <div class="pokeball"></div>
+        <span>ローディング <b>Loading</b></span>
+      </div>
+    </div>
+
     <div class="register">
-      <div class="register__container">
-
-      <div class="logo-wpc"></div>
-
-        <section class="steps first">
+      <div class="register__container first">
+        <section class="steps">
           <div class="question question1">
+            <!-- <div class="logo-wpc"></div> -->
             <sup>1st</sup>
             <h4>あなたは?</h4>
             <h5>You Are?</h5>
@@ -31,7 +38,7 @@
             <h5>You Name?</h5>
             <div class="options">
               <div class="name-input">
-                <input type="text" maxlength="5" autofocus>
+                <input type="text" maxlength="5" tabindex="-1" spellcheck='false' autocorrect='off'>
                 <div class="confirmation"><i class="fi fi-br-angle-right"></i></div>
                 <span>5 characters max.</span>
               </div>
@@ -42,41 +49,34 @@
             <h4>準備はできたか</h4>
             <h5>Are you ready?</h5>
             <div class="options gens">
-              <li id="optGen1">Lets Go!</li>
+              <li id="optFinish">Lets Go!</li>
               <span>Prepare for battle!</span>
             </div>
           </div>
         </section>
         <section class="characters__container">
           <div class="characters">
-            <div class="girl">
-              <div class="pic"></div>
-              <div class="info">
-                <div class="info__main name-container-girl">
-                  <div class="subtitle">
-                    <h4>グリーン</h4>
-                    <h5>Leaf</h5>
-                    <h6><i class="fi fi-br-female"></i> Female</h6>
-                  </div>
-                  <input class="user-name" id="nameTargetGirl">
-                </div>
-              </div>
+            <div class="girl"></div>
+            <div class="boy"></div>
+          </div>
+        </section>
+        <section class="player__container">
+          <div class="info__main name-container-girl">
+            <div class="subtitle">
+              <h4>グリーン</h4>
+              <h5>Leaf</h5>
+              <h6><i class="fi fi-br-female"></i> Female</h6>
             </div>
-            <div class="boy">
-              <div class="pic"></div>
+            <input class="user-name" id="nameTargetGirl">
+          </div>
 
-              <div class="info">
-                <div class="info__main name-container-girl">
-                  <div class="subtitle">
-                    <h4>サトシ</h4>
-                    <h5>Red</h5>
-                    <h6><i class="fi fi-bs-mars"></i> Male</h6>
-                  </div>
-                  <input class="user-name" id="nameTargetBoy">
-                </div>
-              </div>
+          <div class="info__main name-container-boy">
+            <div class="subtitle">
+              <h4>サトシ</h4>
+              <h5>Red</h5>
+              <h6><i class="fi fi-bs-mars"></i> Male</h6>
             </div>
-            <div class="bg"></div>
+            <input class="user-name" id="nameTargetBoy">
           </div>
         </section>
       </div>
@@ -101,6 +101,7 @@
           <aside>¥ <span class="counter-final counter-money" counter="9255">0</span>.00</aside>
         </div>
       </div>
+
       <main>
         <div class="pokemon">
           <div id="cpuSelection" class="pokemon__options"></div>
@@ -162,6 +163,8 @@
     <div id="fps"></div>
     <!-- <audio src="audio/battle_theme.mp3" id="battleTheme"></audio> -->
   </body>
+
+  <div class="cright">©2022 Pokémon. ©1995 - 2022 ®Nintendo.</div>
 </html>
 
 <script src="js/pokemons.js"></script>

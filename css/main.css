@@ -1,8 +1,10 @@
 @import url("https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css");
 @import url("https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css");
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+JP:wght@900&family=Merriweather+Sans:wght@400;600;800&display=swap");
-.register, .register .question, .characters .boy .pic,
-.characters .girl .pic, .pokemon__card::after, .pokemon__card .type, .pokemon__card .fx, .pokemon__card .bg, .pokemon__card .bg::before, .player .avatar {
+.register, .characters .boy .pic,
+.characters .girl .pic, .overlay, .overlay .left,
+.overlay .right, .overlay .left .wall,
+.overlay .right .wall, .pokemon__card::after, .pokemon__card .type, .pokemon__card .fx, .pokemon__card .bg, .pokemon__card .bg::before, .player .avatar {
   position: absolute;
   top: 0;
   left: 0;
@@ -10,7 +12,7 @@
   height: 100%;
 }
 
-.register, .register section, .register .question .options li, .name-input div, .characters .info__main, .characters .info .subtitle, .characters .info .user-name, body, .desk .gameover {
+.register, .register .question .options li, .name-input div, .player__container .info__main, .player__container .subtitle, .player__container .user-name, body, .desk .gameover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -491,98 +493,71 @@ html:hover .cursor {
   background: url("../img/icon/patt.png") repeat center/150px #fff;
 }
 
+.register.hide {
+  display: none;
+}
+
 .register__container {
   position: relative;
-  aspect-ratio: 3/2;
-  height: clamp(10rem, 80vh, 65rem);
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  height: 100%;
   -webkit-transition-duration: .5s;
           transition-duration: .5s;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: max-content 30rem;
-      grid-template-columns: -webkit-max-content 30rem;
-      grid-template-columns: max-content 30rem;
+  -ms-grid-columns: 30rem 25rem 15rem;
+      grid-template-columns: 30rem 25rem 15rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 1rem;
+  gap: 0.3rem;
   color: var(--text--color);
-  -webkit-transform: translateX(-3rem);
-          transform: translateX(-3rem);
 }
 
-.register__container .logo-wpc {
-  position: absolute;
-  width: 8rem;
-  height: 8rem;
-  top: 15%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background: url(../img/icon/wcs.png) no-repeat center/contain;
-}
-
-.register section.steps {
-  width: 30rem;
-  height: 30rem;
-  text-align: center;
-  position: relative;
-}
-
-.register section.characters__container {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-
-.register .question {
-  border: 1px solid var(--border--color);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  padding: 0 1rem;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  background-color: #fff;
+.register section {
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
-.register .question1 {
-  z-index: 3;
+.register section.steps {
+  height: 100%;
+  text-align: center;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  gap: 0.3rem;
 }
 
-.register .question2 {
-  z-index: 2;
-}
-
-.register .question3 {
-  z-index: 1;
-}
-
-.register .question2 {
-  top: .7rem;
-  left: .7rem;
-}
-
-.register .question3 {
-  top: 1.4rem;
-  left: 1.4rem;
+.register .question {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 3rem;
+  border: 1px solid var(--border--color);
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
 .register .question sup {
@@ -592,12 +567,16 @@ html:hover .cursor {
 
 .register .question h4 {
   font-family: "Noto Sans JP";
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .register .question h5 {
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 3rem;
+}
+
+.register .question.question3 .options li:hover {
+  background-color: #f14242;
 }
 
 .register .question .options {
@@ -684,56 +663,103 @@ html:hover .cursor {
   color: #fff;
 }
 
+.characters__container {
+  height: 100%;
+}
+
 .characters {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+  gap: 0.3rem;
 }
 
-.characters.boy .info {
-  left: 100%;
-}
-
-.characters .info {
-  position: absolute;
-  left: 90%;
-  bottom: 5%;
-}
-
-.characters .info__main {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+.characters .boy,
+.characters .girl {
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--border--color);
+  position: relative;
+  z-index: 5;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 70%;
   background-color: #fff;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
-.characters .info .subtitle {
+.characters .boy .pic,
+.characters .girl .pic {
+  z-index: 5;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+}
+
+.characters .boy {
+  background-image: url(../img/trainer/red.png);
+}
+
+.characters .girl {
+  background-image: url(../img/trainer/girl.png);
+}
+
+.player__container {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 0.3rem;
+}
+
+.player__container .info__main {
+  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1rem;
+  border: 1px solid var(--border--color);
+  background-color: #fff;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
-.characters .info h4 {
+.player__container .subtitle {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 3rem 1rem;
+  width: 100%;
+}
+
+.player__container h4 {
   font-family: "Noto Sans JP";
-  font-size: .8rem;
+  font-size: 1.2rem;
   color: rgba(17, 17, 17, 0.7);
   -webkit-transition-delay: .2s;
           transition-delay: .2s;
 }
 
-.characters .info .user-name {
+.player__container .user-name {
+  width: 100%;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family: inherit;
   line-height: 1;
-  width: 7ch;
   display: block;
   text-align: center;
   padding: 0;
-  color: #000;
   text-transform: capitalize;
   position: relative;
   border: 0;
@@ -748,31 +774,27 @@ html:hover .cursor {
   overflow: hidden;
   -webkit-transition-delay: .5s;
           transition-delay: .5s;
-}
-
-.characters .info .user-name.on {
-  border-top: 1px solid var(--border--color);
-  height: 4rem;
-}
-
-.characters .info .user-name.showname {
+  background-color: #f14242;
   color: #fff;
-  background: url(../img/icon/patt-dark.png) repeat left center/100px #333;
-  -webkit-animation: bgRepeat 5s infinite;
-          animation: bgRepeat 5s infinite;
+  background: #f14242;
 }
 
-.characters .info h5 {
-  font-size: 1.6rem;
+.player__container .user-name.on {
+  border-top: 1px solid var(--border--color);
+  height: 7rem;
+}
+
+.player__container h5 {
+  font-size: 2rem;
   color: rgba(17, 17, 17, 0.8);
   -webkit-transition-delay: .25s;
           transition-delay: .25s;
   font-weight: bold;
-  margin-bottom: .2rem;
+  margin-bottom: .8rem;
 }
 
-.characters .info h6 {
-  font-size: .8rem;
+.player__container h6 {
+  font-size: 1rem;
   font-weight: normal;
   -webkit-transition-delay: .4s;
           transition-delay: .4s;
@@ -785,90 +807,182 @@ html:hover .cursor {
   line-height: 1;
 }
 
-.characters .info h6 i {
+.player__container h6 i {
   font-size: .8rem;
   margin-right: .1rem;
 }
 
-.characters .info * {
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  opacity: 0;
-  -webkit-transform: translate(0, 1rem);
-          transform: translate(0, 1rem);
+.register .question, .characters .boy,
+.characters .girl, .player__container .info__main, .register__container.second .question1, .register__container.third .question2, .register__container.third .question1 {
+  opacity: .5;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  background-color: transparent;
 }
 
-.characters .boy,
-.characters .girl {
-  width: 24rem;
-  height: 40rem;
-  position: relative;
-  z-index: 5;
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-}
-
-.characters .boy .pic,
-.characters .girl .pic {
-  z-index: 5;
-  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
-}
-
-.characters .boy .pic {
-  background: url(../img/trainer/red.png) no-repeat;
-  background-size: auto 40rem;
-  background-position: 50% 0rem;
-}
-
-.characters .boy {
-  margin-left: -12rem;
-}
-
-.characters .girl {
-  width: 20rem;
-  z-index: 6;
-}
-
-.characters .girl .pic {
-  background: url(../img/trainer/girl.png) no-repeat;
-  background-size: auto 40rem;
-  background-position: 45% 0rem;
-}
-
-.characters.girl .info *,
-.characters.boy .info * {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+.register__container.first .question1, .register__container.second .question2, .register__container.third .question3, .characters__container.girl .girl, .characters__container.boy .boy, .player__container.girl .name-container-girl, .player__container.boy .name-container-boy {
   opacity: 1;
+  pointer-events: all;
+  mix-blend-mode: normal;
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  background-color: #fff;
 }
 
-.characters.girl .boy {
-  -webkit-transform: translate(2rem, 0);
-          transform: translate(2rem, 0);
+.register__container.first .steps {
+  -webkit-transform: translateY(33vh);
+          transform: translateY(33vh);
+}
+
+.register__container.second .steps {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.register__container.third .steps {
+  -webkit-transform: translateY(-33vh);
+          transform: translateY(-33vh);
+}
+
+.register__container.third .question3 {
+  background-color: #f14242;
+  color: #fff;
+}
+
+.register__container.third .question3 .options li {
+  background-color: #f14242;
+}
+
+.register__container.third .question3 .options li:hover {
+  background-color: #fff;
+  color: #f14242;
+}
+
+.register__container.third .player__container.girl {
+  -webkit-transform: translateY(25vh);
+          transform: translateY(25vh);
+}
+
+.register__container.third .player__container.boy {
+  -webkit-transform: translateY(-25vh);
+          transform: translateY(-25vh);
+}
+
+.characters__container.girl {
+  -webkit-transform: translateY(25vh);
+          transform: translateY(25vh);
+}
+
+.characters__container.boy {
+  -webkit-transform: translateY(-25vh);
+          transform: translateY(-25vh);
+}
+
+.player__container.girl {
+  -webkit-transform: translateY(15vh);
+          transform: translateY(15vh);
+}
+
+.player__container.boy {
+  -webkit-transform: translateY(-15vh);
+          transform: translateY(-15vh);
+}
+
+.overlay {
+  z-index: 200;
+  pointer-events: none;
+}
+
+.overlay .pokeball {
+  position: absolute;
+  height: 2.6rem;
+  width: 2.6rem;
+  left: 50%;
+  top: 50%;
   opacity: 0;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  -webkit-transform: translate(-50%, -50%) rotate(360deg) scale(3);
+          transform: translate(-50%, -50%) rotate(360deg) scale(3);
+  background: url(../img/icon/pokeball_color.svg) no-repeat center/contain;
 }
 
-.characters.girl .girl {
-  -webkit-transform: translate(-2rem, 0);
-          transform: translate(-2rem, 0);
-}
-
-.characters.boy .girl {
-  -webkit-transform: translate(-1rem, 0);
-          transform: translate(-1rem, 0);
+.overlay span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Noto Sans JP";
   opacity: 0;
+  -webkit-transform: translate(-50%, calc(-50% + 10rem));
+          transform: translate(-50%, calc(-50% + 10rem));
 }
 
-.characters.boy .boy {
-  -webkit-transform: translate(-8rem, 0);
-          transform: translate(-8rem, 0);
+.overlay span b {
+  display: block;
+  font-weight: normal;
+  text-align: center;
+  margin-top: .5rem;
+  font-size: 1.2rem;
+  font-family: "Merriweather Sans";
 }
 
-.steps.second .question1 {
-  -webkit-transform: translate(-4rem, -4rem);
-          transform: translate(-4rem, -4rem);
-  opacity: 0;
+.overlay .left,
+.overlay .right {
+  background: #f14242;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  -webkit-transition-delay: .15s;
+          transition-delay: .15s;
+}
+
+.overlay .left .wall,
+.overlay .right .wall {
+  background: url(../img/icon/bg__balls.svg) repeat center top/3rem #f14242;
+  opacity: .3;
+}
+
+.overlay .left {
+  -webkit-clip-path: polygon(0 0, 0 0, 101% 0);
+          clip-path: polygon(0 0, 0 0, 101% 0);
+}
+
+.overlay .right {
+  -webkit-clip-path: polygon(100% 100%, 0 100%, 100% 100%);
+          clip-path: polygon(100% 100%, 0 100%, 100% 100%);
+}
+
+.overlay.on {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.overlay.on .left {
+  -webkit-clip-path: polygon(0 0, 0 101%, 101% 0);
+          clip-path: polygon(0 0, 0 101%, 101% 0);
+}
+
+.overlay.on .right {
+  -webkit-clip-path: polygon(100% 100%, 0 100%, 100% 0);
+          clip-path: polygon(100% 100%, 0 100%, 100% 0);
+}
+
+.overlay.on .pokeball {
+  -webkit-transform: translate(-50%, -50%) rotate(0deg) scale(1);
+          transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  opacity: 1;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+}
+
+.overlay.on span {
+  -webkit-transform: translate(-50%, calc(-50% + 6rem));
+          transform: translate(-50%, calc(-50% + 6rem));
+  opacity: 1;
 }
 
 body {
@@ -929,6 +1043,17 @@ main {
   color: var(--text--color) !important;
   border: 0 !important;
   background: none !important;
+}
+
+.cright {
+  position: absolute;
+  bottom: 1rem;
+  text-align: right;
+  right: 1rem;
+  color: var(--text--color);
+  font-size: .6rem;
+  z-index: 201;
+  opacity: .3;
 }
 
 header {
