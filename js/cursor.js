@@ -31,14 +31,10 @@ document.addEventListener('mousemove', (event) => {
 
 // Pokemon cards
 const cards = document.getElementById("userSelection")
-const nav = document.getElementById("nav")
-const toggler = document.querySelector(".toggler")
-
 cards.addEventListener("mouseover", () => cursor.classList.add('big', 'blur'))
 cards.addEventListener("mouseleave", () => cursor.classList.remove('big', 'blur'))
 
-nav.addEventListener("mouseover", () => cursor.classList.add('big'))
-nav.addEventListener("mouseleave", () => cursor.classList.remove('big'))
-
-toggler.addEventListener("mouseover", () => cursor.classList.add('big'))
-toggler.addEventListener("mouseleave", () => cursor.classList.remove('big'))
+// General hover
+const cursorHover = document.querySelectorAll('.hover')
+cursorHover.forEach((e) =>  e.addEventListener('mouseover', () =>  cursor.classList.add('big')))
+cursorHover.forEach((e) =>  e.addEventListener('mouseleave', () =>  cursor.classList.remove('big')))

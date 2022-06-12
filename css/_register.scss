@@ -349,7 +349,7 @@ $gap-elements: .3rem;
 	}
 
 	.player__container.girl {	transform: translateY(25vh)	}
-	.player__container.boy { transform: translateY(-25vh)	}
+	.player__container.boy { transform: translateY(-15vh)	}
 }
 
 // finish
@@ -381,7 +381,7 @@ $gap-elements: .3rem;
 	}
 }
 .player__container.boy {
-	transform: translateY(-15vh);
+	transform: translateY(-10vh);
 	.name-container-boy {
 		@extend %element-on;
 	}

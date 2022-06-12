@@ -4,6 +4,7 @@ const nameConfirmation = document.querySelector('.confirmation')
 const nameTargetBoy = document.querySelector('#nameTargetBoy')
 const nameTargetGirl = document.querySelector('#nameTargetGirl')
 const playerTargetName = document.querySelector('#playerTargetName')
+const playerAvatar = document.querySelector('.player.user')
 
 const charaterContainer = document.querySelector('.characters__container')
 const playerInfoContainer = document.querySelector('.player__container')
@@ -23,12 +24,18 @@ let isGirl = false
 let isBoy = false
 
 
+
 const registerShow = () => {
   const finalStep = localStorage.getItem('step') == 'finish'
   finalStep && registerContainer.classList.add('hide')
+
+  if ( localStorage.getItem('gender') == 'girl') {
+    playerAvatar.classList.add('girl')
+  }
 }
 
 registerShow()
+
 
 const chooseGender = (gender) => {
   saveStorage('gender', gender)
@@ -51,6 +58,7 @@ optGirl.addEventListener('click', () => {
   saveStorage('step', 'second')
   stepsContainer.classList.replace('first', 'second')
   nameInput.focus()
+  playerAvatar.classList.add('girl')
   playerInfoContainer.classList.add('girl')
   isGirl = true
 })

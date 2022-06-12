@@ -866,8 +866,8 @@ html:hover .cursor {
 }
 
 .register__container.third .player__container.boy {
-  -webkit-transform: translateY(-25vh);
-          transform: translateY(-25vh);
+  -webkit-transform: translateY(-15vh);
+          transform: translateY(-15vh);
 }
 
 .characters__container.girl {
@@ -886,8 +886,8 @@ html:hover .cursor {
 }
 
 .player__container.boy {
-  -webkit-transform: translateY(-15vh);
-          transform: translateY(-15vh);
+  -webkit-transform: translateY(-10vh);
+          transform: translateY(-10vh);
 }
 
 .overlay {
@@ -2172,6 +2172,12 @@ header nav li #battlesDisplay::before {
 .player.user .avatar {
   background-image: url("../img/trainer/red.png");
   background-size: 100%;
+}
+
+.player.user.girl .avatar {
+  background-image: url(../img/trainer/girl.png);
+  background-size: 65%;
+  background-position: 45% 2.5rem;
 }
 
 .player.user .name {
