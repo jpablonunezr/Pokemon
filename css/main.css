@@ -2472,6 +2472,10 @@ header nav li #battlesDisplay::before {
   right: calc(100% + .3rem);
 }
 
+.desk.loser h6 {
+  margin-left: auto;
+}
+
 .desk.loser aside,
 .desk.loser .info__title {
   text-align: right;

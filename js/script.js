@@ -153,8 +153,11 @@ const VICTORY = () => {
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
   levelUp(totalExp)
-  setTimeout(defeatRival(), delayShowResult + 2000)
 
+  if (victoryCounter == 5) {
+    userSelection.classList.add('disable')
+    setTimeout(() => playerWin(`${localStorage.getItem('name')} Win!`, 'winner'), delayShowResult + 3000)
+  }
 }
 
 const DEFEAT = () => {
@@ -166,7 +169,7 @@ const DEFEAT = () => {
   totalExpCounter.innerText = totalExp
   saveStorage('exp', totalExp)
   levelUp(totalExp)
-  setTimeout(defeatRival(), delayShowResult + 2000)
+  defeatCounter == 5 && setTimeout(() => playerWin('CPU Win!', 'loser'), delayShowResult + 3000)
 }
 
 const DRAW = () => {
@@ -265,11 +268,13 @@ const menuButton = document.querySelector('.menu .burger')
 menuButton.onclick = () => menuContainer.classList.toggle('active')
 
 // Defeat Rival
-const defeatRival = () => {
-  if (victoryCounter == 5) {
-    userSelection.classList.add('disable')
-    setTimeout(playerWin('User Win!', 'winner'), delayShowResult + 700)
-  }
+// const defeatRival = () => {
+//   if (victoryCounter == 5) {
+//     userSelection.classList.add('disable')
+//     // setTimeout(playerWin(`${localStorage.getItem('name')} Win!`, 'winner'), delayShowResult + 700)
+//     playerWin(`${localStorage.getItem('name')} Win!`, 'winner')
+//   }
 
-  defeatCounter == 5 && setTimeout(playerLose('CPU Win!', 'loser'), delayShowResult + 700)
-}
+//   // defeatCounter == 5 && setTimeout(playerWin('CPU Win!', 'loser'), delayShowResult + 700)
+//   defeatCounter == 5 && playerWin('CPU Win!', 'loser')
+// }
