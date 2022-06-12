@@ -21,7 +21,7 @@ const createPlayer = (player) => `
   <div class="avatar"></div>
   <div class="name">
     <h6>${player.jp}</h6>
-    <h1 id="playerTargetName">${player.typeUpper}</h1>
+    <h1 id="${player.id}">${player.typeUpper}</h1>
     <h2>${player.name}</h2>
   </div>
 </div>
@@ -30,8 +30,11 @@ const createPlayer = (player) => `
 const cpuCreate = (gary, pkm1, pkm2, pkm3) => cpuSelection.innerHTML  = createPlayer(gary) + createPokemon(pkm1) + createPokemon(pkm2) + createPokemon(pkm3)
 const userCreate = (user, pkm1, pkm2, pkm3) => userSelection.innerHTML = createPokemon(pkm1) + createPokemon(pkm2) + createPokemon(pkm3) + createPlayer(user)
 
+// userCreate(user, sneasel, cleffa, abra)
 cpuCreate(gary, chikorita, cyndaquil, totodile)
-// userCreate(user, sneasel, cleffa, abra, )
 userCreate(user, bulbasaur, charmander, squirtle)
+
+const userNameStorage = localStorage.getItem('name') || 'User'
+playerTargetName.innerHTML = userNameStorage
 
 const evolutionPokemon = (type, pkm) => type.outerHTML = createPokemon(pkm)

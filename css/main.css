@@ -1,7 +1,7 @@
 @import url("https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css");
 @import url("https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css");
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+JP:wght@900&family=Merriweather+Sans:wght@400;600;800&display=swap");
-.register, .characters .info .user-name::after, .characters .boy .pic,
+.register, .register .question, .characters .boy .pic,
 .characters .girl .pic, .pokemon__card::after, .pokemon__card .type, .pokemon__card .fx, .pokemon__card .bg, .pokemon__card .bg::before, .player .avatar {
   position: absolute;
   top: 0;
@@ -488,6 +488,7 @@ html:hover .cursor {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: url("../img/icon/patt.png") repeat center/150px #fff;
 }
 
 .register__container {
@@ -500,8 +501,9 @@ html:hover .cursor {
           transition-duration: .5s;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30rem 30rem;
-      grid-template-columns: 30rem 30rem;
+  -ms-grid-columns: max-content 30rem;
+      grid-template-columns: -webkit-max-content 30rem;
+      grid-template-columns: max-content 30rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -510,6 +512,8 @@ html:hover .cursor {
           justify-content: center;
   gap: 1rem;
   color: var(--text--color);
+  -webkit-transform: translateX(-3rem);
+          transform: translateX(-3rem);
 }
 
 .register__container .logo-wpc {
@@ -524,16 +528,61 @@ html:hover .cursor {
 }
 
 .register section.steps {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  text-align: right;
+  width: 30rem;
+  height: 30rem;
+  text-align: center;
+  position: relative;
 }
 
 .register section.characters__container {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.register .question {
+  border: 1px solid var(--border--color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 0 1rem;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  background-color: #fff;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+}
+
+.register .question1 {
+  z-index: 3;
+}
+
+.register .question2 {
+  z-index: 2;
+}
+
+.register .question3 {
+  z-index: 1;
+}
+
+.register .question2 {
+  top: .7rem;
+  left: .7rem;
+}
+
+.register .question3 {
+  top: 1.4rem;
+  left: 1.4rem;
 }
 
 .register .question sup {
@@ -557,7 +606,7 @@ html:hover .cursor {
   display: -ms-flexbox;
   display: flex;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2rem;
   position: relative;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -572,11 +621,12 @@ html:hover .cursor {
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   height: 6rem;
+  background-color: #fff;
 }
 
 .register .question .options li:hover {
   color: #fff;
-  background-color: #111;
+  background-color: #333;
 }
 
 .register .question .options li:nth-child(2) {
@@ -594,6 +644,7 @@ html:hover .cursor {
 
 .name-input {
   position: relative;
+  background-color: #fff;
 }
 
 .name-input input {
@@ -602,11 +653,11 @@ html:hover .cursor {
   border: 1px solid var(--border--color);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 1rem 7rem 1rem 1rem;
+  padding: 1rem 4rem 1rem 2rem;
   line-height: 1;
-  width: 10ch;
+  width: 15rem;
   height: 6rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-align: center;
 }
 
@@ -614,8 +665,8 @@ html:hover .cursor {
   position: absolute;
   right: 0;
   top: 0;
-  font-size: 2rem;
-  width: 7rem;
+  font-size: 1.1rem;
+  width: 4rem;
   border-left: 1px solid var(--border--color);
   height: 100%;
   text-transform: uppercase;
@@ -623,8 +674,13 @@ html:hover .cursor {
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
+.name-input div i {
+  position: relative;
+  top: 2px;
+}
+
 .name-input div:hover {
-  background-color: #111;
+  background-color: #333;
   color: #fff;
 }
 
@@ -646,7 +702,10 @@ html:hover .cursor {
 }
 
 .characters .info__main {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 1px solid var(--border--color);
+  background-color: #fff;
 }
 
 .characters .info .subtitle {
@@ -655,12 +714,11 @@ html:hover .cursor {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 1rem;
-  border-right: 1px solid var(--border--color);
 }
 
 .characters .info h4 {
   font-family: "Noto Sans JP";
-  font-size: 1rem;
+  font-size: .8rem;
   color: rgba(17, 17, 17, 0.7);
   -webkit-transition-delay: .2s;
           transition-delay: .2s;
@@ -668,48 +726,53 @@ html:hover .cursor {
 
 .characters .info .user-name {
   font-weight: bold;
-  font-size: 3rem;
-  letter-spacing: 2px;
+  font-size: 2rem;
+  font-family: inherit;
   line-height: 1;
   width: 7ch;
+  display: block;
   text-align: center;
-  -webkit-transition-delay: .3s;
-          transition-delay: .3s;
-  padding: 2rem 1.5rem 1.8rem;
+  padding: 0;
   color: #000;
-  text-transform: uppercase;
+  text-transform: capitalize;
   position: relative;
-  height: 100%;
-  -webkit-transition-duration: .2s;
-          transition-duration: .2s;
+  border: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
 }
 
-.characters .info .user-name::after {
-  content: '';
-  background-color: #111;
-  opacity: 0;
+.characters .info .user-name.on {
+  border-top: 1px solid var(--border--color);
+  height: 4rem;
 }
 
 .characters .info .user-name.showname {
-  background-color: #111;
   color: #fff;
-}
-
-.characters .info .user-name.showname::after {
-  -webkit-animation: nameSlide .6s ease-in;
-          animation: nameSlide .6s ease-in;
+  background: url(../img/icon/patt-dark.png) repeat left center/100px #333;
+  -webkit-animation: bgRepeat 5s infinite;
+          animation: bgRepeat 5s infinite;
 }
 
 .characters .info h5 {
-  font-size: 2rem;
-  font-weight: normal;
+  font-size: 1.6rem;
   color: rgba(17, 17, 17, 0.8);
   -webkit-transition-delay: .25s;
           transition-delay: .25s;
+  font-weight: bold;
+  margin-bottom: .2rem;
 }
 
 .characters .info h6 {
-  font-size: 1rem;
+  font-size: .8rem;
   font-weight: normal;
   -webkit-transition-delay: .4s;
           transition-delay: .4s;
@@ -724,7 +787,7 @@ html:hover .cursor {
 
 .characters .info h6 i {
   font-size: .8rem;
-  margin-right: .3rem;
+  margin-right: .1rem;
 }
 
 .characters .info * {
@@ -802,24 +865,10 @@ html:hover .cursor {
           transform: translate(-8rem, 0);
 }
 
-.question1,
-.question2,
-.question3 {
-  display: none;
-  -webkit-animation: showToTop .3s ease-in both;
-          animation: showToTop .3s ease-in both;
-}
-
-.steps.first .question1 {
-  display: block;
-}
-
-.steps.second .question2 {
-  display: block;
-}
-
-.steps.third .question3 {
-  display: block;
+.steps.second .question1 {
+  -webkit-transform: translate(-4rem, -4rem);
+          transform: translate(-4rem, -4rem);
+  opacity: 0;
 }
 
 body {
@@ -1975,7 +2024,7 @@ header nav li #battlesDisplay::before {
   font-weight: bold;
   margin-bottom: .6rem;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: capitalize;
   display: inline-block;
 }
 

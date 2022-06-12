@@ -123,6 +123,7 @@ const charizard = {
 
 // Players
 const gary = {
+  id: 'cpuTargetName',
   type: 'cpu',
   typeUpper: 'CPU',
   jp: 'グリーン',
@@ -130,8 +131,9 @@ const gary = {
 }
 
 const user = {
+  id: 'playerTargetName',
   type: 'user',
   typeUpper: 'User',
   jp: 'サトシ',
-  name: 'Satoshi',
+  name: 'Red',
 }

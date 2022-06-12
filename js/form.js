@@ -45,9 +45,16 @@ nameConfirmation.onclick = () => {
   nameTargetGirl.classList.add('showname')
   setTimeout(() => nameTargetGirl.innerHTML = USER_NAME, 200)
   nameTargetBoy.innerHTML = USER_NAME
-  playerTargetName.innerHTML = USER_NAME
 }
 
 
 // optBoy.onclick = chooseGender('boy')
 // optGirl.onclick = chooseGender('girl')
+
+
+
+nameInput.addEventListener('keyup', function(){
+  let name = nameInput.value
+  nameTargetGirl.classList.add('on')
+  nameTargetGirl.value = name
+});
