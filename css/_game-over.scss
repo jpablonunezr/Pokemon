@@ -36,6 +36,18 @@ $go--width: 30vw;
           align-items: center;
           line-height: 1;
           gap: 1rem;
+
+          &:hover {
+            i {
+              padding-left: .4rem;
+            }
+          }
+
+          i {
+            transition: $ease3;
+            position: relative;
+            top: 2px;
+          }
         }
       }
     }

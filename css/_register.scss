@@ -29,11 +29,50 @@ $gap-elements: .3rem;
 		height: 100%;
 		transition-duration: .5s;
 		display: grid;
-		grid-template-columns: 30rem 25rem 15rem;
+		grid-template-columns: 6rem 30rem 25rem 15rem;
 		align-items: center;
 		justify-content: center;
 		gap: $gap-elements;
 		color: $text--color;
+	}
+
+	section.title-setup {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		font-weight: bold;
+		writing-mode:vertical-rl;
+
+		aside {
+			@extend %flex-center;
+			transform: rotate(180deg);
+			line-height: 1;
+
+			span {
+				opacity: .9;
+				font-size: 1rem;
+				margin: 1rem;
+
+				&::before {
+					content: '';
+					height: 3rem;
+					background-color: #9a9a9a;
+					width: 0.1rem;
+					display: inline-block;
+					margin-bottom: 1.2rem;
+				}
+			}
+		}
+
+		.logo-wpc {
+			width: 3rem;
+			height: 3rem;
+			margin-bottom: .3rem;
+			transform: rotate(180deg);
+			// border: 1px solid $border--color;
+			background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
+		}
 	}
 
 	section {
@@ -69,6 +108,29 @@ $gap-elements: .3rem;
 
 		// &2 { top: .7rem; left: .7rem; }
 		// &3 { top: 1.4rem; left: 1.4rem; }
+
+		.back {
+			position: absolute;
+			left: 1rem;
+			top: -2rem;
+			height: 4rem;
+			width: 4rem;
+			background-color: #fff;
+			border: 1px solid $border--color;
+			@extend %flex-center;
+			font-size: 1.2rem;
+			transition: $ease3;
+			opacity: 0;
+			transition-delay: .3s;
+			transform: translate(0, 2rem);
+
+
+			i {
+				color: #333;
+				position: relative;
+				top: 2px;
+			}
+		}
 
 		sup {
 			position: relative;
@@ -194,12 +256,22 @@ $gap-elements: .3rem;
 		border: 1px solid $border--color;
 		position: relative;
 		z-index: 5;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: auto 70%;
-		background-color: #fff;
 		transition: $ease3;
 		@extend %element-off;
+		overflow: hidden;
+
+		.bg {
+			z-index: 0;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			height: 115%;
+			background: no-repeat top center/auto 120%;
+			transition: $ease3;
+			// opacity: .4;
+			mix-blend-mode: multiply;
+		}
 
 		.pic {
 			@extend %full-size;
@@ -209,8 +281,8 @@ $gap-elements: .3rem;
 		}
 	}
 
-	.boy { background-image: url(../img/trainer/red.png) }
-	.girl { background-image: url(../img/trainer/girl.png) }
+	.boy  .bg { background-image: url(../img/trainer/red__wall.png) }
+	.girl .bg { background-image: url(../img/trainer/green__wall.png) }
 }
 
 .player__container {
@@ -220,6 +292,15 @@ $gap-elements: .3rem;
 	grid-template-rows: max-content max-content;
 	align-content: center;
 	gap: $gap-elements;
+
+	.avatar {
+		width: 100%;
+    height: 15rem;
+    border-bottom: 1px solid #eee;
+	}
+
+	.name-container-girl .avatar { background: url(../img/trainer/girl.png) no-repeat 40% -10%/70%}
+	.name-container-boy .avatar { background: url(../img/trainer/red.png) no-repeat 50% -14%/95%}
 
 	.info__main {
 		@extend %flex-center;
@@ -325,6 +406,7 @@ $gap-elements: .3rem;
 //2
 .register__container.second {
 	.steps { transform: translateY(0)	}
+	.question2 .back { opacity: 1; transform: translate(0,0) }
 	.question1 { @extend %element-off;	}
 	.question2{	@extend %element-on;	}
 }
@@ -332,6 +414,7 @@ $gap-elements: .3rem;
 //3
 .register__container.third {
 	.steps { transform: translateY(-33vh)	}
+	.question3 .back { opacity: 1; transform: translate(0,0) }
 	.question2, .question1 { @extend %element-off; }
 	.question3{
 		@extend %element-on;
@@ -354,23 +437,32 @@ $gap-elements: .3rem;
 
 // finish
 .register__container.finish {
-	// .steps { transform: translateY(-100vh)	}
-	// .characters__container.girl { transform: translateY(100vh)	}
-	// .characters__container.boy { transform: translateY(100vh)	}
-	// .player__container.girl { transform: translateY(-100vh)	}
-	// .player__container.boy { transform: translateY(100vh)	}
 }
 
 
 // choose gender
 .characters__container.girl {
 	transform: translateY(25vh);
-	.girl { @extend %element-on; }
+	.girl {
+		@extend %element-on;
+
+		.bg {
+			background-size: auto 100%;
+			mix-blend-mode: normal;
+		}
+	}
 }
 
 .characters__container.boy {
 	transform: translateY(-25vh);
-	.boy { @extend %element-on;	}
+	.boy {
+		@extend %element-on;
+
+		.bg {
+			background-size: auto 100%;
+			mix-blend-mode: normal;
+		}
+	}
 }
 
 // player info
@@ -430,6 +522,7 @@ $gap-elements: .3rem;
   .left,
   .right {
     @extend %full-size;
+		width: 50%;
     background: $primary;
     transition: $ease3;
 		transition-delay: .15s;
@@ -441,15 +534,20 @@ $gap-elements: .3rem;
 		}
   }
 
-  .left  { clip-path: polygon(0 0, 0 0, 101% 0) }
-  .right { clip-path: polygon(100% 100%, 0 100%, 100% 100%); }
+	.right {
+		left: unset;
+		right: 0;
+	}
+
+  .left  { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); }
+  .right { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
 
   &.on {
 		opacity: 1;
 		pointer-events: all;
 
-    .left  { clip-path: polygon(0 0, 0 101%, 101% 0) }
-    .right { clip-path: polygon(100% 100%, 0 100%, 100% 0)}
+    .left  { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    .right { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
 		.pokeball {
 			transform: translate(-50%, -50%) rotate(0deg) scale(1);
 			opacity: 1;

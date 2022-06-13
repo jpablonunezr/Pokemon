@@ -12,7 +12,7 @@
   height: 100%;
 }
 
-.register, .register .question .options li, .name-input div, .player__container .info__main, .player__container .subtitle, .player__container .user-name, body, .desk .gameover {
+.register, .register section.title-setup aside, .register .question .back, .register .question .options li, .name-input div, .player__container .info__main, .player__container .subtitle, .player__container .user-name, body, .desk .gameover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -442,6 +442,30 @@ html {
   }
 }
 
+@-webkit-keyframes opacityAnim {
+  0% {
+    opacity: .2;
+  }
+  50% {
+    opacity: .8;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+@keyframes opacityAnim {
+  0% {
+    opacity: .2;
+  }
+  50% {
+    opacity: .8;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
 .cursor {
   pointer-events: none;
   z-index: 99999;
@@ -504,8 +528,8 @@ html:hover .cursor {
           transition-duration: .5s;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30rem 25rem 15rem;
-      grid-template-columns: 30rem 25rem 15rem;
+  -ms-grid-columns: 6rem 30rem 25rem 15rem;
+      grid-template-columns: 6rem 30rem 25rem 15rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -514,6 +538,53 @@ html:hover .cursor {
           justify-content: center;
   gap: 0.3rem;
   color: var(--text--color);
+}
+
+.register section.title-setup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+
+.register section.title-setup aside {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  line-height: 1;
+}
+
+.register section.title-setup aside span {
+  opacity: .9;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.register section.title-setup aside span::before {
+  content: '';
+  height: 3rem;
+  background-color: #9a9a9a;
+  width: 0.1rem;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+
+.register section.title-setup .logo-wpc {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: .3rem;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
 }
 
 .register section {
@@ -558,6 +629,30 @@ html:hover .cursor {
           user-select: none;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+}
+
+.register .question .back {
+  position: absolute;
+  left: 1rem;
+  top: -2rem;
+  height: 4rem;
+  width: 4rem;
+  background-color: #fff;
+  border: 1px solid var(--border--color);
+  font-size: 1.2rem;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  opacity: 0;
+  -webkit-transition-delay: .3s;
+          transition-delay: .3s;
+  -webkit-transform: translate(0, 2rem);
+          transform: translate(0, 2rem);
+}
+
+.register .question .back i {
+  color: #333;
+  position: relative;
+  top: 2px;
 }
 
 .register .question sup {
@@ -686,12 +781,23 @@ html:hover .cursor {
   border: 1px solid var(--border--color);
   position: relative;
   z-index: 5;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 70%;
-  background-color: #fff;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  overflow: hidden;
+}
+
+.characters .boy .bg,
+.characters .girl .bg {
+  z-index: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 115%;
+  background: no-repeat top center/auto 120%;
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  mix-blend-mode: multiply;
 }
 
 .characters .boy .pic,
@@ -701,12 +807,12 @@ html:hover .cursor {
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
 
-.characters .boy {
-  background-image: url(../img/trainer/red.png);
+.characters .boy .bg {
+  background-image: url(../img/trainer/red__wall.png);
 }
 
-.characters .girl {
-  background-image: url(../img/trainer/girl.png);
+.characters .girl .bg {
+  background-image: url(../img/trainer/green__wall.png);
 }
 
 .player__container {
@@ -720,6 +826,20 @@ html:hover .cursor {
   -ms-flex-line-pack: center;
       align-content: center;
   gap: 0.3rem;
+}
+
+.player__container .avatar {
+  width: 100%;
+  height: 15rem;
+  border-bottom: 1px solid #eee;
+}
+
+.player__container .name-container-girl .avatar {
+  background: url(../img/trainer/girl.png) no-repeat 40% -10%/70%;
+}
+
+.player__container .name-container-boy .avatar {
+  background: url(../img/trainer/red.png) no-repeat 50% -14%/95%;
 }
 
 .player__container .info__main {
@@ -841,9 +961,21 @@ html:hover .cursor {
           transform: translateY(0);
 }
 
+.register__container.second .question2 .back {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
 .register__container.third .steps {
   -webkit-transform: translateY(-33vh);
           transform: translateY(-33vh);
+}
+
+.register__container.third .question3 .back {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 .register__container.third .question3 {
@@ -875,9 +1007,19 @@ html:hover .cursor {
           transform: translateY(25vh);
 }
 
+.characters__container.girl .girl .bg {
+  background-size: auto 100%;
+  mix-blend-mode: normal;
+}
+
 .characters__container.boy {
   -webkit-transform: translateY(-25vh);
           transform: translateY(-25vh);
+}
+
+.characters__container.boy .boy .bg {
+  background-size: auto 100%;
+  mix-blend-mode: normal;
 }
 
 .player__container.girl {
@@ -933,6 +1075,7 @@ html:hover .cursor {
 
 .overlay .left,
 .overlay .right {
+  width: 50%;
   background: #f14242;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
@@ -946,14 +1089,19 @@ html:hover .cursor {
   opacity: .3;
 }
 
+.overlay .right {
+  left: unset;
+  right: 0;
+}
+
 .overlay .left {
-  -webkit-clip-path: polygon(0 0, 0 0, 101% 0);
-          clip-path: polygon(0 0, 0 0, 101% 0);
+  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+          clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 .overlay .right {
-  -webkit-clip-path: polygon(100% 100%, 0 100%, 100% 100%);
-          clip-path: polygon(100% 100%, 0 100%, 100% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 
 .overlay.on {
@@ -962,13 +1110,13 @@ html:hover .cursor {
 }
 
 .overlay.on .left {
-  -webkit-clip-path: polygon(0 0, 0 101%, 101% 0);
-          clip-path: polygon(0 0, 0 101%, 101% 0);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .overlay.on .right {
-  -webkit-clip-path: polygon(100% 100%, 0 100%, 100% 0);
-          clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .overlay.on .pokeball {
@@ -1504,8 +1652,8 @@ header nav li #battlesDisplay::before {
 .pokemon__card::after {
   content: '';
   z-index: 0;
-  opacity: .1;
-  background: no-repeat center/auto 100%;
+  opacity: .075;
+  background: no-repeat center top/auto 150%;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
   transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
 }
@@ -2353,6 +2501,17 @@ header nav li #battlesDisplay::before {
           align-items: center;
   line-height: 1;
   gap: 1rem;
+}
+
+.desk .gameover .info__title h6:hover i {
+  padding-left: .4rem;
+}
+
+.desk .gameover .info__title h6 i {
+  -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
+  position: relative;
+  top: 2px;
 }
 
 .desk .gameover section {

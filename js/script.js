@@ -179,55 +179,60 @@ const DRAW = () => {
 
 let fireEvolution = 0
 
-userPokemonCards.forEach((element) =>
 
-  element.addEventListener('click', () => {
+const playGame = async () => {
+  userPokemonCards.forEach((element) =>
 
-    const CPU = randomCPU(CPU_OPTIONS)
-    console.log('cpu: ' + CPU)
-    const GRASS = element.classList.contains('grass')
-    const FIRE  = element.classList.contains('fire')
-    const WATER = element.classList.contains('water')
+    element.addEventListener('click', () => {
 
-    clearClass()
-    element.classList.add('selected')
+      const CPU = randomCPU(CPU_OPTIONS)
+      console.log('cpu: ' + CPU)
+      const GRASS = element.classList.contains('grass')
+      const FIRE  = element.classList.contains('fire')
+      const WATER = element.classList.contains('water')
 
-    startCpuAnimation()
-    setTimeout(stopCpuAnimation, countDown)
-    setTimeout(showFX, delayShowResult)
+      clearClass()
+      element.classList.add('selected')
 
-    // Battles counter
-    totalBattles++
-    totalBattlesCounter.innerText = totalBattles
-    saveStorage('battles', totalBattles)
+      startCpuAnimation()
+      setTimeout(stopCpuAnimation, countDown)
+      setTimeout(showFX, delayShowResult)
 
-    // Conditional Won, Lost, Draw
-    const waterWon  = WATER && CPU == 'fire'
-    const waterLost = WATER && CPU == 'grass'
-    const waterDraw = WATER && CPU == 'water'
+      // Battles counter
+      totalBattles++
+      totalBattlesCounter.innerText = totalBattles
+      saveStorage('battles', totalBattles)
 
-    const grassWon  = GRASS && CPU == 'water'
-    const grassLost = GRASS && CPU == 'fire'
-    const grassDraw = GRASS && CPU == 'grass'
+      // Conditional Won, Lost, Draw
+      const waterWon  = WATER && CPU == 'fire'
+      const waterLost = WATER && CPU == 'grass'
+      const waterDraw = WATER && CPU == 'water'
 
-    const fireWon  = FIRE && CPU == 'grass'
-    const fireLost = FIRE && CPU == 'water'
-    const fireDraw = FIRE && CPU == 'fire'
+      const grassWon  = GRASS && CPU == 'water'
+      const grassLost = GRASS && CPU == 'fire'
+      const grassDraw = GRASS && CPU == 'grass'
 
-    if (waterWon || fireWon || grassWon) VICTORY()
-    if (waterLost || fireLost || grassLost) DEFEAT()
-    if (waterDraw || fireDraw || grassDraw) DRAW()
+      const fireWon  = FIRE && CPU == 'grass'
+      const fireLost = FIRE && CPU == 'water'
+      const fireDraw = FIRE && CPU == 'fire'
 
-    // Selección para la CPU según el resultado
-    if (waterWon  || grassLost || fireDraw) setTimeout(fireSelected, countDown)
-    if (waterLost || grassDraw || fireWon)  setTimeout(grassSelected, countDown)
-    if (waterDraw || grassWon  || fireLost) setTimeout(waterSelected, countDown)
+      if (waterWon || fireWon || grassWon) VICTORY()
+      if (waterLost || fireLost || grassLost) DEFEAT()
+      if (waterDraw || fireDraw || grassDraw) DRAW()
 
-    // if (fireWon) fireEvolution += 1
-    // console.log(fireEvolution)
+      // Selección para la CPU según el resultado
+      if (waterWon  || grassLost || fireDraw) setTimeout(fireSelected, countDown)
+      if (waterLost || grassDraw || fireWon)  setTimeout(grassSelected, countDown)
+      if (waterDraw || grassWon  || fireLost) setTimeout(waterSelected, countDown)
 
-  })
-)
+      // if (fireWon) fireEvolution += 1
+      // console.log(fireEvolution)
+
+    })
+  )
+}
+
+playGame()
 
 
 // Crear la cantidad de vida para los jugadores

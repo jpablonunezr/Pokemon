@@ -67,3 +67,9 @@
   80%  {opacity: 1}
   100% {opacity: 0}
 }
+
+@keyframes opacityAnim {
+    0% { opacity: .2}
+   50% { opacity: .8}
+  100% { opacity: .2}
+}

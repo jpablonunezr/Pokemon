@@ -20,9 +20,13 @@
 
     <div class="register">
       <div class="register__container first">
+        <section class="title-setup">
+          <aside>
+            <div class="logo-wpc"></div>Character Setup <span>ラクターセットアップ</span>
+          </aside>
+        </section>
         <section class="steps">
           <div class="question question1">
-            <!-- <div class="logo-wpc"></div> -->
             <sup>1st</sup>
             <h4>あなたは?</h4>
             <h5>You Are?</h5>
@@ -33,6 +37,7 @@
             </div>
           </div>
           <div class="question question2">
+            <div class="back" id="backToFirst"><i class="fi fi-br-angle-small-up"></i></div>
             <sup>2nd</sup>
             <h4>あなたの名前？</h4>
             <h5>You Name?</h5>
@@ -45,6 +50,7 @@
             </div>
           </div>
           <div class="question question3">
+            <div class="back" id="backToSecond"><i class="fi fi-br-angle-small-up"></i></div>
             <sup>3th</sup>
             <h4>準備はできたか</h4>
             <h5>Are you ready?</h5>
@@ -56,12 +62,13 @@
         </section>
         <section class="characters__container">
           <div class="characters">
-            <div class="girl"></div>
-            <div class="boy"></div>
+            <div class="girl"><div class="avatar"></div><div class="bg"></div></div>
+            <div class="boy"><div class="avatar"></div><div class="bg"></div></div>
           </div>
         </section>
         <section class="player__container">
           <div class="info__main name-container-girl">
+            <div class="avatar"></div>
             <div class="subtitle">
               <h4>グリーン</h4>
               <h5>Leaf</h5>
@@ -71,6 +78,7 @@
           </div>
 
           <div class="info__main name-container-boy">
+            <div class="avatar"></div>
             <div class="subtitle">
               <h4>サトシ</h4>
               <h5>Red</h5>
@@ -89,8 +97,8 @@
           <div class="info__title">
             <span>あなたは勝!</span>
             <h4>Target Result</h4>
-            <h6 id="tryAgain">Try Again</h6>
-            <h6 id="nextRival">Next Rival</h6>
+            <h6 id="tryAgain">Try Again <i class="fi fi-br-refresh"></i></h6>
+            <h6 id="nextRival">Next Rival <i class="fi fi-br-arrow-right"></i></h6>
           </div>
 
           <section>

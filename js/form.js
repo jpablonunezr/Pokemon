@@ -20,10 +20,11 @@ const optFinish = document.querySelector('#optFinish')
 const registerContainer = document.querySelector('.register')
 const overlay = document.querySelector('.overlay')
 
+const backToFirst = document.querySelector('#backToFirst')
+const backToSecond = document.querySelector('#backToSecond')
+
 let isGirl = false
 let isBoy = false
-
-
 
 const registerShow = () => {
   const finalStep = localStorage.getItem('step') == 'finish'
@@ -36,7 +37,7 @@ const registerShow = () => {
 
 registerShow()
 
-
+// First step
 const chooseGender = (gender) => {
   saveStorage('gender', gender)
   saveStorage('step', 'first')
@@ -44,6 +45,7 @@ const chooseGender = (gender) => {
   charaterContainer.classList.add(gender)
 }
 
+// Second step
 optBoy.addEventListener('click', () => {
   chooseGender('boy')
   saveStorage('step', 'second')
@@ -63,6 +65,18 @@ optGirl.addEventListener('click', () => {
   isGirl = true
 })
 
+backToFirst.onclick = () => {
+  stepsContainer.classList.replace('second', 'first')
+  playerInfoContainer.classList.remove('boy', 'girl')
+  charaterContainer.classList.remove('girl', 'boy')
+  playerAvatar.classList.remove('girl')
+  playerInfoContainer.classList.remove('girl')
+  isBoy = false
+  isGirl = false
+}
+
+
+// Last step
 optFinish.addEventListener('click', () => {
   saveStorage('step', 'finish')
   stepsContainer.classList.replace('third', 'finish')
@@ -72,6 +86,16 @@ optFinish.addEventListener('click', () => {
     registerContainer.classList.add('hide')
   }, 1500);
 })
+
+backToSecond.onclick = () => {
+  stepsContainer.classList.replace('third', 'second')
+  nameInput.value = ''
+  nameInput.focus()
+  nameTargetGirl.classList.remove('on')
+  nameTargetBoy.classList.remove('on')
+  nameTargetGirl.value = ''
+  nameTargetBoy.value = ''
+}
 
 
 // Cuando confirmamos el nombre
@@ -94,7 +118,6 @@ nameConfirmation.onclick = () => {
     playerTargetName.innerText = nameSelected
     saveStorage('name', nameSelected)
   }
-
 }
 
 // Cuando escribimos en el input

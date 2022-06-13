@@ -43,8 +43,9 @@
       content: '';
       @extend %full-size;
       z-index: 0;
-      opacity: .1;
-      background: no-repeat center/auto 100%;
+      opacity: .075;
+      // background: no-repeat center/auto 100%;
+      background: no-repeat center top/auto 150%;
       transition: $ease3;
     }
 
