@@ -637,7 +637,7 @@ html:hover .cursor {
   top: -2rem;
   height: 4rem;
   width: 4rem;
-  background-color: #fff;
+  background-color: #333;
   border: 1px solid var(--border--color);
   font-size: 1.2rem;
   -webkit-transition: All cubic-bezier(0.5, 0.6, 0.2, 0.9) 0.4s;
@@ -650,7 +650,7 @@ html:hover .cursor {
 }
 
 .register .question .back i {
-  color: #333;
+  color: #fff;
   position: relative;
   top: 2px;
 }
@@ -2310,6 +2310,7 @@ header nav li #battlesDisplay::before {
 
 .player.user {
   border: 0;
+  border-left: 1px solid var(--border--color);
   -webkit-box-ordinal-group: 5;
       -ms-flex-order: 4;
           order: 4;

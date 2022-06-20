@@ -91,7 +91,6 @@
     </div>
 
     <div class="desk">
-
       <div class="gameover">
         <div class="info">
           <div class="info__title">
@@ -100,7 +99,6 @@
             <h6 id="tryAgain">Try Again <i class="fi fi-br-refresh"></i></h6>
             <h6 id="nextRival">Next Rival <i class="fi fi-br-arrow-right"></i></h6>
           </div>
-
           <section>
             <li><div><span>0</span><span class="counter-final counter-victories" counter="0">0</span></div><b>Victories</b></li>
             <li><div><span>0</span><span class="counter-final counter-defeats" counter="0">0</span></div><b>Defeats</b></li>
@@ -113,7 +111,6 @@
       <main>
         <div class="pokemon">
           <div id="cpuSelection" class="pokemon__options"></div>
-
           <div class="result" id="resultContainer">
             <div class="result__container">
               <div class="result__item">
@@ -122,10 +119,8 @@
               </div>
             </div>
           </div>
-
           <div id="userSelection" class="pokemon__options"></div>
         </div>
-
       </main>
 
       <header>
@@ -166,31 +161,15 @@
 
     <div class="cursor"></div>
     <div id="fps"></div>
-    <!-- <audio src="audio/battle_theme.mp3" id="battleTheme"></audio> -->
+    <div class="cright">©2022 Pokémon. ©1995 - 2022 Nintendo®</div>
   </body>
-
-  <div class="cright">©2022 Pokémon. ©1995 - 2022 ®Nintendo.</div>
 </html>
 
-<script>
-  // Guardar datos en storage
-const saveStorage = async (storage, num) =>  localStorage.setItem(storage, num)
-
-</script>
-
-<!-- <script src="js/pokemons.js"></script> -->
 <script src="js/builder.js"></script>
 <script src="js/form.js"></script>
 <script src="js/script.js"></script>
 <script src="js/cursor.js"></script>
 <script src="js/dark-mode.js"></script>
-<script src="js/gameover.js"></script>
 <script src="js/fps.min.js"></script>
+<script src="js/menu.js"></script>
 <script src="js/index.js"></script>
-
-<script type="text/javascript">
-  const fps = new FPS("#fps");
-  fps.start();
-
-
-</script>

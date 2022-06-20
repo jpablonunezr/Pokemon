@@ -109,7 +109,7 @@ $gap-elements: .3rem;
 			top: -2rem;
 			height: 4rem;
 			width: 4rem;
-			background-color: #fff;
+			background-color: #333;
 			border: 1px solid $border--color;
 			@extend %flex-center;
 			font-size: 1.2rem;
@@ -120,7 +120,7 @@ $gap-elements: .3rem;
 
 
 			i {
-				color: #333;
+				color: #fff;
 				position: relative;
 				top: 2px;
 			}
@@ -427,10 +427,6 @@ $gap-elements: .3rem;
 
 	.player__container.girl {	transform: translateY(25vh)	}
 	.player__container.boy { transform: translateY(-15vh)	}
-}
-
-// finish
-.register__container.finish {
 }
 
 
