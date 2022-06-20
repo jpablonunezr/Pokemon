@@ -1,4 +1,9 @@
 
+
+async function registerBuilder() {
+  await gameBuilder()
+
+
 const nameInput = document.querySelector('.name-input input')
 const nameConfirmation = document.querySelector('.confirmation')
 const nameTargetBoy = document.querySelector('#nameTargetBoy')
@@ -36,6 +41,7 @@ const registerShow = () => {
 }
 
 registerShow()
+
 
 // First step
 const chooseGender = (gender) => {
@@ -133,3 +139,5 @@ nameInput.addEventListener('keyup', function(){
     nameTargetBoy.value = name
   }
 })
+
+}

@@ -1,5 +1,15 @@
-const body = document.querySelector("body")
-const desk = document.querySelector(".desk")
+async function cardGame() {
+  await gameBuilder()
+
+
+
+const containerCounterVictories = document.querySelector('.counter-victories')
+const containerCounterDefeats = document.querySelector('.counter-defeats')
+const containerCounterDraws = document.querySelector('.counter-draws')
+
+const playerResultTitle = document.querySelector('.gameover h4')
+const battleResultTitle = document.querySelector('.gameover h6')
+
 // CPU opciones
 const cpuGreen = document.getElementById('cpuGrass')
 const cpuFire = document.getElementById('cpuFire')
@@ -52,7 +62,9 @@ function createResultElements() {
   while (i < 50)
 }
 
-createResultElements();
+createResultElements()
+
+
 
 // Cambia el texto según el resultado
 function setResultText(result) {
@@ -78,8 +90,6 @@ let totalExp = parseInt(localStorage.getItem('exp')) || 0
 const totalExpCounter = document.querySelector('#experienceDisplay')
 totalExpCounter.innerText = totalExp
 
-// Guardar datos en storage
-const saveStorage = async (storage, num) =>  localStorage.setItem(storage, num)
 
 // Contador de Niveles
 let totalLvl = parseInt(localStorage.getItem('lvl')) || 0
@@ -101,6 +111,8 @@ const levelUp = (exp) => {
     if (expThreshold > (expThreshold * 1.5)) expThreshold = expThreshold * 1.5
   }
 }
+
+levelUp()
 
 // CPU azar
 const fireSelected  = () => cpuFire.classList.add('selected')
@@ -180,7 +192,7 @@ const DRAW = () => {
 let fireEvolution = 0
 
 
-const playGame = async () => {
+const playGame = () => {
   userPokemonCards.forEach((element) =>
 
     element.addEventListener('click', () => {
@@ -235,6 +247,63 @@ const playGame = async () => {
 playGame()
 
 
+function playerWin(text, result) {
+
+  const body = document.querySelector("body")
+  const desk = document.querySelector(".desk")
+
+  containerCounterVictories.setAttribute('counter',victoryCounter)
+  containerCounterDefeats.setAttribute('counter',defeatCounter)
+  containerCounterDraws.setAttribute('counter',drawCounter)
+
+  playerResultTitle.innerText = text
+  desk.classList.add(result)
+
+
+  const counters = document.querySelectorAll('.counter-final')
+  const velocity = 300
+
+  counters.forEach( counter => {
+    const animate = () => {
+      const value = +counter.getAttribute('counter')
+      const data = +counter.innerText;
+
+      const time = value / velocity
+      if(data < value) {
+        counter.innerText = Math.ceil(data + time)
+        setTimeout(animate, 1)
+      }
+
+      else {
+        counter.innerText = value
+      }
+    }
+    setTimeout(animate, 1000)
+  })
+}
+
+const lifeCreate = async (target, lifes) => {
+  let i = 0
+
+  do {
+    const token = document.createElement('i')
+    target.appendChild(token);
+    i++
+  }
+
+  while (i < lifes)
+}
+
+lifeCreate(cpuLife, 5)
+lifeCreate(userLife, 5)
+
+}
+
+
+
+
+
+
 // Crear la cantidad de vida para los jugadores
 // class Lifes {
 //   constructor(player) {
@@ -251,20 +320,8 @@ playGame()
 // let CPU_TOTAL_LIFE = new Lifes(cpuLife);
 // let USER_TOTAL_LIFE = new Lifes(userLife);
 
-const lifeCreate = (target, lifes) => {
-  let i = 0
 
-  do {
-    const token = document.createElement('i')
-    target.appendChild(token);
-    i++
-  }
 
-  while (i < lifes)
-}
-
-lifeCreate(cpuLife, 5)
-lifeCreate(userLife, 5)
 
 // Menu
 const menuContainer = document.querySelector('.menu')

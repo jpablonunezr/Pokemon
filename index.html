@@ -126,9 +126,6 @@
           <div id="userSelection" class="pokemon__options"></div>
         </div>
 
-        <!-- <div class="gameover">
-          <h4>Fin del juego</h4>
-        </div> -->
       </main>
 
       <header>
@@ -175,7 +172,13 @@
   <div class="cright">©2022 Pokémon. ©1995 - 2022 ®Nintendo.</div>
 </html>
 
-<script src="js/pokemons.js"></script>
+<script>
+  // Guardar datos en storage
+const saveStorage = async (storage, num) =>  localStorage.setItem(storage, num)
+
+</script>
+
+<!-- <script src="js/pokemons.js"></script> -->
 <script src="js/builder.js"></script>
 <script src="js/form.js"></script>
 <script src="js/script.js"></script>
@@ -183,8 +186,11 @@
 <script src="js/dark-mode.js"></script>
 <script src="js/gameover.js"></script>
 <script src="js/fps.min.js"></script>
+<script src="js/index.js"></script>
 
 <script type="text/javascript">
   const fps = new FPS("#fps");
   fps.start();
+
+
 </script>

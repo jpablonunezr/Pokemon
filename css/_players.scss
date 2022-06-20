@@ -91,9 +91,12 @@
   }
 
 
-  &.user  { border: 0 }
+  &.user  {
+    border: 0;
+    order: 4;
+  }
+
   &.cpu  .avatar  { background-image: url('../img/trainer/gary.png'); left: -5%; }
-  // &.cpu  .avatar  { background-image: url('../img/trainer/misty3.png'); left: -32%; width: 140% }
   &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 100%; }
   &.user.girl .avatar {
     background-image: url(../img/trainer/girl.png);

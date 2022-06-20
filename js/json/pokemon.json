@@ -1,0 +1,130 @@
+{
+  "pokemons": [
+    {
+      "target": "user",
+      "id_type": "Grass",
+      "game_type": "grass",
+      "element_type": "grass",
+      "name": "bulbasaur",
+      "jp": "フシギダ",
+      "number": "001",
+      "origin": "Kanto"
+    },
+    {
+      "target": "user",
+      "id_type": "Fire",
+      "game_type": "fire",
+      "element_type": "fire",
+      "name": "charmander",
+      "jp": "ヒトカゲ",
+      "number": "004",
+      "origin": "Kanto"
+    },
+    {
+      "target": "user",
+      "id_type": "Water",
+      "game_type": "water",
+      "element_type": "water",
+      "name": "squirtle",
+      "jp": "ゼニガメ",
+      "number": "007",
+      "origin": "Kanto"
+    },
+    {
+      "target": "cpu",
+      "id_type": "Grass",
+      "game_type": "grass",
+      "element_type": "grass",
+      "name": "chikorita",
+      "jp": "チコリタ",
+      "number": "152",
+      "origin": "Johto"
+    },
+    {
+      "target": "cpu",
+      "id_type": "Fire",
+      "game_type": "fire",
+      "element_type": "fire",
+      "name": "cyndaquil",
+      "jp": "ヒアラシ",
+      "number": "155",
+      "origin": "Johto"
+    },
+    {
+      "target": "cpu",
+      "id_type": "Water",
+      "game_type": "water",
+      "element_type": "water",
+      "name": "totodile",
+      "jp": "ワニノコ",
+      "number": "158",
+      "origin": "Johto"
+    },
+    {
+      "target": "user",
+      "id_type": "Fire",
+      "game_type": "fire",
+      "element_type": "fire",
+      "name": "charmeleon",
+      "jp": "ューラ",
+      "number": "005",
+      "origin": "Kanto"
+    },
+    {
+      "target": "user",
+      "id_type": "Fire",
+      "game_type": "fire",
+      "element_type": "fire",
+      "name": "charizard",
+      "jp": "ューラ",
+      "number": "006",
+      "origin": "Kanto"
+    },
+    {
+      "target": "user",
+      "id_type": "Grass",
+      "game_type": "grass",
+      "element_type": "fairy",
+      "name": "cleffa",
+      "jp": "ピィ",
+      "number": "173",
+      "origin": "Johto"
+    },
+    {
+      "target": "user",
+      "id_type": "Fire",
+      "game_type": "fire",
+      "element_type": "psy",
+      "name": "abra",
+      "jp": "ケーシ",
+      "number": "063",
+      "origin": "Kanto"
+    },
+    {
+      "target": "user",
+      "id_type": "Water",
+      "game_type": "water",
+      "element_type": "dark",
+      "name": "sneasel",
+      "jp": "ューラ",
+      "number": "215",
+      "origin": "Johto"
+    }
+  ],
+  "players": [
+    {
+      "id": "cpuTargetName",
+      "name": "Blue Oak",
+      "type": "cpu",
+      "typeID": "CPU",
+      "nameJP": "グリーン"
+    },
+    {
+      "id": "playerTargetName",
+      "name": "Red",
+      "type": "user",
+      "typeID": "User",
+      "nameJP": "サトシ"
+    }
+  ]
+}
