@@ -12,26 +12,16 @@
   backdrop-filter: brightness(150%);
   transition: width ease-in .2s, background ease-in .2s;
   opacity: 0;
-  // background: no-repeat center/0%;
 
   &.big {
-    width: 5rem;
-    filter: brightness(150%) contrast(120%);
+    width: 6rem;
+    filter: brightness(180%) contrast(120%);
   }
 
   &.blur {
     backdrop-filter: blur(.4rem);
-    // background: url('../img/icon/pokeball_color.svg') no-repeat center/40%;
-  }
-
-  &.misty {
-    width: 8rem;
-    background: url('../img/trainer/misty__mini.png') no-repeat center/130%;
-    border: 1px solid $primary;
-    backdrop-filter: blur(.4rem);
   }
 }
-
 
 html:hover {
   .cursor {

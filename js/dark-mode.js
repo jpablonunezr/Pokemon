@@ -1,7 +1,5 @@
-// Dark mode
 function darkMode() {
   const body = document.querySelector("body")
-  const desk = document.querySelector(".desk")
 
   const btnDarkMode = document.querySelector(".toggler .dark")
   const btnLightMode = document.querySelector(".toggler .light")

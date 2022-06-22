@@ -1,4 +1,4 @@
-$gap-elements: .3rem;
+$gap-elements: .1rem;
 
 .register {
   @extend %full-size;
@@ -6,23 +6,14 @@ $gap-elements: .3rem;
 	z-index: 100;
 	width: 100vw;
   height: 100vh;
-  overflow: hidden;
+	overflow: hidden;
+	visibility: hidden;
   @extend %flex-center;
   background: url('../img/icon/patt.png') repeat center/150px #fff;
 
 	&.hide {
 		display: none;
 	}
-
-	// .logo-wpc {
-	// 	position: absolute;
-	// 	width: 8rem;
-	// 	height: 8rem;
-	// 	top: 0;
-	// 	right: 0;
-	// 	// border: 1px solid $border--color;
-	// 	background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
-	// }
 
 	&__container {
 		position: relative;
@@ -70,7 +61,6 @@ $gap-elements: .3rem;
 			height: 3rem;
 			margin-bottom: .3rem;
 			transform: rotate(180deg);
-			// border: 1px solid $border--color;
 			background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
 		}
 	}
@@ -99,7 +89,7 @@ $gap-elements: .3rem;
 		border: 1px solid $border--color;
 		height: 100%;
 		user-select: none;
-		transition: $ease3;
+		transition: transform .3s ease-in;
 		@extend %element-off;
 
 
@@ -263,7 +253,6 @@ $gap-elements: .3rem;
 			height: 115%;
 			background: no-repeat top center/auto 120%;
 			transition: $ease3;
-			// opacity: .4;
 			mix-blend-mode: multiply;
 		}
 
@@ -330,13 +319,11 @@ $gap-elements: .3rem;
 		display: block;
 		text-align: center;
 		padding: 0;
-		// color: #000;
 		text-transform: capitalize;
 		position: relative;
 		border: 0;
 		pointer-events: none;
 		user-select: none;
-		// height: 4rem;
 		transition-duration: .3s;
 		height: 0;
 		overflow: hidden;
@@ -482,8 +469,7 @@ $gap-elements: .3rem;
 		left: 50%;
 		top: 50%;
 		opacity: 0;
-    transition: $ease3;
-		transform: translate(-50%, -50%) rotate(360deg) scale(3);
+		transform: translate(-50%, -50%) rotate(360deg);
 		background: url(../img/icon/pokeball_color.svg) no-repeat center/contain
 	}
 
@@ -504,7 +490,20 @@ $gap-elements: .3rem;
 			text-align: center;
 			margin-top: .5rem;
 			font-size: 1.2rem;
-			font-family: $ff-base
+			font-family: $ff-base;
+
+			i {
+				font-style: normal;
+				animation: loading 1s infinite both;
+				&:nth-child(2) { animation-delay: .15s }
+				&:nth-child(3) { animation-delay: .3s }
+			}
+
+			@keyframes loading {
+				  0% { opacity: 1 }
+				 50% { opacity: 0 }
+				100% { opacity: 1 }
+			}
 		}
 	}
 
@@ -513,8 +512,6 @@ $gap-elements: .3rem;
     @extend %full-size;
 		width: 50%;
     background: $primary;
-    transition: $ease3;
-		transition-delay: .15s;
 
 		.wall {
 			@extend %full-size;
@@ -531,6 +528,19 @@ $gap-elements: .3rem;
   .left  { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); }
   .right { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
 
+	&.transition {
+		.left,
+		.right,
+		.pokeball {
+			transition: $ease3;
+		}
+
+		.left,
+		.right {
+			transition-delay: .15s;
+		}
+	}
+
   &.on {
 		opacity: 1;
 		pointer-events: all;
@@ -538,9 +548,8 @@ $gap-elements: .3rem;
     .left  { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
     .right { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
 		.pokeball {
-			transform: translate(-50%, -50%) rotate(0deg) scale(1);
+			transform: translate(-50%, -50%) rotate(0deg);
 			opacity: 1;
-			transition-duration: .5s;
 		}
 
 		span {
