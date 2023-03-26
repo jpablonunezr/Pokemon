@@ -97,10 +97,10 @@
     order: 4;
   }
 
-  &.cpu  .avatar  { background-image: url('../img/trainer/gary.png'); left: -5%; }
-  &.user .avatar { background-image: url('../img/trainer/red.png'); background-size: 100%; }
+  &.cpu  .avatar  { background-image: url('../img/trainer/gary.webp'); left: -5%; }
+  &.user .avatar { background-image: url('../img/trainer/red.webp'); background-size: 100%; }
   &.user.girl .avatar {
-    background-image: url(../img/trainer/girl.png);
+    background-image: url(../img/trainer/girl.webp);
     background-size: 65%;
     background-position: 45% 2.5rem;
   }

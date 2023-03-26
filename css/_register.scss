@@ -9,7 +9,7 @@ $gap-elements: .1rem;
 	overflow: hidden;
 	visibility: hidden;
   @extend %flex-center;
-  background: url('../img/icon/patt.png') repeat center/150px #fff;
+  background: url('../img/icon/patt.webp') repeat center/150px #fff;
 
 	&.hide {
 		display: none;
@@ -61,7 +61,7 @@ $gap-elements: .1rem;
 			height: 3rem;
 			margin-bottom: .3rem;
 			transform: rotate(180deg);
-			background: url(../img/icon/wcs.png) no-repeat center/contain #fff;
+			background: url(../img/icon/wcs.webp) no-repeat center/contain #fff;
 		}
 	}
 
@@ -264,8 +264,8 @@ $gap-elements: .1rem;
 		}
 	}
 
-	.boy  .bg { background-image: url(../img/trainer/red__wall.png) }
-	.girl .bg { background-image: url(../img/trainer/green__wall.png) }
+	.boy  .bg { background-image: url(../img/trainer/red__wall.webp) }
+	.girl .bg { background-image: url(../img/trainer/green__wall.webp) }
 }
 
 .player__container {
@@ -282,8 +282,8 @@ $gap-elements: .1rem;
     border-bottom: 1px solid #eee;
 	}
 
-	.name-container-girl .avatar { background: url(../img/trainer/girl.png) no-repeat 40% -10%/70%}
-	.name-container-boy .avatar { background: url(../img/trainer/red.png) no-repeat 50% -14%/95%}
+	.name-container-girl .avatar { background: url(../img/trainer/girl.webp) no-repeat 40% -10%/70%}
+	.name-container-boy .avatar { background: url(../img/trainer/red.webp) no-repeat 50% -14%/95%}
 
 	.info__main {
 		@extend %flex-center;

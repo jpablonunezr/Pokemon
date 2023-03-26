@@ -10,7 +10,7 @@ function showElements () {
 
   setTimeout(() => {
     overlay.classList.remove('on')
-  }, 2500)
+  }, 0)
 }
 
 document.addEventListener('DOMContentLoaded', showElements, false);

@@ -4,10 +4,10 @@ body {
   height: 100vh;
   overflow: hidden;
   @extend %flex-center;
-  background-image: url('../img/icon/patt.png');
+  background-image: url('../img/icon/patt.webp');
 
   &.dark-theme {
-    background-image: url('../img/icon/patt-dark.png');
+    background-image: url('../img/icon/patt-dark.webp');
   }
 }
 

@@ -14,8 +14,8 @@ $pokemons: (
 );
 
 @each $pokemon in $pokemons {
-  .#{$pokemon} .image { background-image: url('../img/pokemon/#{$pokemon}.png') }
-  .#{$pokemon}::after { background-image: url('../img/pokemon/#{$pokemon}__evolution.png') }
+  .#{$pokemon} .image { background-image: url('../img/pokemon/#{$pokemon}.webp') }
+  .#{$pokemon}::after { background-image: url('../img/pokemon/#{$pokemon}__evolution.webp') }
 }
 
 // Icon elements pokemons
